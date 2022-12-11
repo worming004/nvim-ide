@@ -10,7 +10,8 @@ local servers = {
 	"elixirls",
 	"gopls",
   "omnisharp",
-  "angularls"
+  "angularls",
+  "ansiblels",
 }
 
 local settings = {
