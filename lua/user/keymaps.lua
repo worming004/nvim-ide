@@ -85,3 +85,6 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
 
+-- Personnal
+builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fg', builtin.git_files, opts)
