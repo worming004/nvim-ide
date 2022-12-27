@@ -1,7 +1,8 @@
 -- Shorten function name
 local keymap = vim.keymap.set
 -- Silent keymap option
-local opts = { silent = true }
+-- local opts = { silent = true }
+local opts = { }
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -87,7 +88,7 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
--- save in inser mode
+-- save in insert mode
 keymap("i", "<C-s>", "<Esc>:w<cr>i", opts)
 -- create new line in normal mode
 keymap("n", "<leader>eo", "o<Esc>", opts)
