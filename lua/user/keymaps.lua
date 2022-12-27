@@ -84,4 +84,5 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
+keymap("i", "<C-s>", "<Esc>:w<cr>i", opts)
 
