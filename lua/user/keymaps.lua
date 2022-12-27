@@ -54,8 +54,8 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>o", ":NvimTreeFocus<CR>", opts)
+keymap("n", "<leader>oe", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>oo", ":NvimTreeFocus<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -84,5 +84,10 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
+-- save in inser mode
 keymap("i", "<C-s>", "<Esc>:w<cr>i", opts)
+-- create new line in normal mode
+keymap("n", "<leader>eo", "o<Esc>", opts)
+keymap("n", "<leader>eO", "O<Esc>", opts)
+keymap("i", "<C-o>", "<Esc>o", opts)
 
