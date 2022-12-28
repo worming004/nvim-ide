@@ -90,10 +90,9 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
 -- save in insert ode
-keymap("i", "<C-s>", "<Esc>:w<cr>i", opts)
+keymap("i", "<C-s>", "<C-o>:w<cr>", opts)
 -- create new line in normal mode
 keymap("n", "<leader>eo", "o<Esc>", opts)
 keymap("n", "<leader>eO", "O<Esc>", opts)
-keymap("i", "<C-o>", "<Esc>o", opts)
 
 keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
