@@ -96,3 +96,4 @@ keymap("n", "<leader>eo", "o<Esc>", opts)
 keymap("n", "<leader>eO", "O<Esc>", opts)
 keymap("i", "<C-o>", "<Esc>o", opts)
 
+keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
