@@ -64,6 +64,7 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope registers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -88,7 +89,7 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
--- save in insert mode
+-- save in insert ode
 keymap("i", "<C-s>", "<Esc>:w<cr>i", opts)
 -- create new line in normal mode
 keymap("n", "<leader>eo", "o<Esc>", opts)
