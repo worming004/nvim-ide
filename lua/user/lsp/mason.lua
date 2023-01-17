@@ -12,6 +12,7 @@ local servers = {
   "omnisharp",
   "angularls",
   "ansiblels",
+  "rust_analyzer",
 }
 
 local settings = {
