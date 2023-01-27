@@ -13,6 +13,8 @@ local servers = {
   "angularls",
   "ansiblels",
   "rust_analyzer",
+  "terraformls",
+  "tflint",
 }
 
 local settings = {
