@@ -74,7 +74,7 @@ return packer.startup(function(use)
 
 	-- snippets
 	use({ "L3MON4D3/LuaSnip" }) --snippet engine
-	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
+	use({ "worming004/friendly-snippets" }) -- a bunch of snippets to use
 
 	-- LSP
 	-- use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
