@@ -122,7 +122,6 @@ If you want to install any from there, for example terraform_lsp(which adds more
 ```lua
 -- lua/usr/lsp/mason.lua
 local servers = {
-	"sumneko_lua",
 	"cssls",
 	"html",
 	"tsserver",
