@@ -14,6 +14,7 @@ local servers = {
   "rust_analyzer",
   "terraformls",
   "tflint",
+  "lua_ls"
 }
 
 local settings = {
