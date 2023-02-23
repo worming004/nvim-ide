@@ -15,7 +15,8 @@ local servers = {
   "terraformls",
   "tflint",
   "lua_ls",
-  "gleam"
+  "gleam",
+  "bicep"
 }
 
 local settings = {
