@@ -16,7 +16,8 @@ local servers = {
   "tflint",
   "lua_ls",
   "gleam",
-  "bicep"
+  "bicep",
+  "powershell_es"
 }
 
 local settings = {
