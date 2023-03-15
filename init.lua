@@ -23,3 +23,4 @@ require "user.dap"
 require "user.keys"
 
 require "user.pets"
+require "user.fidget"
