@@ -114,6 +114,8 @@ return packer.startup(function(use)
   })
 
   use { "j-hui/fidget.nvim" }
+
+  use { "f-person/git-blame.nvim" }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
