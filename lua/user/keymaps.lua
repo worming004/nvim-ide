@@ -46,7 +46,6 @@ keymap("v", "p", '"_dP', opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
-keymap("i", "kj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -92,6 +91,7 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
+keymap("n", "<leader>sf", ":w<cr>", opts)
 -- save in insert ode
 keymap("i", "<C-s>", "<C-o>:w<cr>", opts)
 -- create new line in normal mode
