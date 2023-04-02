@@ -90,7 +90,6 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
-keymap("n", "<leader>sb", ":w<cr>", opts)
 -- save in insert ode
 keymap("i", "<C-s>", "<C-o>:w<cr>", opts)
 -- create new line in normal mode
@@ -100,3 +99,7 @@ keymap("n", "<leader>eO", "O<Esc>", opts)
 keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
 keymap("n", "<leader>r", ":e<CR>", opts)
+
+-- folke/which-key.nvim is unstable, use into another keymap waiting proper implementation
+keymap("n", "<leader>cla", ":CodeActionMenu<CR>", opts)
+

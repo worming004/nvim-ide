@@ -139,6 +139,7 @@ return packer.startup(function(use)
   use { "nvim-treesitter/nvim-treesitter-context" }
 
   use "b0o/schemastore.nvim"
+
   use {
     "folke/which-key.nvim",
     config = function()
@@ -149,6 +150,10 @@ return packer.startup(function(use)
     end
   }
 
+  use({
+  'weilbith/nvim-code-action-menu',
+  cmd = 'CodeActionMenu',
+})
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
