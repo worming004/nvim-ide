@@ -1,5 +1,13 @@
-local config = {}
-config.settings = {}
-config.settings['yaml.schemas'] = {}
-config.settings['yaml.schemas']['https://github.com/Microsoft/azure-pipelines-vscode/blob/main/service-schema.json'] = "/*"
+local schemas     = require('schemastore').yaml.schemas()
+local kschemas    = { kubernetes = "*.yaml" }
+local allSchemas = vim.tbl_deep_extend("force", kschemas, schemas)
+
+local config      = {
+  settings = {
+    yaml = {
+      schemas = allSchemas,
+      validate = { enable = true },
+    }
+  }
+}
 return config
