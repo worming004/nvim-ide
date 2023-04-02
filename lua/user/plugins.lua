@@ -117,6 +117,24 @@ return packer.startup(function(use)
 
   use { "f-person/git-blame.nvim" }
 
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim"
+    },
+    config = function()
+      local navbuddy = require("nvim-navbuddy")
+      navbuddy.setup({
+        window = {
+          border = "double"
+        },
+        lsp = { auto_attach = true }
+      })
+    end
+  }
+
   use { "nvim-treesitter/nvim-treesitter-context"}
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
