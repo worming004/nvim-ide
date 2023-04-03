@@ -142,9 +142,10 @@ return packer.startup(function(use)
   }
 
   use({
-  'weilbith/nvim-code-action-menu',
-  cmd = 'CodeActionMenu',
-})
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  })
+
   use 'mbbill/undotree'
 
   -- Automatically set up your configuration after cloning packer.nvim
