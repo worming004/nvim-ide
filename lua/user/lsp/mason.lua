@@ -15,7 +15,6 @@ local servers = {
   "terraformls",
   "tflint",
   "lua_ls",
-  "gleam",
   "bicep",
   "powershell_es"
 }
