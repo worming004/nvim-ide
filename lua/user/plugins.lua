@@ -105,14 +105,6 @@ return packer.startup(function(use)
 
   use({ "tpope/vim-fugitive" })
 
-  use({
-    "giusgad/pets.nvim",
-    requires = {
-      "edluffy/hologram.nvim",
-      "MunifTanjim/nui.nvim",
-    }
-  })
-
   use { "j-hui/fidget.nvim" }
 
   use { "f-person/git-blame.nvim" }

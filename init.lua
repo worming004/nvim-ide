@@ -22,6 +22,5 @@ require "user.lsp"
 require "user.dap"
 require "user.keys"
 
-require "user.pets"
 require "user.fidget"
 require "user.git-blame"
