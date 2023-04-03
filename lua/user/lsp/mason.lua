@@ -61,18 +61,3 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(opts)
 end
 
-local mason_nvim_dap = require("mason-nvim-dap")
-mason_nvim_dap.setup({
-  automatic_setup = true,
-  ensure_installed = { "python", "delve" }
-})
-mason_nvim_dap.setup_handlers{}
-require("dap-go").setup()
-
-local dapui_ok, dapui = pcall(require, "dapui")
-if not dapui_ok then
-  print("dapui nok")
-  return
-end
-dapui.setup{}
-
