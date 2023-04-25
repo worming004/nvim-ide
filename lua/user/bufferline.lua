@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+-- cannot use hex code https://github.com/akinsho/bufferline.nvim/issues/724
+
 bufferline.setup {
   options = {
     close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -13,7 +15,7 @@ bufferline.setup {
 
   highlights = {
     fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
+      fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
 
