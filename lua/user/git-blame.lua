@@ -1,3 +1,6 @@
-local gitblame = require "gitblame"
+local M = {
+  "f-person/git-blame.nvim",
+  cmd = "GitBlameToggle",
+}
 
-gitblame.disable()
+return M

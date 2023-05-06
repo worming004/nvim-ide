@@ -1,134 +1,135 @@
-local dap_status_ok, dap = pcall(require, "dap")
-
-if not dap_status_ok then
-  print("dap nok")
-  return
-end
-
-local dap_ui_status_ok, dapui = pcall(require, "dapui")
-if not dap_ui_status_ok then
-  print("dap ui nok")
-  return
-end
-
-dapui.setup {
-  expand_lines = true,
-  icons = { expanded = "", collapsed = "", circular = "" },
-  mappings = {
-    -- Use a table to apply multiple mappings
-    expand = { "<CR>", "<2-LeftMouse>" },
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
-  layouts = {
-    {
-      elements = {
-        { id = "scopes", size = 0.33 },
-        { id = "breakpoints", size = 0.17 },
-        { id = "stacks", size = 0.25 },
-        { id = "watches", size = 0.25 },
-      },
-      size = 0.33,
-      position = "right",
-    },
-    {
-      elements = {
-        { id = "repl", size = 0.45 },
-        { id = "console", size = 0.55 },
-      },
-      size = 0.27,
-      position = "bottom",
-    },
-  },
-  floating = {
-    max_height = 0.9,
-    max_width = 0.5, -- Floats will be treated as percentage of your screen.
-    border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
+local M = {
+  "mfussenegger/nvim-dap",
+  event = "VeryLazy",
 }
 
-vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+function M.config()
+  local dap = require "dap"
+  local dapui = require "dapui"
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
+  dapui.setup {
+    expand_lines = true,
+    icons = { expanded = "", collapsed = "", circular = "" },
+    mappings = {
+      -- Use a table to apply multiple mappings
+      expand = { "<CR>", "<2-LeftMouse>" },
+      open = "o",
+      remove = "d",
+      edit = "e",
+      repl = "r",
+      toggle = "t",
+    },
+    layouts = {
+      {
+        elements = {
+          { id = "scopes", size = 0.33 },
+          { id = "breakpoints", size = 0.17 },
+          { id = "stacks", size = 0.25 },
+          { id = "watches", size = 0.25 },
+        },
+        size = 0.33,
+        position = "right",
+      },
+      {
+        elements = {
+          { id = "repl", size = 0.45 },
+          { id = "console", size = 0.55 },
+        },
+        size = 0.27,
+        position = "bottom",
+      },
+    },
+    floating = {
+      max_height = 0.9,
+      max_width = 0.5, -- Floats will be treated as percentage of your screen.
+      border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+      mappings = {
+        close = { "q", "<Esc>" },
+      },
+    },
+  }
 
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
+  vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
+  dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+  end
 
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+  end
 
--- go
-require("dap-go").setup()
+  dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+  end
 
--- dap
-require("mason-nvim-dap").setup()
+  -- TODO reinsert this ?
+  -- -- go
+  -- require("dap-go").setup()
+  --
+  -- -- dap
+  -- require("mason-nvim-dap").setup()
 
--- dotnet
-vim.g.dotnet_build_project = function()
-    local default_path = vim.fn.getcwd() .. '/'
-    if vim.g['dotnet_last_proj_path'] ~= nil then
-        default_path = vim.g['dotnet_last_proj_path']
+  -- dotnet
+  vim.g.dotnet_build_project = function()
+    local default_path = vim.fn.getcwd() .. "/"
+    if vim.g["dotnet_last_proj_path"] ~= nil then
+      default_path = vim.g["dotnet_last_proj_path"]
     end
-    local path = vim.fn.input('Path to your *proj file', default_path, 'file')
-    vim.g['dotnet_last_proj_path'] = path
-    local cmd = 'dotnet build -c Debug ' .. path .. ' > /dev/null'
-    print('')
-    print('Cmd to execute: ' .. cmd)
+    local path = vim.fn.input("Path to your *proj file", default_path, "file")
+    vim.g["dotnet_last_proj_path"] = path
+    local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
+    print ""
+    print("Cmd to execute: " .. cmd)
     local f = os.execute(cmd)
     if f then
-        print('\nBuild: ✔️ ')
+      print "\nBuild: ✔️ "
     else
-        print('\nBuild: ❌')
-        print(f)
+      print "\nBuild: ❌"
+      print(f)
     end
-end
+  end
 
-vim.g.dotnet_get_dll_path = function()
+  vim.g.dotnet_get_dll_path = function()
     local request = function()
-        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+      return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
     end
 
-    if vim.g['dotnet_last_dll_path'] == nil then
-        vim.g['dotnet_last_dll_path'] = request()
+    if vim.g["dotnet_last_dll_path"] == nil then
+      vim.g["dotnet_last_dll_path"] = request()
     else
-        if vim.fn.confirm('Do you want to change the path to dll?\n' .. vim.g['dotnet_last_dll_path'], '&yes\n&no', 2) == 1 then
-            vim.g['dotnet_last_dll_path'] = request()
-        end
+      if
+        vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1
+      then
+        vim.g["dotnet_last_dll_path"] = request()
+      end
     end
 
-    return vim.g['dotnet_last_dll_path']
-end
+    return vim.g["dotnet_last_dll_path"]
+  end
 
-local config = {
-  {
-    type = "coreclr",
-    name = "launch - netcoredbg",
-    request = "launch",
-    program = function()
-        if vim.fn.confirm('Should I recompile first?', '&yes\n&no', 2) == 1 then
-            vim.g.dotnet_build_project()
+  local config = {
+    {
+      type = "coreclr",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+        if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+          vim.g.dotnet_build_project()
         end
         return vim.g.dotnet_get_dll_path()
-    end,
-  },
-}
+      end,
+    },
+  }
 
-dap.configurations.cs = config
-dap.configurations.fsharp = config
+  dap.configurations.cs = config
+  dap.configurations.fsharp = config
 
-dap.adapters.coreclr = {
-      type = 'executable',
-      command = 'netcoredbg',
-      args = {'--interpreter=vscode'}
-    }
+  dap.adapters.coreclr = {
+    type = "executable",
+    command = "netcoredbg",
+    args = { "--interpreter=vscode" },
+  }
+end
+
+return M
