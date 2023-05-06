@@ -6,10 +6,11 @@ local M = {
   dependencies = {
     {
       "williamboman/mason-lspconfig.nvim",
-      lazy = true,
+      lazy = false,
       dependencies = { "neovim/nvim-lspconfig" },
     },
   },
+  event = "VeryLazy",
 }
 local settings = {
   ui = {
