@@ -3,13 +3,14 @@ local M = {
   lazy = true,
   dependencies = {
     {
+      "SmiteshP/nvim-navbuddy",
       "hrsh7th/cmp-nvim-lsp",
     },
   },
 }
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
 function M.config()
+  local cmp_nvim_lsp = require "cmp_nvim_lsp"
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
