@@ -3,8 +3,8 @@ local M = {
   event = "VimEnter",
 }
 
-function M.Config()
-  local alpha = require "alpah"
+function M.config()
+  local alpha = require "alpha"
   local dashboard = require "alpha.themes.dashboard"
   dashboard.section.header.val = {
     [[                               __                ]],
@@ -24,7 +24,7 @@ function M.Config()
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "chrisatmachine.com"
+    return "special thanks to chrisatmachine.com and contributors"
   end
 
   dashboard.section.footer.val = footer()
