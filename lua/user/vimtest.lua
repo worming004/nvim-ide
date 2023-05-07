@@ -10,12 +10,11 @@ local M = {
   },
   dependencies = {
     "jebaum/vim-tmuxify",
-    event = "VeryLazy",
   },
 }
 
 function M.config()
-  vim.g["test#strategy"] = "Tmuxify"
+  vim.g["test#strategy"] = "tmuxify"
 end
 
 return M
