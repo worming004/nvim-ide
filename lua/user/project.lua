@@ -1,31 +1,23 @@
 local M = {
   "ahmedkhalf/project.nvim",
-  dependencies = {
-    {
-      "nvim-telescope/telescope.nvim",
-      event = "Bufenter",
-      cmd = { "Telescope" },
-    },
-  },
+
+  config = function()
+    local project = require "project_nvim"
+    project.setup {
+      manual_mode = false,
+
+      -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
+      detection_methods = { "pattern" },
+
+      -- patterns used to detect root dir, when **"pattern"** is in detection_methods
+      patterns = { ".git", "Makefile", "package.json" },
+
+      show_hidden = true,
+      silent_chdir = false,
+      exclude_dirs = {},
+      datapath = vim.fn.stdpath "data",
+    }
+  end,
 }
-
-function M.config()
-  local project = require "project_nvim"
-  project.setup {
-    manual_mode = false,
-
-    -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
-    detection_methods = { "pattern" },
-
-    -- patterns used to detect root dir, when **"pattern"** is in detection_methods
-    patterns = { ".git", "Makefile", "package.json" },
-
-    show_hiddent = true,
-    silent_chdir = false,
-  }
-
-  local telescope = require "telescope"
-  telescope.load_extension "projects"
-end
 
 return M

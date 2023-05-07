@@ -7,6 +7,10 @@ local M = {
       "ahmedkhalf/project.nvim",
     },
   },
+  config = function ()
+    local telescope = require "telescope"
+    telescope.load_extension("projects")
+  end
 }
 
 M.opts = {
