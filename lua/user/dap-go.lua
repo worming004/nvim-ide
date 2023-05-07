@@ -1,6 +1,6 @@
 local M = {
   "leoluz/nvim-dap-go",
-  lazy = false
+  event = "VeryLazy"
 }
 
 return M

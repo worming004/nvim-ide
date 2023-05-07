@@ -1,17 +1,14 @@
 local M = {
   "neovim/nvim-lspconfig",
-  event = "VeryLazy",
+  event = "BufReadPre",
   dependencies = {
     {
       "SmiteshP/nvim-navbuddy",
       "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason.nvim",
-        event = "VeryLazy",
-        dependencies = {
-          "williamboman/mason-lspconfig.nvim",
-          event = "VeryLazy",
-        },
+        event = "BufReadPre",
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
       },
     },
   },

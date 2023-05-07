@@ -3,14 +3,7 @@ local M = {
   build = ":MasonUpdate",
   cmd = "Mason",
   event = "BufReadPre",
-  dependencies = {
-    {
-      "williamboman/mason-lspconfig.nvim",
-      lazy = false,
-      dependencies = { "neovim/nvim-lspconfig" },
-    },
-  },
-  event = "VeryLazy",
+  dependencies = { "williamboman/mason-lspconfig.nvim" },
 }
 local settings = {
   ui = {

@@ -4,7 +4,6 @@ local M = {
 }
 
 M.opts = {
-  lazy = false, -- waiting to know on which event we can trigger loading
   char = "▏",
   show_trailing_blankline_indent = false,
   show_first_indent_level = true,
