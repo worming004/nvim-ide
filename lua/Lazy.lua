@@ -13,19 +13,20 @@ require("lazy").setup("user", {
   install = { colorscheme = { require("user.colorscheme").name } },
   defaults = { lazy = true },
   ui = { wrap = "true" },
-  change_detection = { enabled = true },
+  change_detection = { enabled = true, notify = false },
+  checker = { enabled = true },
   debug = false,
   performance = {
     rtp = {
       disabled_plugins = {
         -- "gzip", -- Plugin for editing compressed files.
         -- "matchit", -- What is it?
-        --  "matchparen", -- Plugin for showing matching parens
-        --  "netrwPlugin", -- Handles file transfers and remote directory listing across a network
-        --  "tarPlugin", -- Plugin for browsing tar files
-        --  "tohtml", -- Converting a syntax highlighted file to HTML
-        --  "tutor", -- Teaching?
-        --  "zipPlugin", -- Handles browsing zipfiles
+        -- "matchparen", -- Plugin for showing matching parens
+        -- "netrwPlugin", -- Handles file transfers and remote directory listing across a network
+        -- "tarPlugin", -- Plugin for browsing tar files
+        -- "tohtml", -- Converting a syntax highlighted file to HTML
+        -- "tutor", -- Teaching?
+        -- "zipPlugin", -- Handles browsing zipfiles
       },
     },
   },
