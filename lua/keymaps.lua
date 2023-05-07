@@ -2,7 +2,7 @@
 local keymap = vim.keymap.set
 -- Silent keymap option
 -- local opts = { silent = true }
-local opts = { }
+local opts = {}
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -101,3 +101,5 @@ keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 -- folke/which-key.nvim is unstable, use into another keymap waiting proper implementation
 keymap("n", "<leader>cla", ":CodeActionMenu<CR>", opts)
 
+-- Navbuddy
+keymap("n", "<leader>ub", ":Navbuddy<CR>", opts)

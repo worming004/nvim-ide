@@ -12,19 +12,24 @@ function M.config()
   local configs = require "nvim-treesitter.configs"
   configs.setup {
     ensure_installed = {
+      "bash",
+      "c_sharp",
+      "dockerfile",
+      "elixir",
+      "go",
+      "html",
+      "javascript",
+      "json",
       "lua",
       "markdown",
       "markdown_inline",
-      "bash",
       "python",
-      "elixir",
-      "go",
-      "javascript",
-      "typescript",
-      "c_sharp",
-      "yaml",
-      "json",
+      "sql",
+      "svelte",
+      "terraform",
       "toml",
+      "typescript",
+      "yaml",
     }, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = { "" }, -- List of parsers to ignore installing
