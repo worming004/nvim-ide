@@ -7,8 +7,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
-
 require("lazy").setup("user", {
   install = { colorscheme = { require("user.colorscheme").name } },
   defaults = { lazy = true },

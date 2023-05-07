@@ -48,3 +48,6 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
+
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
+
