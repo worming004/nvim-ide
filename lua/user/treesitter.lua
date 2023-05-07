@@ -2,18 +2,13 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
   dependencies = {
-    {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      lazy = true,
-    },
-    {
-      "nvim-tree/nvim-web-devicons",
-      lazy = true,
-    },
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "nvim-tree/nvim-web-devicons",
+    "nvim-treesitter/playground",
   },
 }
+
 function M.config()
-  local treesitter = require "nvim-treesitter"
   local configs = require "nvim-treesitter.configs"
   configs.setup {
     ensure_installed = {
@@ -47,6 +42,25 @@ function M.config()
     context_commentstring = {
       enable = true,
       enable_autocmd = false,
+    },
+
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false, -- Whether the query persists across vim sessions
+      keybindings = {
+        toggle_query_editor = "o",
+        toggle_hl_groups = "i",
+        toggle_injected_languages = "t",
+        toggle_anonymous_nodes = "a",
+        toggle_language_display = "I",
+        focus_language = "f",
+        unfocus_language = "F",
+        update = "R",
+        goto_node = "<cr>",
+        show_help = "?",
+      },
     },
   }
 end
