@@ -1,10 +1,10 @@
 -- Shorten function name
 local keymap = vim.keymap.set
--- Silent keymap option
--- local opts = { silent = true }
-local opts = {}
-local function optsWithDesc(opts, description)
-  vim.tbl_deep_extend("force", opts, { description = description })
+
+-- silent is used to remove flickering with noice
+local opts = { silent = true }
+local function optsWithDesc(p_opts, description)
+  vim.tbl_deep_extend("force", p_opts, { description = description })
 end
 
 --Remap space as leader key
