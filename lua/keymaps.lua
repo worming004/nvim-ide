@@ -107,3 +107,6 @@ keymap("n", "<leader>cla", ":CodeActionMenu<CR>", opts)
 
 -- Navbuddy
 keymap("n", "<leader>ub", ":Navbuddy<CR>", opts)
+
+-- notify
+keymap("n", "<leader>unc", "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>", opts )
