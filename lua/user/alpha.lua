@@ -24,7 +24,7 @@ function M.config()
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "special thanks to chrisatmachine.com and contributors"
+    return "special thanks to chrisatmachine.com, folke and many contributors"
   end
 
   dashboard.section.footer.val = footer()
