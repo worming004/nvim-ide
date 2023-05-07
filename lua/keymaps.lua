@@ -3,6 +3,9 @@ local keymap = vim.keymap.set
 -- Silent keymap option
 -- local opts = { silent = true }
 local opts = {}
+local function optsWithDesc(opts, description)
+  vim.tbl_deep_extend("force", opts, { description = description })
+end
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -38,7 +41,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete<CR>", opts)
+keymap("n", "<S-q>", "<cmd>Bdelete<CR>", optsWithDesc(opts, "Delete buffer"))
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -97,8 +100,8 @@ keymap("n", "<C-s>", ":w<cr>", opts)
 -- save in insert ode
 keymap("i", "<C-s>", "<C-o>:w<cr>", opts)
 -- create new line in normal mode
-keymap("n", "<leader>eo", "o<Esc>", opts)
-keymap("n", "<leader>eO", "O<Esc>", opts)
+keymap("n", "<leader>eo", "o<Esc>", optsWithDesc(opts, "New line below"))
+keymap("n", "<leader>eO", "O<Esc>", optsWithDesc(opts, "New line above"))
 
 keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
@@ -106,7 +109,12 @@ keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 keymap("n", "<leader>cla", ":CodeActionMenu<CR>", opts)
 
 -- Navbuddy
-keymap("n", "<leader>ub", ":Navbuddy<CR>", opts)
+keymap("n", "<leader>ub", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
 
 -- notify
-keymap("n", "<leader>unc", "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>", opts )
+keymap(
+  "n",
+  "<leader>unc",
+  "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
+  optsWithDesc(opts, "Dismiss notifications")
+)
