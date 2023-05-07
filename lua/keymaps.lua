@@ -74,7 +74,6 @@ keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
 keymap("n", "<leader>fM", ":Telescope man_pages<CR>", opts)
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<leader>gb", "<cmd>:GitBlameToggle<CR>", opts)
 
 -- Comment
@@ -93,7 +92,7 @@ keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+keymap("n", "<leader>uf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 -- Lazy
 keymap("n", "<C-s>", ":w<cr>", opts)
@@ -105,8 +104,6 @@ keymap("n", "<leader>eO", "O<Esc>", optsWithDesc(opts, "New line above"))
 
 keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
--- folke/which-key.nvim is unstable, use into another keymap waiting proper implementation
-keymap("n", "<leader>cla", ":CodeActionMenu<CR>", opts)
 
 -- Navbuddy
 keymap("n", "<leader>ub", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
