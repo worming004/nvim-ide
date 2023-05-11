@@ -72,6 +72,9 @@ keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
 keymap("n", "<leader>fC", ":Telescope commands<CR>", opts)
 keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
 keymap("n", "<leader>fM", ":Telescope man_pages<CR>", opts)
+keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
+keymap("n", "<leader>fgs", ":Telescope git_commit<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gb", "<cmd>:GitBlameToggle<CR>", opts)
@@ -123,3 +126,9 @@ keymap(
   ":BufferLineTogglePin<cr>",
   opts
 )
+
+-- move in insert mode
+keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move left"))
+keymap("i", "<C-j>", "<Down>", optsWithDesc(opts, "Move down"))
+keymap("i", "<C-k>", "<Up>", optsWithDesc(opts, "Move up"))
+keymap("i", "<C-l>", "<Right>", optsWithDesc(opts, "Move right"))
