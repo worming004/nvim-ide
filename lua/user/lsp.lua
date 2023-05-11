@@ -63,7 +63,9 @@ function M.config()
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format()
+          if vim.g.autoformat then
+            vim.lsp.buf.format()
+          end
         end,
       })
     end

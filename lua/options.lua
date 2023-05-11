@@ -51,3 +51,4 @@ vim.o.foldcolumn = "0"
 
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
+vim.g.autoformat = true -- stop auto format on save for lsp clients
