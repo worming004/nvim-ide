@@ -115,3 +115,11 @@ keymap(
   "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
   optsWithDesc(opts, "Dismiss notifications")
 )
+
+-- buffer line
+keymap(
+  "n",
+  "<leader>ubp",
+  ":BufferLineTogglePin<cr>",
+  opts
+)
