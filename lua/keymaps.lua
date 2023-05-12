@@ -106,7 +106,7 @@ keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
 
 -- Navbuddy
-keymap("n", "<leader>ub", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
+keymap("n", "<leader>nb", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
 
 -- notify
 keymap(
