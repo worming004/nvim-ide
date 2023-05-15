@@ -33,6 +33,7 @@ function M.config()
   configs.setup {
     ensure_installed = {
       "bash",
+      "bicep",
       "c_sharp",
       "dockerfile",
       "elixir",
@@ -57,10 +58,10 @@ function M.config()
       "yaml",
     },
     ignore_install = { "" }, -- List of parsers to ignore installing
-    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
-      enable = true, -- false will disable the whole extension
+      enable = true,       -- false will disable the whole extension
       disable = { "css" }, -- list of language that will be disabled
     },
     autopairs = {
@@ -76,7 +77,7 @@ function M.config()
     playground = {
       enable = true,
       disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false, -- Whether the query persists across vim sessions
       keybindings = {
         toggle_query_editor = "o",
