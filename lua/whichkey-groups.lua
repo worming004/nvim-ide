@@ -2,12 +2,6 @@ local wk = require "which-key"
 
 wk.register {
   ["<leader>"] = {
-    u = {
-      name = "utils",
-      n = {
-        name = "notify",
-      },
-    },
     c = {
       name = "comment",
     },
@@ -24,11 +18,20 @@ wk.register {
     g = {
       name = "git",
     },
+    n = {
+      name = "navigation"
+    },
     o = {
       name = "nvim-tree",
     },
     t = {
       name = "test",
+    },
+    u = {
+      name = "utils",
+      n = {
+        name = "notify",
+      },
     },
     v = {
       name = "view",
