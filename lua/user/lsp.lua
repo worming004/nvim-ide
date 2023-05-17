@@ -47,6 +47,7 @@ function M.config()
 
   -- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+  local augroupcursorhold = vim.api.nvim_create_augroup("LspHover", {})
 
   local on_attach = function(client, bufnr)
     if client.name == "tsserver" then
@@ -146,6 +147,38 @@ function M.config()
         range = true,
       }
     end
+
+
+    -- autoformat on save
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          if vim.g.autoformat then
+            vim.lsp.buf.format()
+          end
+        end,
+      })
+    end
+
+    -- lsp hover on Hover
+   --  vim.api.nvim_clear_autocmds({ group = augroupcursorhold, buffer = bufnr })
+   --  vim.api.nvim_create_autocmd({
+   --    group = augroupcursorhold,
+   --    buffer = bufnr,
+   --    callback = function()
+   --      if not require("cmp").visible() then
+   --        local hover_fixed = function()
+   --          vim.api.nvim_command("set eventignore=CursorHold")
+   --          vim.api.nvim_command("autocmd CursorMoved ++once set eventignore=\" \" ")
+   --          vim.lsp.buf.hover({focusable = false})
+   --        end
+   --        hover_fixed()
+   --      end
+   --    end
+   -- })
 
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)

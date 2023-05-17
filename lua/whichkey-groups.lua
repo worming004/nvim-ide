@@ -13,6 +13,7 @@ wk.register {
     },
     f = {
       name = "telescope / search",
+      g = "git"
     },
     g = {
       name = "git",
