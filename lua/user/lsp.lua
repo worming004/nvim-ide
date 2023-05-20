@@ -47,7 +47,6 @@ function M.config()
 
   -- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-  local augroupcursorhold = vim.api.nvim_create_augroup("LspHover", {})
 
   local on_attach = function(client, bufnr)
     if client.name == "tsserver" then
@@ -58,8 +57,8 @@ function M.config()
       client.server_capabilities.documentFormattingProvider = false
     end
 
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
@@ -69,6 +68,11 @@ function M.config()
           end
         end,
       })
+    end
+
+    if client.supports_method "textDocument.inlayHint" then
+      local inlay = require "lsp-inlayhints"
+      inlay.on_attach(client, bufnr)
     end
 
     if client.name == "omnisharp" then
@@ -148,10 +152,9 @@ function M.config()
       }
     end
 
-
     -- autoformat on save
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
@@ -163,29 +166,12 @@ function M.config()
       })
     end
 
-    -- lsp hover on Hover
-   --  vim.api.nvim_clear_autocmds({ group = augroupcursorhold, buffer = bufnr })
-   --  vim.api.nvim_create_autocmd({
-   --    group = augroupcursorhold,
-   --    buffer = bufnr,
-   --    callback = function()
-   --      if not require("cmp").visible() then
-   --        local hover_fixed = function()
-   --          vim.api.nvim_command("set eventignore=CursorHold")
-   --          vim.api.nvim_command("autocmd CursorMoved ++once set eventignore=\" \" ")
-   --          vim.lsp.buf.hover({focusable = false})
-   --        end
-   --        hover_fixed()
-   --      end
-   --    end
-   -- })
-
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
   end
 
   for _, server in pairs(require("utils").servers) do
-    Opts = {
+    local lsp_opts = {
       on_attach = on_attach,
       capabilities = capabilities,
     }
@@ -194,18 +180,18 @@ function M.config()
 
     local require_ok, conf_opts = pcall(require, "settings." .. server)
     if require_ok then
-      Opts = vim.tbl_deep_extend("force", conf_opts, Opts)
+      lsp_opts = vim.tbl_deep_extend("force", conf_opts, lsp_opts)
     end
 
-    lspconfig[server].setup(Opts)
+    lspconfig[server].setup(lsp_opts)
   end
 
   local signs = {
 
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -215,7 +201,7 @@ function M.config()
   local config = {
     virtual_text = true, -- disable virtual text
     signs = {
-      active = signs,    -- show signs
+      active = signs, -- show signs
     },
     update_in_insert = true,
     underline = true,
