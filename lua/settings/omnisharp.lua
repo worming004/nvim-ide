@@ -18,5 +18,8 @@ local config = {
     for_lambda_parameter_types = true,
     for_implicit_object_creation = true,
   },
+  handlers = {
+    ["textDocument/definition"] = require("omnisharp_extended").handler,
+  },
 }
 return config

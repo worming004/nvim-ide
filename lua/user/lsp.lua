@@ -10,6 +10,7 @@ local M = {
         event = "BufReadPre",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
       },
+      "Hoffs/omnisharp-extended-lsp.nvim",
     },
   },
 }
