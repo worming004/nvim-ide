@@ -16,6 +16,11 @@ function M.config()
     on_highlights = function(hl, colors)
       hl.LspSignatureActiveParameter = { bg = colors.dark3 }
     end,
+    transparent = true,
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
   }
 end
 
