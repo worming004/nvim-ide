@@ -1,3 +1,4 @@
+-- for unknown reason, tokyo night transparency is activated only if this configuration exists
 local M = {
   "xiyaowong/transparent.nvim",
   lazy = false,

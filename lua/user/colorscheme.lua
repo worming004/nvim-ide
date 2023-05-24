@@ -11,6 +11,7 @@ function M.config()
   if not status_ok then
     return
   end
+
   vim.g.tokyonight_dark_float = false
 
   require("tokyonight").setup {
