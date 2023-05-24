@@ -2,6 +2,20 @@ local M = {
   "folke/tokyonight.nvim",
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
+  opts = function()
+    return {
+      -- see colors here https://github.com/folke/tokyonight.nvim/blob/184377a2c240b6a90fa9087e8ade6f5289f926d3/lua/tokyonight/colors.lua#L18
+      on_highlights = function(hl, colors)
+        hl.LspSignatureActiveParameter = { bg = colors.dark3 }
+      end,
+      -- do not work
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    }
+  end,
 }
 
 M.name = "tokyonight-night"
@@ -11,20 +25,6 @@ function M.config()
   if not status_ok then
     return
   end
-
-  vim.g.tokyonight_dark_float = false
-
-  require("tokyonight").setup {
-    -- see colors here https://github.com/folke/tokyonight.nvim/blob/184377a2c240b6a90fa9087e8ade6f5289f926d3/lua/tokyonight/colors.lua#L18
-    on_highlights = function(hl, colors)
-      hl.LspSignatureActiveParameter = { bg = colors.dark3 }
-    end,
-    transparent = true,
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
-    },
-  }
 end
 
 return M
