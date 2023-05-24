@@ -5,11 +5,13 @@ local M = {
 }
 
 M.name = "tokyonight-night"
+
 function M.config()
   local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
   if not status_ok then
     return
   end
+  vim.g.tokyonight_dark_float = false
 
   require("tokyonight").setup {
     -- see colors here https://github.com/folke/tokyonight.nvim/blob/184377a2c240b6a90fa9087e8ade6f5289f926d3/lua/tokyonight/colors.lua#L18
