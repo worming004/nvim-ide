@@ -75,6 +75,7 @@ keymap("n", "<leader>fM", ":Telescope man_pages<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
 keymap("n", "<leader>fgs", ":Telescope git_commit<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope luasnip<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gb", "<cmd>:GitBlameToggle<CR>", opts)
@@ -107,7 +108,6 @@ keymap("n", "<leader>eO", "O<Esc>", optsWithDesc(opts, "New line above"))
 
 keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
-
 -- Navbuddy
 keymap("n", "<leader>nb", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
 
@@ -120,12 +120,7 @@ keymap(
 )
 
 -- buffer line
-keymap(
-  "n",
-  "<leader>ubp",
-  ":BufferLineTogglePin<cr>",
-  opts
-)
+keymap("n", "<leader>ubp", ":BufferLineTogglePin<cr>", opts)
 
 -- move in insert mode
 keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move left"))

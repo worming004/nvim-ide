@@ -6,11 +6,15 @@ local M = {
     {
       "ahmedkhalf/project.nvim",
     },
+    {
+      "benfowler/telescope-luasnip.nvim",
+    },
   },
-  config = function ()
+  config = function()
     local telescope = require "telescope"
-    telescope.load_extension("projects")
-  end
+    telescope.load_extension "projects"
+    telescope.load_extension "luasnip"
+  end,
 }
 
 M.opts = {
