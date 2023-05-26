@@ -2,6 +2,9 @@ local wk = require "which-key"
 
 wk.register {
   ["<leader>"] = {
+    b = {
+      name = "buffer",
+    },
     c = {
       name = "comment",
     },

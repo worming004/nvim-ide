@@ -28,10 +28,10 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-w>t", ":terminal<CR>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-d>", ":resize -2<CR>", opts)
+keymap("n", "<C-f>", ":resize +2<CR>", opts)
+keymap("n", "<C-g>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-a>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -99,9 +99,7 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<leader>uf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 -- Lazy
-keymap("n", "<C-s>", ":w<cr>", opts)
--- save in insert ode
-keymap("i", "<C-s>", "<C-o>:w<cr>", opts)
+keymap("n", "<leader>bs", ":w<cr>", opts)
 -- create new line in normal mode
 keymap("n", "<leader>eo", "o<Esc>", optsWithDesc(opts, "New line below"))
 keymap("n", "<leader>eO", "O<Esc>", optsWithDesc(opts, "New line above"))
