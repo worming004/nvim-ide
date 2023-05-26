@@ -25,13 +25,16 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<C-w>t", ":terminal<CR>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-d>", ":resize -2<CR>", opts)
-keymap("n", "<C-f>", ":resize +2<CR>", opts)
-keymap("n", "<C-g>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-a>", ":vertical resize +2<CR>", opts)
+keymap("n", "<leader>rj", "<cmd>resize -20<CR>", optsWithDesc(opts, "Big horizontal resize negative"))
+keymap("n", "<leader>rk", "<cmd>resize +20<CR>", optsWithDesc(opts, "Big horizontal resize positive"))
+keymap("n", "<leader>rh", "<cmd>vertical resize -20<CR>", optsWithDesc(opts, "Big vertical resize negative"))
+keymap("n", "<leader>rl", "<cmd>vertical resize +20<CR>", optsWithDesc(opts, "Big vertical resize positive"))
+keymap("n", "<leader>rJ", "<cmd>resize -5<CR>", optsWithDesc(opts, "Small horizontal resize negative"))
+keymap("n", "<leader>rK", "<cmd>resize +5<CR>", optsWithDesc(opts, "Small horizontal resize positive"))
+keymap("n", "<leader>rH", "<cmd>vertical resize -5<CR>", optsWithDesc(opts, "Small vertical resize negative"))
+keymap("n", "<leader>rL", "<cmd>vertical resize +5<CR>", optsWithDesc(opts, "Small vertical resize positive"))
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
