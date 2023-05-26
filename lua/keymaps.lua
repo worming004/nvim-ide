@@ -128,3 +128,9 @@ keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move left"))
 keymap("i", "<C-j>", "<Down>", optsWithDesc(opts, "Move down"))
 keymap("i", "<C-k>", "<Up>", optsWithDesc(opts, "Move up"))
 keymap("i", "<C-l>", "<Right>", optsWithDesc(opts, "Move right"))
+
+keymap("n", "<leader>e;", function()
+  require("utils").execute_then_come_back_at_original_position(function()
+    vim.cmd ":normal A;"
+  end)
+end, optsWithDesc(opts, "Insert semi colon (;) at end of line"))
