@@ -50,7 +50,7 @@ keymap("n", "<S-q>", "<cmd>Bdelete<CR>", optsWithDesc(opts, "Delete buffer"))
 keymap("v", "p", '"_dP', opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to enter normal mode from insert mode
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
