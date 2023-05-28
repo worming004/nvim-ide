@@ -115,7 +115,13 @@ keymap("n", "<leader>nb", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
 -- notify
 keymap(
   "n",
-  "<leader>unc",
+  "<C-n>",
+  "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
+  optsWithDesc(opts, "Dismiss notifications")
+)
+keymap(
+  "i",
+  "<C-n>",
   "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
   optsWithDesc(opts, "Dismiss notifications")
 )
