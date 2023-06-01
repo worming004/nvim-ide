@@ -81,7 +81,7 @@ keymap("n", "<leader>fgs", ":Telescope git_commit<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope luasnip<CR>", opts)
 
 -- Git
-keymap("n", "<leader>gb", "<cmd>:GitBlameToggle<CR>", opts)
+keymap("n", "<leader>gb", "<cmd>:Gitsigns toggle_current_line_blame<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
