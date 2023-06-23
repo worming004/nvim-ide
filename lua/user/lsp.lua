@@ -41,7 +41,7 @@ function M.config()
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     keymap(bufnr, "n", "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-    keymap(bufnr, "i", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    keymap(bufnr, "i", "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   end
 
   local lspconfig = require "lspconfig"
