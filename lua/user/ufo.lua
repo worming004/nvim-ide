@@ -6,10 +6,10 @@ return {
 
   init = function()
     -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-    vim.keymap.set("n", "zR", function()
+    vim.keymap.set("n", "zr", function()
       require("ufo").openAllFolds()
     end)
-    vim.keymap.set("n", "zM", function()
+    vim.keymap.set("n", "zm", function()
       require("ufo").closeAllFolds()
     end)
   end,
