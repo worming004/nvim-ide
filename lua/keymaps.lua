@@ -77,7 +77,7 @@ keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
 keymap("n", "<leader>fM", ":Telescope man_pages<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
-keymap("n", "<leader>fgs", ":Telescope git_commit<CR>", opts)
+keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope luasnip<CR>", opts)
 
 -- Git
