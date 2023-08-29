@@ -37,17 +37,17 @@ keymap("n", "<leader>rH", "<cmd>vertical resize -5<CR>", optsWithDesc(opts, "Sma
 keymap("n", "<leader>rL", "<cmd>vertical resize +5<CR>", optsWithDesc(opts, "Small vertical resize positive"))
 
 -- LspSaga
-keymap("n", "<leader>K", "<cmd>Lspsaga hover_doc ++peek<CR>")
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 keymap("n", "gr", "<cmd>Lspsaga finder<CR>")
+keymap("n", "gy", "<cmd>Lspsaga finder imp<CR>")
 keymap({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>")
 keymap("n", "gT", "<cmd>Lspsaga peek_type_definition<CR>")
 keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-keymap("n", "<leader>si", "<cmd>Lspsaga incoming_call<CR>")
-keymap("n", "<leader>so", "<cmd>Lspsaga outgoing_call<CR>")
+keymap("n", "<leader>si", "<cmd>Lspsaga incoming_calls<CR>")
+keymap("n", "<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 
 
 
