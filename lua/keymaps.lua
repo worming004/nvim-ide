@@ -39,7 +39,7 @@ keymap("n", "<leader>rL", "<cmd>vertical resize +5<CR>", optsWithDesc(opts, "Sma
 -- LspSaga
 keymap("n", "<leader>K", "<cmd>Lspsaga hover_doc ++peek<CR>")
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
+keymap("n", "gr", "<cmd>Lspsaga finder<CR>")
 keymap({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
 keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
