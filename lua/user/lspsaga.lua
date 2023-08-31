@@ -1,8 +1,12 @@
 return {
-  "glepnir/lspsaga.nvim",
+  "nvimdev/lspsaga.nvim",
   event = "LspAttach",
   config = function()
-    require("lspsaga").setup {}
+    require("lspsaga").setup {
+      finder = {
+        layout = "normal"
+      }
+    }
   end,
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
