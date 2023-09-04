@@ -11,6 +11,7 @@ M.servers = {
   "html",
   "jsonls",
   "lua_ls",
+  "jdtls",
   "omnisharp",
   "powershell_es",
   "pyright",

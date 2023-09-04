@@ -9,9 +9,6 @@ local M = {
     {
       "benfowler/telescope-luasnip.nvim",
     },
-    {
-      "nvim-lua/plenary.nvim",
-    }
   },
   config = function()
     local telescope = require "telescope"
