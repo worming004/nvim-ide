@@ -4,7 +4,6 @@ M.servers = {
   "angularls",
   "ansiblels",
   "awk_ls",
-  "azure_pipelines_ls",
   "bashls",
   "bicep",
   "cssls",
