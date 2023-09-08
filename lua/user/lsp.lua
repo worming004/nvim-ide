@@ -1,3 +1,4 @@
+-- Looking for settings ? https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local M = {
   "neovim/nvim-lspconfig",
   event = "BufReadPre",
@@ -202,7 +203,7 @@ function M.config()
   local config = {
     virtual_text = true, -- disable virtual text
     signs = {
-      active = signs, -- show signs
+      active = signs,    -- show signs
     },
     update_in_insert = true,
     underline = true,
