@@ -3,7 +3,6 @@ local M = {}
 M.servers = {
   "angularls",
   "ansiblels",
-  "awk_ls",
   "bashls",
   "bicep",
   "cssls",
