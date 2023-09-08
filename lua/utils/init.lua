@@ -3,6 +3,8 @@ local M = {}
 M.servers = {
   "angularls",
   "ansiblels",
+  "awk_ls",
+  "azure_pipelines_ls",
   "bashls",
   "bicep",
   "cssls",
@@ -16,9 +18,11 @@ M.servers = {
   "powershell_es",
   "pyright",
   "rust_analyzer",
+  "taplo",
   "terraformls",
   "tsserver",
   "yamlls",
+  "zls",
 }
 
 M.execute_then_come_back_at_original_position = function(fn)
