@@ -51,10 +51,6 @@ function M.config()
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
   local on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-
     if client.name == "sumneko_lua" then
       client.server_capabilities.documentFormattingProvider = false
     end
