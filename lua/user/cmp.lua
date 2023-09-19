@@ -126,7 +126,7 @@ function M.config()
       }),
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { cmp.ItemField.Kind, cmp.ItemField.Abbr, cmp.ItemField.Menu },
       format = function(entry, vim_item)
         vim_item.kind = kind_icons[vim_item.kind]
         vim_item.menu = ({
