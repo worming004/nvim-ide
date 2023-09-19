@@ -5,7 +5,7 @@ local M = {
     vim.o.timeoutlen = 1000
     require("which-key").setup {}
   end,
-  lazy = false -- search better
+  event = "VeryLazy",
 }
 
 return M
