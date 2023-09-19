@@ -17,6 +17,9 @@ local M = {
       "saadparwaiz1/cmp_luasnip",
     },
     {
+      "hrsh7th/cmp-nvim-lsp-signature-help"
+    },
+    {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
       dependencies = {
@@ -44,40 +47,42 @@ function M.config()
   end
 
   local kind_icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
+    Text = "󰉿",
+    Method = "m",
+    Function = "󰊕",
+    Constructor = "",
     Field = "",
-    Variable = "",
-    Class = "",
+    Variable = "󰆧",
+    Class = "󰌗",
     Interface = "",
-    Module = "",
+    Module = "",
     Property = "",
     Unit = "",
-    Value = "",
+    Value = "󰎠",
     Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
+    Keyword = "󰌋",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
     Reference = "",
-    Folder = "",
+    Folder = "󰉋",
     EnumMember = "",
-    Constant = "",
+    Constant = "󰇽",
     Struct = "",
     Event = "",
-    Operator = "",
-    TypeParameter = "",
+    Operator = "󰆕",
+    TypeParameter = "󰊄",
+    Codeium = "󰚩",
+    Copilot = "",
   }
 
   cmp.setup {
+    preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
-
     mapping = cmp.mapping.preset.insert {
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -137,8 +142,8 @@ function M.config()
     },
     sources = {
       { name = "nvim_lsp" },
-      { name = "nvim_lua" },
       { name = "luasnip" },
+      { name = "nvim_lua" },
       { name = "buffer" },
       { name = "path" },
     },
