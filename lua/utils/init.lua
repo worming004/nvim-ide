@@ -16,6 +16,7 @@ M.servers = {
   "powershell_es",
   "pyright",
   "rust_analyzer",
+  "sqlls",
   "taplo",
   "terraformls",
   "tsserver",
