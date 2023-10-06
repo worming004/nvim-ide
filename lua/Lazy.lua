@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup("user", {
   install = { colorscheme = { require("user.colorscheme").name } },
-  defaults = { lazy = true },
+  defaults = { lazy = true, version = "*" },
   ui = { wrap = "true" },
   change_detection = { enabled = true, notify = false },
   checker = { enabled = false },

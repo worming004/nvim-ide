@@ -1,6 +1,6 @@
 local M = {
-  "kyazdani42/nvim-tree.lua",
-  event = "VimEnter",
+  "nvim-tree/nvim-tree.lua",
+  lazy = false,
 }
 
 local function on_attach(bufnr)
