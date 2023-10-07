@@ -83,7 +83,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       -- open the tree but don't focus it
       require "nvim-tree.api".tree.toggle({ focus = true })
     end
-    open_nvim_tree(d)
+    -- comment out waiting for a correction
+    -- open_nvim_tree(d)
   end,
 })
 
