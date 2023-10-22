@@ -7,4 +7,3 @@ return {
   opts = { use_diagnostic_signs = true },
   cmd = { "TroubleToggle", "Trouble" },
 }
-

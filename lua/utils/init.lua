@@ -32,7 +32,7 @@ end
 
 
 M.check_command_exists = function(command, opts)
-  local options = {warn = true}
+  local options = { warn = true }
   if opts then options = vim.tbl_extend('force', options, opts) end
 
   local executable = vim.fn.executable(command)
@@ -47,4 +47,3 @@ M.redirect_user_to_file = function(fileName)
 end
 
 return M
-
