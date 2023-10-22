@@ -39,6 +39,7 @@ function M.config()
       "elixir",
       "go",
       "gitignore",
+      "heex",
       "html",
       "javascript",
       "json",
