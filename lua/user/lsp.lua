@@ -1,6 +1,7 @@
 -- Looking for settings ? https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local M = {
   "neovim/nvim-lspconfig",
+  branch = "master",
   event = "BufReadPre",
   dependencies = {
     {
@@ -11,7 +12,7 @@ local M = {
         event = "BufReadPre",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
       },
-      "Hoffs/omnisharp-extended-lsp.nvim",
+      "Hoffs/omnisharp-extended-lsp.nvim"
     },
   },
 }
