@@ -27,6 +27,12 @@ M.opts = {
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
   },
+  mappings = {
+    i = {
+      ["<C-h>"] = "which_key"
+      -- ["<C-p>"] = require('telescope.actions').delete_buffer
+    }
+  }
 }
 
 return M
