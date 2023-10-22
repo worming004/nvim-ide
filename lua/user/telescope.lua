@@ -21,7 +21,6 @@ local M = {
         file_ignore_patterns = { ".git/", "node_modules" },
         mappings = {
           i = {
-            ["<C-n>"] = false,
             ["<C-h>"] = "which_key",
             ["<C-o>"] = actions.delete_buffer
           }
