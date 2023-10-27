@@ -20,3 +20,7 @@ end, opts_with_desc(opts, "Toggle autoformat"))
 vim.api.nvim_create_user_command("RelativeLineToggle", function(_)
   vim.cmd "set relativenumber!"
 end, opts_with_desc(opts, "Toggle relativenumber"))
+
+vim.api.nvim_create_user_command("RemoveWindowCr", function(_)
+  vim.cmd "%s/\r//g"
+end, opts_with_desc(opts, "Remove all ^M from fil"))
