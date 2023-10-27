@@ -1,3 +1,12 @@
+local force_delete_buffer = function(prompt_bufnr)
+  local action_state = require "telescope.actions.state"
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  current_picker:delete_selection(function(selection)
+    local ok = pcall(vim.api.nvim_buf_delete, selection.bufnr, { force = true })
+    return ok
+  end)
+end
+
 local M = {
   "nvim-telescope/telescope.nvim",
   event = "Bufenter",
@@ -22,7 +31,8 @@ local M = {
         mappings = {
           i = {
             ["<C-h>"] = "which_key",
-            ["<C-o>"] = actions.delete_buffer
+            ["<C-o>"] = actions.delete_buffer,
+            ["<S-o>"] = force_delete_buffer
           }
         }
       },
@@ -32,8 +42,6 @@ local M = {
     telescope.setup(opts)
     telescope.load_extension "luasnip"
   end,
-
 }
-
 
 return M
