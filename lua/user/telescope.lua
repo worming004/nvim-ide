@@ -32,7 +32,7 @@ local M = {
           i = {
             ["<C-h>"] = "which_key",
             ["<C-o>"] = actions.delete_buffer,
-            ["<S-o>"] = force_delete_buffer
+            ["<C-i>"] = force_delete_buffer
           }
         }
       },
