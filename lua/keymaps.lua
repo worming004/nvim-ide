@@ -1,6 +1,8 @@
 -- Shorten function name
 local keymap = vim.keymap.set
 
+local utils = require("utils")
+
 -- silent is used to remove flickering with noice
 local opts = { silent = true }
 local function optsWithDesc(p_opts, description)
@@ -151,7 +153,12 @@ keymap("i", "<C-k>", "<Up>", optsWithDesc(opts, "Move up"))
 keymap("i", "<C-l>", "<Right>", optsWithDesc(opts, "Move right"))
 
 keymap("n", "<leader>e;", function()
-  require("utils").execute_then_come_back_at_original_position(function()
+  utils.execute_then_come_back_at_original_position(function()
     vim.cmd ":normal A;"
   end)
 end, optsWithDesc(opts, "Insert semi colon (;) at end of line"))
+keymap("n", "<leader>e,", function()
+  utils.execute_then_come_back_at_original_position(function()
+    vim.cmd ":normal A,"
+  end)
+end, optsWithDesc(opts, "Insert colon (,) at end of line"))
