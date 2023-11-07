@@ -62,7 +62,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete<CR>", optsWithDesc(opts, "Delete buffer"))
+keymap("n", "<S-q>", ":bdelete<CR>", optsWithDesc(opts, "Delete buffer"))
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
