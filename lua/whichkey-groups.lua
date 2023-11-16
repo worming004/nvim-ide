@@ -21,6 +21,15 @@ wk.register {
     g = {
       name = "git",
     },
+    l = {
+      name = "lsp",
+      l = {
+        name = "admin"
+      },
+      g = {
+        name = "go to"
+      }
+    },
     n = {
       name = "navigation"
     },

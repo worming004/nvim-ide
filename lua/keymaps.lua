@@ -117,6 +117,8 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>uf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+keymap("n", "<leader>llr", "<cmd>LspRestart<cr>", opts)
+
 
 -- Lazy
 keymap("n", "<leader>bs", ":w<cr>", opts)
