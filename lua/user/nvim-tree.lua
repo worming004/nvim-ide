@@ -15,7 +15,8 @@ local function on_attach(bufnr)
   -- custom
   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Parent")
   vim.keymap.set("n", "<CR>", api.node.open.edit, opts "Edit File")
-  vim.keymap.set("n", "v", api.node.open.vertical, opts "Open: Vertical Split")
+  vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts "Open: Vertical Split")
+  vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts "Open: Horizontal Split")
 end
 
 M.opts = {
