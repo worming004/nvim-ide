@@ -7,6 +7,7 @@ M.servers = {
   "bicep",
   "cssls",
   "elixirls",
+  "gleam",
   "gopls",
   "html",
   "jsonls",
