@@ -51,9 +51,6 @@ keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
 keymap("n", "<leader>si", "<cmd>Lspsaga incoming_calls<CR>")
 keymap("n", "<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 
-
-
-
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -130,6 +127,14 @@ keymap("n", "<leader>ts", ":TestSuite<CR>", opts)
 
 -- Navbuddy
 keymap("n", "<leader>nb", ":Navbuddy<CR>", optsWithDesc(opts, "Open Navbuddy"))
+
+-- Aerial
+keymap("n", "<leader>nao", function()
+  local aerial = require("aerial")
+  aerial.open()
+  aerial.focus()
+end, optsWithDesc(opts, "Open and focus on aerial"))
+keymap("n", "<leader>nat", ":AerialToggle<CR>", optsWithDesc(opts, "Toggle Aerial"))
 
 -- notify
 keymap(
