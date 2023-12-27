@@ -31,7 +31,10 @@ wk.register {
       }
     },
     n = {
-      name = "navigation"
+      name = "navigation",
+      h = {
+        name = "harpoon",
+      }
     },
     o = {
       name = "nvim-tree",

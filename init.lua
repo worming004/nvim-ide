@@ -1,7 +1,7 @@
 require "compatibility"
 require "options"
-require "keymaps"
 require "Lazy"
+require "keymaps"
 require "whichkey-groups"
 require "commands"
 require "autocommands"

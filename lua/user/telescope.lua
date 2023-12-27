@@ -27,7 +27,7 @@ local M = {
         prompt_prefix = " ",
         selection_caret = " ",
         path_display = { "smart" },
-        file_ignore_patterns = { ".git/", "node_modules" },
+        file_ignore_patterns = { ".git/", "node_modules", "bin", "obj" },
         mappings = {
           i = {
             ["<C-h>"] = "which_key",
@@ -36,11 +36,17 @@ local M = {
           }
         }
       },
+      pickers = {
+        keymaps = {
+          show_plug = false
+        }
+      }
     }
 
     local telescope = require "telescope"
     telescope.setup(opts)
-    telescope.load_extension "luasnip"
+    telescope.load_extension("luasnip")
+    telescope.load_extension('harpoon')
   end,
 }
 

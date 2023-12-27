@@ -6,7 +6,7 @@ local utils = require("utils")
 -- silent is used to remove flickering with noice
 local opts = { silent = true }
 local function optsWithDesc(p_opts, description)
-  vim.tbl_deep_extend("force", p_opts, { description = description })
+  return vim.tbl_deep_extend("force", p_opts, { desc = description })
 end
 
 --Remap space as leader key
@@ -154,18 +154,68 @@ keymap(
 keymap("n", "<leader>ubp", ":BufferLineTogglePin<cr>", opts)
 
 -- move in insert mode
-keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move left"))
-keymap("i", "<C-j>", "<Down>", optsWithDesc(opts, "Move down"))
-keymap("i", "<C-k>", "<Up>", optsWithDesc(opts, "Move up"))
-keymap("i", "<C-l>", "<Right>", optsWithDesc(opts, "Move right"))
+keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move cursor left"))
+keymap("i", "<C-j>", "<Down>", optsWithDesc(opts, "Move cursor down"))
+keymap("i", "<C-k>", "<Up>", optsWithDesc(opts, "Move cursor up"))
+keymap("i", "<C-l>", "<Right>", optsWithDesc(opts, "Move cursor right"))
 
 keymap("n", "<leader>e;", function()
   utils.execute_then_come_back_at_original_position(function()
     vim.cmd ":normal A;"
   end)
 end, optsWithDesc(opts, "Insert semi colon (;) at end of line"))
+keymap("i", "<C-e>;", function()
+  utils.execute_then_come_back_at_original_position(function()
+    vim.cmd ":normal A;"
+  end)
+end, optsWithDesc(opts, "Insert semi colon (;) at end of line"))
+
 keymap("n", "<leader>e,", function()
   utils.execute_then_come_back_at_original_position(function()
     vim.cmd ":normal A,"
   end)
 end, optsWithDesc(opts, "Insert colon (,) at end of line"))
+keymap("i", "<C-e>,", function()
+  utils.execute_then_come_back_at_original_position(function()
+    vim.cmd ":normal A,"
+  end)
+end, optsWithDesc(opts, "Insert semi colon (,) at end of line"))
+
+-- harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+local notify = function(message)
+  vim.notify(message)
+end
+
+vim.keymap.set("n", "<leader>a", function()
+  mark.add_file()
+  local file_index = mark.get_current_index()
+  notify("file added at index " .. file_index)
+end, optsWithDesc(opts, "add file to harpoon"))
+vim.keymap.set("n", "<leader>nho", ui.toggle_quick_menu, optsWithDesc(opts, "open harpoon"))
+vim.keymap.set("n", "<leader>nhr", mark.rm_file, optsWithDesc(opts, "rm current file from harpoon"))
+vim.keymap.set("n", "<leader>nhc", mark.clear_all, optsWithDesc(opts, "clear all harpoon"))
+vim.keymap.set("n", "<leader>nhq", function()
+  local contents = {}
+  for idx = 1, mark.get_length() do
+    local file = mark.get_marked_file_name(idx)
+    if file == "" or file == nil then
+      file = "(empty)"
+    end
+    contents[idx] = string.format("%s: %s", idx, file)
+  end
+  local content = ""
+  if table.getn(contents) == 0 then
+    content = "no buffer marked"
+  else
+    content = table.concat(contents, "\n")
+  end
+  notify(content)
+end, optsWithDesc(opts, "harpoon quick print all marks in notification"))
+
+vim.keymap.set("n", "<leader>nna", function() ui.nav_file(1) end, optsWithDesc(opts, "open harpoon file 1"))
+vim.keymap.set("n", "<leader>nns", function() ui.nav_file(2) end, optsWithDesc(opts, "open harpoon file 2"))
+vim.keymap.set("n", "<leader>nnd", function() ui.nav_file(3) end, optsWithDesc(opts, "open harpoon file 3"))
+vim.keymap.set("n", "<leader>nnf", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 4"))
