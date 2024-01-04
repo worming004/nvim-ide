@@ -31,3 +31,9 @@ end, opts_with_desc(opts, "Set tab to 4"))
 vim.api.nvim_create_user_command("SetTab2", function(_)
   vim.cmd "set shiftwidth=2"
 end, opts_with_desc(opts, "Set tab to 2"))
+
+vim.api.nvim_create_user_command("KubeApply", function(_)
+  local filepath = vim.api.nvim_buf_get_name(0)
+  local command = "!kubectl apply -f " .. filepath
+  vim.cmd(command)
+end, opts_with_desc(opts, "Apply current file with kubectl apply -f (be carefull about namespace)"))
