@@ -219,4 +219,3 @@ vim.keymap.set("n", "<leader>nz", function() ui.nav_file(1) end, optsWithDesc(op
 vim.keymap.set("n", "<leader>nx", function() ui.nav_file(2) end, optsWithDesc(opts, "open harpoon file 2-x"))
 vim.keymap.set("n", "<leader>nc", function() ui.nav_file(3) end, optsWithDesc(opts, "open harpoon file 3-c"))
 vim.keymap.set("n", "<leader>nv", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 4-v"))
-vim.keymap.set("n", "<leader>nb", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 5-b"))
