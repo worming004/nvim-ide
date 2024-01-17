@@ -40,6 +40,10 @@ local M = {
           opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },
+            filetypes = {
+              markdown = true,
+              yaml = true,
+            }
           }
         },
       }
@@ -93,6 +97,19 @@ function M.config()
   }
 
   cmp.setup {
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        require("copilot_cmp.comparators").prioritze,
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
     preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
@@ -111,7 +128,7 @@ function M.config()
       },
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<CR>"] = cmp.mapping.confirm { select = false },
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -171,6 +188,7 @@ function M.config()
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
+      max_width = 80,
     },
     experimental = {
       ghost_text = true,
