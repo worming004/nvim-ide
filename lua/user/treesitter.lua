@@ -29,8 +29,11 @@ local M = {
 }
 
 function M.config()
-  local configs = require "nvim-treesitter.configs"
-  configs.setup {
+  require('ts_context_commentstring').setup {
+    enable_autocmd = false,
+  }
+
+  require "nvim-treesitter.configs".setup {
     ensure_installed = {
       "bash",
       "bicep",
@@ -69,11 +72,6 @@ function M.config()
       enable = true,
     },
     indent = { enable = true, disable = { "python", "css" } },
-
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
 
     playground = {
       enable = true,
