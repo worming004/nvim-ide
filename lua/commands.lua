@@ -37,3 +37,9 @@ vim.api.nvim_create_user_command("KubeApply", function(_)
   local command = "!kubectl apply -f " .. filepath
   vim.cmd(command)
 end, opts_with_desc(opts, "Apply current file with kubectl apply -f (be carefull about namespace)"))
+
+vim.api.nvim_create_user_command("KubeDelete", function(_)
+  local filepath = vim.api.nvim_buf_get_name(0)
+  local command = "!kubectl delete -f " .. filepath
+  vim.cmd(command)
+end, opts_with_desc(opts, "Delete current file with kubectl apply -f (be carefull about namespace)"))
