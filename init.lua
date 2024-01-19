@@ -7,3 +7,5 @@ require "commands"
 require "autocommands"
 
 require "generate-go-test"
+
+require "open_nvimtree_if_start"
