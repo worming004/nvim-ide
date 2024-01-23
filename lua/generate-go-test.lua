@@ -25,7 +25,7 @@ local function generate_test_file_name()
 end
 
 local function redirect_to_test_file()
-  testfilename = generate_test_file_name()
+  local testfilename = generate_test_file_name()
   utils.redirect_user_to_file(testfilename)
 end
 
