@@ -156,6 +156,8 @@ function M.config()
         callback = function()
           if vim.g.autoformat then
             vim.lsp.buf.format()
+          else
+            vim.notify("Autoformat deactivated")
           end
         end,
       })
