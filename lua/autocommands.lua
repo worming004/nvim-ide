@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- Run prettier on markdown
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.md" },
   callback = function()
     if vim.g.autoformat then
