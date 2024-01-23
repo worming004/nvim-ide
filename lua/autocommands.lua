@@ -52,8 +52,27 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
 })
 
+-- Run prettier on markdown
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.md" },
+  callback = function()
+    if vim.g.autoformat then
+      if not require("utils").check_command_exists("prettier", {}) then
+        return
+      end
+      local file_path = vim.fn.expand "%:p"
+      local cmd = "prettier " .. file_path
+      local result = vim.fn.system(cmd)
+      local splitted_result = vim.split(result, '\n')
+      vim.api.nvim_buf_set_lines(0, 0, -1, false, splitted_result)
+    else
+      vim.notify("Autoformat deactivated")
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function(d)
+  callback = function(_)
     vim.cmd "hi link illuminatedWord LspReferenceText"
 
     local function open_nvim_tree(data)
