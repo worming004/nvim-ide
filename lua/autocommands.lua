@@ -60,8 +60,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       if not require("utils").check_command_exists("prettier", {}) then
         return
       end
-      local file_path = vim.fn.expand "%:p"
-      local cmd = "prettier " .. file_path
+      local buffer_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+      local buffer_content = vim.fn.join(buffer_lines, '\n')
+      local buffer_content_escaped = vim.fn.shellescape(buffer_content)
+      local cmd = string.format('echo %s | prettier --parser markdown', buffer_content_escaped)
       local result = vim.fn.system(cmd)
       local splitted_result = vim.split(result, '\n')
       vim.api.nvim_buf_set_lines(0, 0, -1, false, splitted_result)
