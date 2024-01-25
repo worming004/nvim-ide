@@ -8,4 +8,4 @@ require "autocommands"
 
 require "generate-go-test"
 
-require "open_nvimtree_if_start"
+require "open-nvimtree-if-start"
