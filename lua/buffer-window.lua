@@ -1,6 +1,5 @@
 local M = {}
 
-
 local win_hl_namespace = vim.api.nvim_create_namespace('win_hl_namespace')
 
 local function get_buffer()
@@ -49,12 +48,9 @@ local function experience()
   -- highlight current buffer
   local active_line = find_index_by_id(all_buffers, active_buffer_id)
   local highlight_group = 'ErrorMsg' -- You can use a different highlight group if you prefer
-  vim.notify('active line: ' .. tostring(active_line))
-  vim.notify('active buffer: ' .. tostring(active_buffer_id))
   if active_line >= 0 then
     local start_col = 0
     local end_col = #(all_buffers[active_line].name)
-    vim.notify(tostring(end_col))
     vim.api.nvim_buf_add_highlight(buf_id, win_hl_namespace, highlight_group, active_line - 1, start_col, end_col)
   end
 
