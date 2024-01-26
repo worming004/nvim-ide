@@ -9,6 +9,10 @@ local function optsWithDesc(p_opts, description)
   return vim.tbl_deep_extend("force", p_opts, { desc = description })
 end
 
+local notify = function(message)
+  vim.notify(message)
+end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -185,10 +189,6 @@ end, optsWithDesc(opts, "Insert semi colon (,) at end of line"))
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-local notify = function(message)
-  vim.notify(message)
-end
-
 keymap("n", "<leader>a", function()
   mark.add_file()
   local file_index = mark.get_current_index()
@@ -219,3 +219,6 @@ keymap("n", "<leader>nz", function() ui.nav_file(1) end, optsWithDesc(opts, "ope
 keymap("n", "<leader>nx", function() ui.nav_file(2) end, optsWithDesc(opts, "open harpoon file 2-x"))
 keymap("n", "<leader>nc", function() ui.nav_file(3) end, optsWithDesc(opts, "open harpoon file 3-c"))
 keymap("n", "<leader>nv", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 4-v"))
+
+keymap("n", "<leader>qa", ":qa!<CR>", optsWithDesc(opts, "quit all windows"))
+keymap("n", "<leader>qw", ":q<CR>", optsWithDesc(opts, "quit current window"))
