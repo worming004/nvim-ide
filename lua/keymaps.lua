@@ -56,8 +56,14 @@ keymap("n", "<leader>si", "<cmd>Lspsaga incoming_calls<CR>")
 keymap("n", "<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", function()
+  vim.cmd('BufferList open')
+  vim.cmd('bnext')
+end, opts)
+keymap("n", "<S-h>", function()
+  vim.cmd('BufferList open')
+  vim.cmd('bprevious')
+end, opts)
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)

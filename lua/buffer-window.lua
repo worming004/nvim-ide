@@ -2,6 +2,8 @@ local M = {}
 
 local win_hl_namespace = vim.api.nvim_create_namespace('win_hl_namespace')
 
+local defer_close_time_second = 3000
+
 local function get_buffer()
   local buffers = {}
   for _, bufnr in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
@@ -44,11 +46,6 @@ local function find_max_length(buffers)
   return max
 end
 
-local latest_win = nil
-local function clear_latest()
-  vim.api.nvim_win_close(latest_win, { force = true })
-end
-
 local function experience()
   local active_buffer_id = vim.fn.bufnr('%')
   local buf_to_present_id = vim.api.nvim_create_buf(false, true)
@@ -76,21 +73,21 @@ local function experience()
     style    = "minimal",
     border   = "single",
   }
-  latest_win = vim.api.nvim_open_win(buf_to_present_id, false, opts)
+  local latest_win = vim.api.nvim_open_win(buf_to_present_id, false, opts)
+
+  vim.defer_fn(function()
+    vim.api.nvim_win_close(latest_win, true)
+  end, defer_close_time_second)
 end
 
+vim.api.nvim_create_user_command("BufferList", function(opts)
+  local arg_table = vim.split(opts.args, ' ')
+  if arg_table[1] == 'open' then
+    experience()
+  end
+end, { nargs = 1 })
 
--- reload section
-vim.keymap.set('n', '<space><space>r', function()
-  vim.cmd('luafile ~/.config/nvim/lua/buffer-window.lua')
-end)
+local buffer_list_changed = vim.api.nvim_create_augroup('BufferListChanged', { clear = true })
 
-vim.keymap.set('n', '<space><space>e', function()
-  experience()
-end)
-
-vim.keymap.set('n', '<space><space>d', function()
-  clear_latest()
-end)
 
 return M
