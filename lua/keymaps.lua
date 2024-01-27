@@ -9,6 +9,10 @@ local function optsWithDesc(p_opts, description)
   return vim.tbl_deep_extend("force", p_opts, { desc = description })
 end
 
+local notify = function(message)
+  vim.notify(message)
+end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -185,19 +189,15 @@ end, optsWithDesc(opts, "Insert semi colon (,) at end of line"))
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-local notify = function(message)
-  vim.notify(message)
-end
-
-vim.keymap.set("n", "<leader>a", function()
+keymap("n", "<leader>a", function()
   mark.add_file()
   local file_index = mark.get_current_index()
   notify("file added at index " .. file_index)
 end, optsWithDesc(opts, "add file to harpoon"))
-vim.keymap.set("n", "<leader>nho", ui.toggle_quick_menu, optsWithDesc(opts, "open harpoon"))
-vim.keymap.set("n", "<leader>nhr", mark.rm_file, optsWithDesc(opts, "rm current file from harpoon"))
-vim.keymap.set("n", "<leader>nhc", mark.clear_all, optsWithDesc(opts, "clear all harpoon"))
-vim.keymap.set("n", "<leader>nhq", function()
+keymap("n", "<leader>nho", ui.toggle_quick_menu, optsWithDesc(opts, "open harpoon"))
+keymap("n", "<leader>nhr", mark.rm_file, optsWithDesc(opts, "rm current file from harpoon"))
+keymap("n", "<leader>nhc", mark.clear_all, optsWithDesc(opts, "clear all harpoon"))
+keymap("n", "<leader>nhq", function()
   local contents = {}
   for idx = 1, mark.get_length() do
     local file = mark.get_marked_file_name(idx)
@@ -215,7 +215,10 @@ vim.keymap.set("n", "<leader>nhq", function()
   notify(content)
 end, optsWithDesc(opts, "harpoon quick print all marks in notification"))
 
-vim.keymap.set("n", "<leader>nz", function() ui.nav_file(1) end, optsWithDesc(opts, "open harpoon file 1-z"))
-vim.keymap.set("n", "<leader>nx", function() ui.nav_file(2) end, optsWithDesc(opts, "open harpoon file 2-x"))
-vim.keymap.set("n", "<leader>nc", function() ui.nav_file(3) end, optsWithDesc(opts, "open harpoon file 3-c"))
-vim.keymap.set("n", "<leader>nv", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 4-v"))
+keymap("n", "<leader>nz", function() ui.nav_file(1) end, optsWithDesc(opts, "open harpoon file 1-z"))
+keymap("n", "<leader>nx", function() ui.nav_file(2) end, optsWithDesc(opts, "open harpoon file 2-x"))
+keymap("n", "<leader>nc", function() ui.nav_file(3) end, optsWithDesc(opts, "open harpoon file 3-c"))
+keymap("n", "<leader>nv", function() ui.nav_file(4) end, optsWithDesc(opts, "open harpoon file 4-v"))
+
+keymap("n", "<leader>qa", ":qa!<CR>", optsWithDesc(opts, "quit all windows"))
+keymap("n", "<leader>qw", ":q<CR>", optsWithDesc(opts, "quit current window"))

@@ -39,6 +39,9 @@ wk.register {
     o = {
       name = "nvim-tree",
     },
+    q = {
+      name = "quick quit"
+    },
     t = {
       name = "test",
     },
