@@ -155,9 +155,6 @@ keymap(
   optsWithDesc(opts, "Dismiss notifications")
 )
 
--- buffer line
-keymap("n", "<leader>ubp", ":BufferLineTogglePin<cr>", opts)
-
 -- move in insert mode
 keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move cursor left"))
 keymap("i", "<C-j>", "<Down>", optsWithDesc(opts, "Move cursor down"))
