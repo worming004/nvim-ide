@@ -67,7 +67,6 @@ function M.config()
       "rust",
       "scss",
       "sql",
-      "ssh_config",
       "svelte",
       "terraform",
       "toml",
