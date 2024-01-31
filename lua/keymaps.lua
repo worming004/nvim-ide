@@ -66,7 +66,7 @@ keymap("n", "<S-h>", function()
 end, opts)
 
 -- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<leader>h", ":nohlsearch<CR>", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", ":bdelete<CR>", optsWithDesc(opts, "Delete buffer"))
@@ -93,6 +93,7 @@ keymap("n", "<leader>oo", ":NvimTreeFocus<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<C-m>", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope registers<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope command_history<CR>", opts)
@@ -159,9 +160,6 @@ keymap(
   "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
   optsWithDesc(opts, "Dismiss notifications")
 )
-
--- buffer line
-keymap("n", "<leader>ubp", ":BufferLineTogglePin<cr>", opts)
 
 -- move in insert mode
 keymap("i", "<C-h>", "<Left>", optsWithDesc(opts, "Move cursor left"))
