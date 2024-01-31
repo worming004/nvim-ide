@@ -57,11 +57,9 @@ keymap("n", "<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 
 -- Navigate buffers
 keymap("n", "<S-l>", function()
-  vim.cmd('BufferList open')
   vim.cmd('bnext')
 end, opts)
 keymap("n", "<S-h>", function()
-  vim.cmd('BufferList open')
   vim.cmd('bprevious')
 end, opts)
 
