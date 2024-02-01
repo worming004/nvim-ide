@@ -224,3 +224,6 @@ keymap("n", "<leader>nv", function() ui.nav_file(4) end, optsWithDesc(opts, "ope
 
 keymap("n", "<leader>qa", ":qa!<CR>", optsWithDesc(opts, "quit all windows"))
 keymap("n", "<leader>qw", ":q<CR>", optsWithDesc(opts, "quit current window"))
+
+keymap("n", "<leader>ka", ":KubeApply<CR>", optsWithDesc(opts, "kubectl apply"))
+keymap("n", "<leader>kd", ":KubeDelete<CR>", optsWithDesc(opts, "kubectl delete"))

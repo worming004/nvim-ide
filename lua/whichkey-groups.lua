@@ -21,6 +21,9 @@ wk.register {
     g = {
       name = "git",
     },
+    k = {
+      name = "kube"
+    },
     l = {
       name = "lsp",
       l = {
