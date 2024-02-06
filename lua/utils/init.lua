@@ -5,6 +5,7 @@ M.servers = {
   "ansiblels",
   "bashls",
   "bicep",
+  "clangd",
   "cssls",
   "elixirls",
   "gleam",
