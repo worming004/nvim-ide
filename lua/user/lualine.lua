@@ -3,6 +3,17 @@ local M = {
   event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
 }
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
 function M.config()
   local lualine = require "lualine"
 
@@ -52,8 +63,8 @@ function M.config()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch", "filename" },
-      lualine_c = { diagnostics, "windows" },
+      lualine_b = { { 'diff', source = diff_source }, "branch" },
+      lualine_c = { "filename", diagnostics, "windows" },
       lualine_x = { diff, spaces, "encoding", filetype },
       lualine_y = { location },
       lualine_z = { "progress" },
