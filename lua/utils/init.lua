@@ -48,4 +48,8 @@ M.redirect_user_to_file = function(fileName)
   vim.api.nvim_command('edit' .. fileName)
 end
 
+M.trim_newlines = function(str)
+  return str:gsub("[\r\n]+$", "")
+end
+
 return M
