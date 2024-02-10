@@ -46,11 +46,15 @@ vim.api.nvim_create_user_command("KubeDelete", function(_)
 end, opts_with_desc(opts, "Delete current file with kubectl apply -f (be carefull about namespace)"))
 
 vim.api.nvim_create_user_command("OpenOnAzureDevops", function(_)
+  local filepath = vim.api.nvim_buf_get_name(0)
+  local cmd = "git remote get-url origin | azdosshtourl | azdoaddpath -from '" .. filepath .. "'"
+  local output = vim.fn.system(cmd)
+  output = utils.trim_newlines(output)
+  cmd = "cmd.exe /C start \"" .. output .. "\""
+  vim.fn.system(cmd)
+end, opts_with_desc(opts, "Open current file on Azure DevOps"))
+
+
+vim.api.nvim_create_user_command("OpenOnWeb", function(_)
   require 'open-web':open_current_buffer_on_web()
-  -- local filepath = vim.api.nvim_buf_get_name(0)
-  -- local cmd = "git remote get-url origin | azdosshtourl | azdoaddpath -from '" .. filepath .. "'"
-  -- local output = vim.fn.system(cmd)
-  -- output = utils.trim_newlines(output)
-  -- cmd = "cmd.exe /C start \"" .. output .. "\""
-  -- vim.fn.system(cmd)
 end, opts_with_desc(opts, "Open current file on Azure DevOps"))
