@@ -100,7 +100,7 @@ function M.config()
     Operator = "󰆕",
     TypeParameter = "󰊄",
     Codeium = "󰚩",
-    Copilot = "",
+    Copilot = "",
   }
 
   cmp.setup {
