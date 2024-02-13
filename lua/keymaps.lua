@@ -227,3 +227,5 @@ keymap("n", "<leader>qw", ":q<CR>", optsWithDesc(opts, "quit current window"))
 
 keymap("n", "<leader>ka", ":KubeApply<CR>", optsWithDesc(opts, "kubectl apply"))
 keymap("n", "<leader>kd", ":KubeDelete<CR>", optsWithDesc(opts, "kubectl delete"))
+
+keymap("n", "<leader>uc", ":Copilot! attach<CR>", optsWithDesc(opts, "attach copilot"))
