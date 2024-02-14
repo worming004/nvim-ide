@@ -1,5 +1,4 @@
 vim.opt.backup = false                          -- creates a backup file
-vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
@@ -52,3 +51,6 @@ vim.o.foldcolumn = "0"
 vim.g.mapleader = " "   -- make sure to set `mapleader` before lazy so your mappings are correct
 
 vim.g.autoformat = true -- stop auto format on save for lsp clients
+
+-- do not hesitate to update /usr/local/share/nvim/runtime/autoload/provider/clipboard.vim order of executable search to get better perf for startup. Saved me 3s at work
+vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
