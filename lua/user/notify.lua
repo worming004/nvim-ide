@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-notify",
+  commit = '7bdbe61c4714bd77017fb327e7a6a0678287da5a',
   -- enabled = false,
   opts = {
     timeout = 3000,

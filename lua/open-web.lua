@@ -53,7 +53,6 @@ M.replace_git_format_to_http = function(self)
   end
 end
 
-
 M.should_make_replacement = function(self)
   return not string.find(self.remote, 'http')
 end

@@ -33,16 +33,25 @@ vim.api.nvim_create_user_command("SetTab2", function(_)
   vim.cmd "set shiftwidth=2"
 end, opts_with_desc(opts, "Set tab to 2"))
 
+local function default_notification()
+  if r.stderr ~= nil and r.stderr ~= '' then
+    vim.notify(r.stderr, "error")
+  end
+  if r.stdout ~= nil and r.stdout ~= '' then
+    vim.notify(r.stdout)
+  end
+end
+
 vim.api.nvim_create_user_command("KubeApply", function(_)
-  local filepath = vim.api.nvim_buf_get_name(0)
-  local command = "!kubectl apply -f " .. filepath
-  vim.cmd(command)
+  local kubefile = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+  local command = { 'kubectl', 'apply', '-f', '-' }
+  vim.system(command, { stdin = kubefile }, default_notification)
 end, opts_with_desc(opts, "Apply current file with kubectl apply -f (be carefull about namespace)"))
 
 vim.api.nvim_create_user_command("KubeDelete", function(_)
-  local filepath = vim.api.nvim_buf_get_name(0)
-  local command = "!kubectl delete -f " .. filepath
-  vim.cmd(command)
+  local kubefile = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+  local command = { 'kubectl', 'delete', '-f', '-' }
+  vim.system(command, { stdin = kubefile }, default_notification)
 end, opts_with_desc(opts, "Delete current file with kubectl apply -f (be carefull about namespace)"))
 
 vim.api.nvim_create_user_command("OpenOnAzureDevops", function(_)
