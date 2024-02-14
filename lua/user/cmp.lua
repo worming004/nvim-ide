@@ -31,6 +31,7 @@ local M = {
     },
     {
       "zbirenbaum/copilot-cmp",
+      cmd = "Copilot",
       config = function()
         require("copilot_cmp").setup({
           fix_pairs = true,
@@ -43,12 +44,13 @@ local M = {
             suggestion = { enabled = false },
             panel = { enabled = false },
             filetypes = {
-              ["*"] = false
+              markdown = true,
+              yaml = true
             }
           }
-        },
+        }
       }
-    },
+    }
   },
   event = {
     "InsertEnter",
