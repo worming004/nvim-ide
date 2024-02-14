@@ -24,7 +24,6 @@ M.open_current_buffer_on_web = function(self)
   self:open_url()
 end
 
-
 M.detect_remote_type = function(self)
   if string.match(self.remote, "github") then
     return { 0, "github" }
@@ -37,12 +36,8 @@ M.detect_remote_type = function(self)
   end
 end
 
-M.should_make_replacement = function(self)
-  return not string.find(self.remote, 'http')
-end
-
 M.replace_git_format_to_http = function(self)
-  if not self:should_make_replacement(self.remote) then
+  if not self:should_make_replacement() then
     return self.remote
   end
   if not string.find(self.remote, 'git') then
@@ -56,6 +51,11 @@ M.replace_git_format_to_http = function(self)
   if self.type == 'azure' then
     error('todo manage azdo and gitlab')
   end
+end
+
+
+M.should_make_replacement = function(self)
+  return not string.find(self.remote, 'http')
 end
 
 M.set_relative_path_to_replace_address = function(self)
