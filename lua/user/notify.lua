@@ -1,6 +1,6 @@
 return {
   "rcarriga/nvim-notify",
-  commit = '7bdbe61c4714bd77017fb327e7a6a0678287da5a',
+  commit = '7bdbe61c4714bd77017fb327e7a6a0678287da5a', -- waiting for fix in https://github.com/rcarriga/nvim-notify/pull/253
   -- enabled = false,
   opts = {
     timeout = 3000,
