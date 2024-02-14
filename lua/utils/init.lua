@@ -52,4 +52,8 @@ M.trim_newlines = function(str)
   return str:gsub("[\r\n]+$", "")
 end
 
+M.trim_whitespace = function(str)
+  return str:gsub("^%s*(.-)%s*$", "%1")
+end
+
 return M

@@ -54,7 +54,6 @@ vim.api.nvim_create_user_command("OpenOnAzureDevops", function(_)
   vim.fn.system(cmd)
 end, opts_with_desc(opts, "Open current file on Azure DevOps"))
 
-
 vim.api.nvim_create_user_command("OpenOnWeb", function(_)
   require 'open-web':open_current_buffer_on_web()
 end, opts_with_desc(opts, "Open current file on Azure DevOps"))
