@@ -49,7 +49,7 @@ function M.config()
     },
   }
 
-  vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
@@ -65,7 +65,7 @@ function M.config()
 
   -- TODO reinsert this ?
   -- -- go
-  -- require("dap-go").setup()
+  require("dap-go").setup()
   --
   -- -- dap
   -- require("mason-nvim-dap").setup()
