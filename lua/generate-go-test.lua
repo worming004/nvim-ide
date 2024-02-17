@@ -43,7 +43,7 @@ vim.api.nvim_create_user_command("GenerateFileGoTest", function(_)
   ensure_go_tests_cmd_exists()
   local filepath = vim.fn.expand "%:p"
 
-  vim.fn.system({ 'gotests', '-w', '-all ', filepath })
+  vim.fn.system({ 'gotests', '-w', '-all', filepath })
 
   redirect_to_test_file()
 end, opts_with_desc(opts, "Generate go test for active buffer"))
@@ -52,7 +52,7 @@ vim.api.nvim_create_user_command("GeneratePackageGoTest", function(_)
   ensure_go_tests_cmd_exists()
   local filepath = vim.fn.expand "%:p"
 
-  vim.fn.system({ 'gotests', '-w', '-all ', filepath })
+  vim.fn.system({ 'gotests', '-w', '-all', filepath })
 
   redirect_to_test_file()
 end, opts_with_desc(opts, "Generate go test for whole package"))
