@@ -10,6 +10,7 @@ M.servers = {
   "elixirls",
   "gleam",
   "gopls",
+  "helm-ls",
   "html",
   "jsonls",
   "lua_ls",
@@ -50,6 +51,14 @@ end
 
 M.trim_newlines = function(str)
   return str:gsub("[\r\n]+$", "")
+end
+
+M.trim_whitespace = function(str)
+  return str:gsub("^%s*(.-)%s*$", "%1")
+end
+
+M.is_null_or_empty = function(str)
+  return str == nil or str == ''
 end
 
 return M

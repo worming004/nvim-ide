@@ -31,6 +31,7 @@ local M = {
     },
     {
       "zbirenbaum/copilot-cmp",
+      cmd = "Copilot",
       config = function()
         require("copilot_cmp").setup({
           fix_pairs = true,
@@ -44,12 +45,12 @@ local M = {
             panel = { enabled = false },
             filetypes = {
               markdown = true,
-              yaml = true,
+              yaml = true
             }
           }
-        },
+        }
       }
-    },
+    }
   },
   event = {
     "InsertEnter",
@@ -100,7 +101,7 @@ function M.config()
     Operator = "󰆕",
     TypeParameter = "󰊄",
     Codeium = "󰚩",
-    Copilot = "",
+    Copilot = "",
   }
 
   cmp.setup {

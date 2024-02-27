@@ -1,10 +1,12 @@
 local M = {}
 
 local gitutils = require('utils.git')
+local utils = require('utils')
+local trim = utils.trim_whitespace
 
 -- This is the main method
 M.open_current_buffer_on_web = function(self)
-  self.remote = vim.fn.system("git remote get-url origin")
+  self.remote = trim(vim.fn.system({ 'git', 'remote', 'get-url', 'origin' }))
   self.current_branch = gitutils:get_current_branch_name()
 
   local type = self:detect_remote_type()
@@ -22,7 +24,6 @@ M.open_current_buffer_on_web = function(self)
   self:open_url()
 end
 
-
 M.detect_remote_type = function(self)
   if string.match(self.remote, "github") then
     return { 0, "github" }
@@ -35,20 +36,16 @@ M.detect_remote_type = function(self)
   end
 end
 
-M.should_make_replacement = function(self)
-  return not string.find(self.remote, 'http')
-end
-
 M.replace_git_format_to_http = function(self)
-  if not self:should_make_replacement(self.remote) then
-    return self.remoteopen
+  if not self:should_make_replacement() then
+    return self.remote
   end
   if not string.find(self.remote, 'git') then
     return self.remote
   end
 
   if self.type == "github" then
-    path = string.sub(self.remote, 16, -6)
+    path = string.sub(self.remote, 16, -5)
     return 'https://github.com/' .. path
   end
   if self.type == 'azure' then
@@ -56,9 +53,14 @@ M.replace_git_format_to_http = function(self)
   end
 end
 
+M.should_make_replacement = function(self)
+  return not string.find(self.remote, 'http')
+end
+
 M.set_relative_path_to_replace_address = function(self)
   if self.type == "github" then
-    return self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
+    local result = self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
+    return result
   end
 end
 
@@ -67,9 +69,9 @@ M.open_url = function(self)
 
   local exit_status = os.execute("xdg-open --version > /dev/null 2>&1")
   if exit_status == 0 then
-    vim.fn.system("xdg-open " .. url)
+    vim.fn.system({ 'xdg-open', url })
   else
-    vim.fn.system("open " .. url)
+    vim.fn.system({ 'open', url })
   end
 end
 

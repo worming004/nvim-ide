@@ -203,7 +203,7 @@ keymap("n", "<leader>nhq", function()
   local contents = {}
   for idx = 1, mark.get_length() do
     local file = mark.get_marked_file_name(idx)
-    if file == "" or file == nil then
+    if utils.is_null_or_empty(file) then
       file = "(empty)"
     end
     contents[idx] = string.format("%s: %s", idx, file)
@@ -227,3 +227,5 @@ keymap("n", "<leader>qw", ":q<CR>", optsWithDesc(opts, "quit current window"))
 
 keymap("n", "<leader>ka", ":KubeApply<CR>", optsWithDesc(opts, "kubectl apply"))
 keymap("n", "<leader>kd", ":KubeDelete<CR>", optsWithDesc(opts, "kubectl delete"))
+
+keymap("n", "<leader>uc", ":Copilot! attach<CR>", optsWithDesc(opts, "attach copilot"))

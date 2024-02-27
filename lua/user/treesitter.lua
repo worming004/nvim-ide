@@ -73,6 +73,7 @@ function M.config()
       "tsx",
       "typescript",
       "vim",
+      "vhs",
       "yaml",
       "zig"
     },
