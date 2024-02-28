@@ -102,6 +102,7 @@ keymap("n", "<leader>fo", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fgs", ":Telescope git_status<CR>", opts)
 keymap("n", "<leader>fgc", ":Telescope git_commits<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope luasnip<CR>", opts)
+keymap("n", "<leader>fe", ":Telescope emoji<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gb", "<cmd>:Gitsigns toggle_current_line_blame<CR>", opts)

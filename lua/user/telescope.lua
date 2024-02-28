@@ -18,7 +18,9 @@ local M = {
     {
       "nvim-lua/plenary.nvim",
       branch = "master"
-    }
+    },
+    { "xiyaowong/telescope-emoji.nvim" }
+
   },
   config = function()
     local actions = require('telescope.actions')
@@ -51,6 +53,7 @@ local M = {
     telescope.setup(opts)
     telescope.load_extension("luasnip")
     telescope.load_extension('harpoon')
+    telescope.load_extension("emoji")
   end,
 }
 
