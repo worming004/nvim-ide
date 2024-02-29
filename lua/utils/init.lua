@@ -10,7 +10,7 @@ M.servers = {
   "elixirls",
   "gleam",
   "gopls",
-  "helm-ls",
+  "helm_ls",
   "html",
   "jsonls",
   "lua_ls",
