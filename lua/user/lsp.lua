@@ -196,9 +196,9 @@ function M.config()
   end
 
   local config = {
-    virtual_text = true, -- disable virtual text
+    virtual_text = true,
     signs = {
-      active = signs,    -- show signs
+      active = signs, -- show signs
     },
     update_in_insert = true,
     underline = true,
