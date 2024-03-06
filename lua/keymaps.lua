@@ -43,7 +43,7 @@ keymap("n", "<leader>rH", "<cmd>vertical resize -5<CR>", optsWithDesc(opts, "Sma
 keymap("n", "<leader>rL", "<cmd>vertical resize +5<CR>", optsWithDesc(opts, "Small vertical resize positive"))
 
 -- LspSaga
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- reactivate in lsp.lua it wants to remove
 keymap("n", "gr", "<cmd>Lspsaga finder<CR>")
 keymap("n", "gy", "<cmd>Lspsaga finder imp<CR>")
 keymap({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
