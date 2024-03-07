@@ -1,4 +1,4 @@
 return {
   "tamton-aquib/duck.nvim",
-  commit = "0ca969d549f5d546ae395e163130024b51694235"
+  commit = "d8a6b08af440e5a0e2b3b357e2f78bb1883272cd"
 }
