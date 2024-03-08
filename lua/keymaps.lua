@@ -235,3 +235,9 @@ keymap("n", "<leader>udd", function() require("duck").hatch() end, optsWithDesc(
 keymap("n", "<leader>uds", function() require("duck").hatch('ඞ', 5) end, optsWithDesc(opts, "release sus"))
 keymap("n", "<leader>udp", function() require("duck").hatch('💩', 50) end, optsWithDesc(opts, "release poop"))
 keymap("n", "<leader>udc", function() require("duck").cook_all() end, optsWithDesc(opts, "release poop"))
+
+keymap("n", "<leader>udc", function()
+  local d = require("duck")
+  local s = require("utils.duck_strategy")
+  d.hatch("🦆", 5, "none", s:top_right_corner_strategy())
+end, optsWithDesc(opts, "release poop"))
