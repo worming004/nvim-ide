@@ -8,7 +8,7 @@ M.new = function()
     return function(duck)
       local global_strategy = self.col_or_row(self)
       if global_strategy.comparer(duck) then
-        if self.get_random() > self.probability then -- then 1/3 chance to go right
+        if self.get_random() < self.probability then -- then 1/3 chance to go right
           return global_strategy.returner(duck)
         end
       end
@@ -44,18 +44,14 @@ M.new = function()
     return vim.o.columns * 2 / 3
   end
 
-  I.probability = 0.66
+  I.probability = 0.15
 
   I.get_random = function()
     -- replace this function if you want to control the random values
     return math.random()
   end
 
-  I.sub_strategy = function(duck)
-    local strats = require('duck').default_strategies
-    local rnd = strats.random_waddle
-    return rnd(duck)
-  end
+  I.sub_strategy = require('duck').default_strategies.random_waddle
 
   -- this function is used to configure the strategy to target the rows with default values
   I.default_setup_for_row = function(self)
@@ -87,12 +83,12 @@ M.new = function()
 end
 
 M.top_right_corner_strategy = function(self)
-  local col_strategy = self.new()
+  local row_strategy = self.new()
+  row_strategy:default_setup_for_row()
 
-  local parent_row_strategy = self.new()
-  parent_row_strategy:default_setup_for_row()
-  parent_row_strategy.sub_strategy = col_strategy:waddle()
-  return parent_row_strategy:waddle()
+  local parent_col_strategy = self.new()
+  parent_col_strategy.sub_strategy = row_strategy:waddle()
+  return parent_col_strategy:waddle()
 end
 
 return M
