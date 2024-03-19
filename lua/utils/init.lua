@@ -8,7 +8,6 @@ M.servers = {
   "clangd",
   "cssls",
   "elixirls",
-  "gleam",
   "gopls",
   "helm_ls",
   "html",
