@@ -11,6 +11,6 @@ return {
   },
   lazy = false,
   init = function()
-    vim.notify = require "notify"
+    vim.notify = vim.schedule_wrap(require "notify")
   end,
 }
