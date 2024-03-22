@@ -59,6 +59,9 @@ wk.register {
       w = {
         name = "workspace",
       }
+    },
+    w = {
+      name = "write"
     }
   },
 }

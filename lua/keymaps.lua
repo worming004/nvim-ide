@@ -230,14 +230,16 @@ keymap("n", "<leader>ka", ":KubeApply<CR>", optsWithDesc(opts, "kubectl apply"))
 keymap("n", "<leader>kd", ":KubeDelete<CR>", optsWithDesc(opts, "kubectl delete"))
 
 keymap("n", "<leader>uc", ":Copilot! attach<CR>", optsWithDesc(opts, "attach copilot"))
-
 keymap("n", "<leader>udd", function() require("duck").hatch() end, optsWithDesc(opts, "release a duck"))
 keymap("n", "<leader>uds", function() require("duck").hatch('ඞ', 5) end, optsWithDesc(opts, "release sus"))
 keymap("n", "<leader>udp", function() require("duck").hatch('💩', 50) end, optsWithDesc(opts, "release poop"))
-
 keymap("n", "<leader>udc", function()
   local d = require("duck")
   local s = require("utils.duck_strategy")
   d.hatch("🦆", 5, "none", s:top_right_corner_strategy())
   d.hatch("🐈", 4, "none", s:top_right_corner_strategy())
 end, optsWithDesc(opts, "release poop"))
+
+
+keymap("n", "<leader>ww", ":w<CR>", optsWithDesc(opts, "write current buffer files"))
+keymap("n", "<leader>wa", ":wa<CR>", optsWithDesc(opts, "write all files"))
