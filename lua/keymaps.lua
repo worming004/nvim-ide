@@ -241,5 +241,5 @@ keymap("n", "<leader>udc", function()
 end, optsWithDesc(opts, "release poop"))
 
 
-keymap("n", "<leader>ww", ":w<CR>", optsWithDesc(opts, "write current buffer files"))
-keymap("n", "<leader>wa", ":wa<CR>", optsWithDesc(opts, "write all files"))
+keymap("n", "<leader>ww", ":w<CR>", optsWithDesc({}, "write current buffer files"))
+keymap("n", "<leader>wa", ":wa<CR>", optsWithDesc({}, "write all files"))
