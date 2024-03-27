@@ -184,12 +184,12 @@ function M.config()
       end,
     },
     sources = {
-      { name = "nvim_lsp", priority = 2 },
       { name = "luasnip" },
+      { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "buffer" },
       { name = "path" },
-      { name = "copilot",  max_item_count = 5, priority = 1 },
+      { name = "copilot", max_item_count = 5 },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
