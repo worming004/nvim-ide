@@ -14,6 +14,7 @@ M.servers = {
   "jsonls",
   "lua_ls",
   "jdtls",
+  "ltex",
   "omnisharp",
   "powershell_es",
   "pyright",
