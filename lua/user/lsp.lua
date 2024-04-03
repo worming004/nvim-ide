@@ -66,11 +66,6 @@ function M.config()
       })
     end
 
-    if client.supports_method "textDocument.inlayHint" then
-      local inlay = require "lsp-inlayhints"
-      inlay.on_attach(client, bufnr)
-    end
-
     -- autoformat on save
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
