@@ -2,7 +2,7 @@ local lang = "fr"
 local config = {}
 config = {
   cmd = { "ltex-ls" },
-  filetypes = { "md" },
+  filetypes = { "markdown" },
   flags = { debounce_text_changes = 300 },
   settings = {
     ltex = {
