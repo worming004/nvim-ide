@@ -15,7 +15,6 @@ config = {
       load_langs = { lang, "en-US" },
       path = vim.fn.expand('~') .. '/.local/share/ltex',
     }
-    vim.notify("extra loaded")
   end,
 }
 return config
