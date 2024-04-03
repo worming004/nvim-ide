@@ -118,7 +118,6 @@ function M.config()
   end
 
   local signs = {
-
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
     { name = "DiagnosticSignHint", text = "" },
