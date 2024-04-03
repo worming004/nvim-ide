@@ -1,3 +1,4 @@
+local lang = "fr"
 local config = {}
 config = {
   cmd = { "ltex-ls" },
@@ -5,8 +6,16 @@ config = {
   flags = { debounce_text_changes = 300 },
   settings = {
     ltex = {
-      language = "fr"
+      language = lang
     }
-  }
+  },
+  extra_on_attach = function(client, bufnr)
+    require("ltex_extra").setup {
+      init_check = true,
+      load_langs = { lang, "en-US" },
+      path = vim.fn.expand('~') .. '/.local/share/ltex',
+    }
+    vim.notify("extra loaded")
+  end,
 }
 return config

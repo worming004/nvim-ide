@@ -12,7 +12,8 @@ local M = {
         event = "BufReadPre",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
       },
-      "Hoffs/omnisharp-extended-lsp.nvim"
+      "Hoffs/omnisharp-extended-lsp.nvim",
+      "barreiroleo/ltex_extra.nvim"
     },
   },
 }
@@ -34,7 +35,7 @@ function M.config()
     keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap(bufnr, "n", "<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     -- Keep this code_action keymap waiting few fixes in folke/which-key.nvim
-    -- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    keymap(bufnr, "n", "<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
@@ -51,7 +52,7 @@ function M.config()
   -- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-  local on_attach = function(client, bufnr)
+  local custom_on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
       vim.api.nvim_create_autocmd("BufWritePre", {
@@ -92,7 +93,6 @@ function M.config()
 
   for _, server in pairs(require("utils").servers) do
     local lsp_opts = {
-      on_attach = on_attach,
       capabilities = capabilities,
     }
 
@@ -105,11 +105,13 @@ function M.config()
     end
 
     -- if personal server configuration define an extra_on_attach, attach to it
-    if server.extra_on_attach ~= nil then
+    if conf_opts.extra_on_attach ~= nil then
       lsp_opts.on_attach = function(client, bufnr)
-        lsp_opts.on_attach(client, bufnr)
-        server.extra_on_attach(client, bufnr)
+        custom_on_attach(client, bufnr)
+        conf_opts.extra_on_attach(client, bufnr)
       end
+    else
+      lsp_opts.on_attach = custom_on_attach
     end
 
     lspconfig[server].setup(lsp_opts)
