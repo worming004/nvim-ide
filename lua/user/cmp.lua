@@ -104,7 +104,7 @@ function M.config()
     Copilot = "",
   }
 
-  cmp.setup {
+  local default_setup = {
     sorting = {
       priority_weight = 2,
       comparators = {
@@ -204,6 +204,20 @@ function M.config()
       ghost_text = true,
     },
   }
+
+  cmp.setup(default_setup)
+
+  local cmp_markdown = vim.deepcopy(default_setup)
+  cmp_markdown.sources = {
+    -- same list but rm lsp. Language tool is better used with a debouncing. But cmp_lsp puth a textDocument/completion for each keystroke
+    { name = "luasnip" },
+    { name = "nvim_lua" },
+    { name = "buffer" },
+    { name = "path" },
+    { name = "copilot", max_item_count = 5 },
+  }
+
+  cmp.setup.filetype('markdown', cmp_markdown)
 end
 
 return M
