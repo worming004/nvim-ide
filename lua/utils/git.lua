@@ -13,6 +13,16 @@ M.get_current_branch_name = function()
   return trim(vim.fn.system(git_command))
 end
 
+M.get_git_root = function()
+  local git_command = 'git rev-parse --show-toplevel'
+  return vim.fn.system(git_command):gsub('^%s*(.-)%s*$', '%1')
+end
+
+M.get_current_branch_name = function()
+  local git_command = 'git rev-parse --abbrev-ref HEAD'
+  return vim.fn.system(git_command):gsub('^%s*(.-)%s*$', '%1')
+end
+
 M.get_relative_path_from_git_root = function(self)
   local current_buffer_path = vim.fn.expand('%:p')
   local git_root = self:get_git_root()

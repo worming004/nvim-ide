@@ -23,7 +23,6 @@ M.open_current_buffer_on_web = function(self)
 
   self:open_url()
 end
-
 M.detect_remote_type = function(self)
   if string.match(self.remote, "github") then
     return { 0, "github" }
@@ -36,16 +35,20 @@ M.detect_remote_type = function(self)
   end
 end
 
+M.should_make_replacement = function(self)
+  return not string.find(self.remote, 'http')
+end
+
 M.replace_git_format_to_http = function(self)
-  if not self:should_make_replacement() then
-    return self.remote
+  if not self:should_make_replacement(self.remote) then
+    return self.remoteopen
   end
   if not string.find(self.remote, 'git') then
     return self.remote
   end
 
   if self.type == "github" then
-    path = string.sub(self.remote, 16, -5)
+    local path = string.sub(self.remote, 16, -6)
     return 'https://github.com/' .. path
   end
   if self.type == 'azure' then
@@ -56,11 +59,9 @@ end
 M.should_make_replacement = function(self)
   return not string.find(self.remote, 'http')
 end
-
 M.set_relative_path_to_replace_address = function(self)
   if self.type == "github" then
-    local result = self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
-    return result
+    return self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
   end
 end
 
