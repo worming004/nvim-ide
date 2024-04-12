@@ -243,3 +243,9 @@ end, optsWithDesc(opts, "release poop"))
 
 keymap("n", "<leader>ww", ":w<CR>", optsWithDesc({}, "write current buffer files"))
 keymap("n", "<leader>wa", ":wa<CR>", optsWithDesc({}, "write all files"))
+
+keymap("n", "<leader>co", ":CopilotChatOpen<CR>", optsWithDesc(opts, "open copilot chat"))
+keymap("n", "<leader>cc", ":CopilotChatClose<CR>", optsWithDesc(opts, "close copilot chat"))
+keymap({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", optsWithDesc(opts, "close copilot chat"))
+keymap({ "n", "v" }, "<leader>cf", ":CopilotChatFix<CR>", optsWithDesc(opts, "fix with copilot chat"))
+keymap({ "n", "v" }, "<leader>co", ":CopilotChatOptimize<CR>", optsWithDesc(opts, "optimize with copilot chat"))

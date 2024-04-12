@@ -6,7 +6,7 @@ wk.register {
       name = "buffer",
     },
     c = {
-      name = "comment",
+      name = "copilot",
     },
     d = {
       name = "dap",
