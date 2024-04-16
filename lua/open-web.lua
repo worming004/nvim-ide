@@ -40,8 +40,8 @@ M.should_make_replacement = function(self)
 end
 
 M.replace_git_format_to_http = function(self)
-  if not self:should_make_replacement(self.remote) then
-    return self.remoteopen
+  if not self:should_make_replacement() then
+    return self.remote
   end
   if not string.find(self.remote, 'git') then
     return self.remote
@@ -52,7 +52,7 @@ M.replace_git_format_to_http = function(self)
     return 'https://github.com/' .. path
   end
   if self.type == 'azure' then
-    error('todo manage azdo and gitlab')
+    vim.notify('todo manage azdo and gitlab')
   end
 end
 
