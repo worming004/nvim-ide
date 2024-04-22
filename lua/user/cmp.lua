@@ -39,22 +39,21 @@ local M = {
       end,
       dependencies = {
         {
-          "zbirenbaum/copilot.lua",
-          opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            filetypes = {
-              markdown = true,
-              yaml = true
-            }
-          }
-        },
-        {
           "CopilotC-Nvim/CopilotChat.nvim",
           branch = "canary",
           dependencies = {
-            { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-            { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+            {
+              "zbirenbaum/copilot.lua",
+              opts = {
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+                filetypes = {
+                  markdown = true,
+                  yaml = true
+                }
+              }
+            },
+            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
           },
           opts = {
             debug = true, -- Enable debugging
