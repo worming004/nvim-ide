@@ -249,3 +249,5 @@ keymap("n", "<leader>cc", ":CopilotChatClose<CR>", optsWithDesc(opts, "close cop
 keymap({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", optsWithDesc(opts, "close copilot chat"))
 keymap({ "n", "v" }, "<leader>cf", ":CopilotChatFix<CR>", optsWithDesc(opts, "fix with copilot chat"))
 keymap({ "n", "v" }, "<leader>co", ":CopilotChatOptimize<CR>", optsWithDesc(opts, "optimize with copilot chat"))
+
+keymap("n", "<leader>ggl", ":!git pull<CR>", optsWithDesc(opts, "git pull"))
