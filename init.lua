@@ -4,7 +4,7 @@ require("keymaps").all_buffers_setup()
 require "commands"
 require "autocommands"
 require "open-web"
-require "grenerate-go-tests"
+require "generate-go-tests"
 require "which-key-group"
 
 
