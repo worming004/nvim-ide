@@ -38,7 +38,6 @@ normal_default("<leader>llr", "<cmd>LspRestart<cr>")
 
 -- nvim-tree
 local api = require "nvim-tree.api"
-normal_default("h", api.node.navigate.parent_close)
 normal_default("<CR>", api.node.open.edit)
 normal_default("<C-v>", api.node.open.vertical)
 normal_default("<C-h>", api.node.open.horizontal)
