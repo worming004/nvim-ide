@@ -10,6 +10,11 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.ruler = false
 vim.opt.scrolloff = 8
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.iskeyword:append "-"
+vim.opt.ignorecase = true
+vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 vim.g.autoformat = true
