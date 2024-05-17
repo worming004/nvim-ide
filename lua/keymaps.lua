@@ -85,12 +85,12 @@ normal_default("<leader>nv", function() ui.nav_file(4) end, { desc = "open harpo
 normal_default("<leader>udd", function() require("duck").hatch() end, { desc = "release a duck" })
 normal_default("<leader>uds", function() require("duck").hatch('ඞ', 5) end, { desc = "release sus" })
 normal_default("<leader>udp", function() require("duck").hatch('💩', 50) end, { desc = "release poop" })
-normal_default( "<leader>udc", function()
+normal_default("<leader>udc", function()
   local d = require("duck")
   local s = require("utils.duck_strategy")
   d.hatch("🦆", 5, "none", s:top_right_corner_strategy())
   d.hatch("🐈", 4, "none", s:top_right_corner_strategy())
-end, desc= "release poop"})
+end, { desc = "release poop" })
 
 return {
   for_lsp = function(buffer_number)
