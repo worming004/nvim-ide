@@ -5,9 +5,16 @@ local config = {
   filetypes = { 'yaml', 'yml' },
   settings = {
     yaml = {
-      schemas = all_schemas,
+      format = {
+        enable = true,
+      },
+      schemas = schemas,
+      schemaStore = {
+        enable = true,
+      },
       validate = true,
       completion = true,
+
     }
   }
 }
