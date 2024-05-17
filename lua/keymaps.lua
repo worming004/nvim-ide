@@ -37,10 +37,11 @@ normal_default("<leader>uf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>")
 normal_default("<leader>llr", "<cmd>LspRestart<cr>")
 
 -- nvim-tree
-local api = require "nvim-tree.api"
-normal_default("<CR>", api.node.open.edit)
-normal_default("<C-v>", api.node.open.vertical)
-normal_default("<C-h>", api.node.open.horizontal)
+-- fix only on attach
+-- local api = require "nvim-tree.api"
+-- normal_default("<CR>", api.node.open.edit)
+-- normal_default("<C-v>", api.node.open.vertical)
+-- normal_default("<C-h>", api.node.open.horizontal)
 normal_default("<leader>oe", ":NvimTreeToggle<CR>")
 normal_default("<leader>oo", ":NvimTreeFocus<CR>")
 
