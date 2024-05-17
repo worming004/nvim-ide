@@ -15,6 +15,7 @@ vim.opt.splitbelow = true
 vim.opt.iskeyword:append "-"
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
 
 vim.g.mapleader = " "
 vim.g.autoformat = true
