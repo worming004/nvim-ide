@@ -1,3 +1,4 @@
+return {
   "ThePrimeagen/harpoon",
   event = "VeryLazy",
   settings = {
