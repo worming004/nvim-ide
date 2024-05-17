@@ -2,12 +2,21 @@
 local default_config = { noremap = true, silent = true }
 local utils = require "utils"
 
-local function normal_buffer(buffer_number, sequences, command, opt_extend)
+-- Buffer helper
+local function default_buffer(buffer_number, mode, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
   local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
-  vim.api.nvim_buf_set_keymap(buffer_number, "n", sequences, command, overrided_opts)
+  vim.keymap.set(mode, sequences, command, overrided_opts)
+  vim.api.nvim_buf_set_keymap(buffer_number, mode, sequences, command, overrided_opts)
+end
+local function normal_buffer(buffer_number, sequences, command, opt_extend)
+  default_buffer(buffer_number, "n", sequences, command, opt_extend)
+end
+local function insert_buffer(buffer_number, sequences, command, opt_extend)
+  default_buffer(buffer_number, "i", sequences, command, opt_extend)
 end
 
+-- All Buffer helpers
 local function default(mode, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
   local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
@@ -198,7 +207,7 @@ local function lsp_buffer_setup(buffer_number)
   normal_buffer(buffer_number, "<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
   normal_buffer(buffer_number, "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   normal_buffer(buffer_number, "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  normal_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  insert_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
 
