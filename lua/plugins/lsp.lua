@@ -1,28 +1,3 @@
-local function lsp_keymaps(buffer_number)
-  local default_config = { noremap = true, silent = true }
-  local normal_default_buffer = function(sequences, command, opt_extend)
-    opt_extend = opt_extend or {}
-    local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
-    vim.api.nvim_buf_set_keymap(buffer_number, "n", sequences, command, overrided_opts)
-  end
-  normal_default_buffer("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  normal_default_buffer("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  normal_default_buffer("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  normal_default_buffer("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  normal_default_buffer("<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  normal_default_buffer("<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  normal_default_buffer("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-  normal_default_buffer("<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
-  normal_default_buffer("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-  normal_default_buffer("<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  normal_default_buffer("<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
-  normal_default_buffer("<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
-  normal_default_buffer("<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  normal_default_buffer("<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  normal_default_buffer("<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  vim.notify("loaded keymap")
-end
-
 local M = {
   "neovim/nvim-lspconfig",
   branch = "master",
@@ -113,7 +88,7 @@ function M.config()
       })
     end
 
-    lsp_keymaps(buffer_number)
+    require("keymaps").lsp_buffer_setup(buffer_number)
   end
 
   for _, server_file_name in pairs(require("utils").servers) do

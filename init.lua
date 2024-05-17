@@ -1,6 +1,6 @@
 require "options"
 require "mylazy"
-require "keymaps"
+require("keymaps").all_buffers_setup()
 require "commands"
 require "autocommands"
 require "open-web"
