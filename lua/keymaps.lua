@@ -1,5 +1,6 @@
 -- helpers
 local default_config = { noremap = true, silent = true }
+local utils = require "utils"
 
 local function default(mode, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
@@ -44,6 +45,41 @@ normal_default("<leader>llr", "<cmd>LspRestart<cr>")
 -- normal_default("<C-h>", api.node.open.horizontal)
 normal_default("<leader>oe", ":NvimTreeToggle<CR>")
 normal_default("<leader>oo", ":NvimTreeFocus<CR>")
+
+-- harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+normal_default("<leader>a", function()
+  mark.add_file()
+  local file_index = mark.get_current_index()
+  vim.notify("file added at index " .. file_index)
+end, { desc = "add file to harpoon" })
+normal_default("<leader>nho", ui.toggle_quick_menu, { desc = "open harpoon" })
+normal_default("<leader>nhr", mark.rm_file, { desc = "rm current file from harpoon" })
+normal_default("<leader>nhc", mark.clear_all, { desc = "clear all harpoon" })
+normal_default("<leader>nhq", function()
+  local contents = {}
+  for idx = 1, mark.get_length() do
+    local file = mark.get_marked_file_name(idx)
+    if utils.is_null_or_empty(file) then
+      file = "(empty)"
+    end
+    contents[idx] = string.format("%s: %s", idx, file)
+  end
+  local content = ""
+  if table.getn(contents) == 0 then
+    content = "no buffer marked"
+  else
+    content = table.concat(contents, "\n")
+  end
+  vim.notify(content)
+end, { desc = "harpoon quick print all marks in notification" })
+
+normal_default("<leader>nz", function() ui.nav_file(1) end, { desc = "open harpoon file 1-z" })
+normal_default("<leader>nx", function() ui.nav_file(2) end, { desc = "open harpoon file 2-x" })
+normal_default("<leader>nc", function() ui.nav_file(3) end, { desc = "open harpoon file 3-c" })
+normal_default("<leader>nv", function() ui.nav_file(4) end, { desc = "open harpoon file 4-v" })
 
 return {
   for_lsp = function(buffer_number)
