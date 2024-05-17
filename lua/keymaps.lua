@@ -9,9 +9,21 @@ local function default_buffer(buffer_number, mode, sequences, command, opt_exten
   vim.keymap.set(mode, sequences, command, overrided_opts)
   vim.api.nvim_buf_set_keymap(buffer_number, mode, sequences, command, overrided_opts)
 end
+
+---keymap for normal mode in specific buffers
+---@param buffer_number integer
+---@param sequences string
+---@param command string|function()nil
+---@param opt_extend? table
 local function normal_buffer(buffer_number, sequences, command, opt_extend)
   default_buffer(buffer_number, "n", sequences, command, opt_extend)
 end
+
+---keymap for insert mode in specific buffers
+---@param buffer_number integer
+---@param sequences string
+---@param command string|function
+---@param opt_extend? table
 local function insert_buffer(buffer_number, sequences, command, opt_extend)
   default_buffer(buffer_number, "i", sequences, command, opt_extend)
 end
@@ -23,12 +35,28 @@ local function default(mode, sequences, command, opt_extend)
   vim.keymap.set(mode, sequences, command, overrided_opts)
 end
 
+---keymap for normal mode in all buffers
+---@param sequences string
+---@param command string|function
+---@param opt_extend? table
 local function normal(sequences, command, opt_extend)
   default("n", sequences, command, opt_extend)
 end
 
+---keymap for insert mode in all buffers
+---@param sequences string
+---@param command string|function
+---@param opt_extend? table
 local function insert(sequences, command, opt_extend)
   default("i", sequences, command, opt_extend)
+end
+
+---keymap for visual mode in all buffers
+---@param sequences string
+---@param command string|function
+---@param opt_extend? table
+local function visual(sequences, command, opt_extend)
+  default("v", sequences, command, opt_extend)
 end
 
 local function all_buffers_setup()
@@ -189,6 +217,20 @@ local function all_buffers_setup()
   -- Kubectl
   normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
   normal("<leader>kd", ":KubeDelete<CR>", { desc = "kubectl delete" })
+
+  -- Resize
+  normal("<leader>rj", "<cmd>resize -20<CR>", { desc = "Big horizontal resize negative" })
+  normal("<leader>rk", "<cmd>resize +20<CR>", { desc = "Big horizontal resize positive" })
+  normal("<leader>rh", "<cmd>vertical resize -20<CR>", { desc = "Big vertical resize negative" })
+  normal("<leader>rl", "<cmd>vertical resize +20<CR>", { desc = "Big vertical resize positive" })
+  normal("<leader>rJ", "<cmd>resize -5<CR>", { desc = "Small horizontal resize negative" })
+  normal("<leader>rK", "<cmd>resize +5<CR>", { desc = "Small horizontal resize positive" })
+  normal("<leader>rH", "<cmd>vertical resize -5<CR>", { desc = "Small vertical resize negative" })
+  normal("<leader>rL", "<cmd>vertical resize +5<CR>", { desc = "Small vertical resize positive" })
+
+  -- Stay in indent mode
+  visual("<", "<gv")
+  visual(">", ">gv")
 end
 
 
@@ -207,6 +249,7 @@ local function lsp_buffer_setup(buffer_number)
   normal_buffer(buffer_number, "<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
   normal_buffer(buffer_number, "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   normal_buffer(buffer_number, "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+
   insert_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
