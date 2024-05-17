@@ -2,7 +2,7 @@
 local default_config = { noremap = true, silent = true }
 local utils = require "utils"
 
-local normal_buffer = function(buffer_number, sequences, command, opt_extend)
+local function normal_buffer(buffer_number, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
   local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
   vim.api.nvim_buf_set_keymap(buffer_number, "n", sequences, command, overrided_opts)
@@ -150,6 +150,36 @@ local function all_buffers_setup()
   normal("<S-h>", function()
     vim.cmd('bprevious')
   end)
+
+  -- End of line stuffes
+  normal("<leader>e;", function()
+    utils.execute_then_come_back_at_original_position(function()
+      vim.cmd ":normal A;"
+    end)
+  end, { desc = "Insert semi colon (;) at end of line" })
+  insert("<C-e>;", function()
+    utils.execute_then_come_back_at_original_position(function()
+      vim.cmd ":normal A;"
+    end)
+  end, { desc = "Insert semi colon (;) at end of line" })
+  normal("<leader>e,", function()
+    utils.execute_then_come_back_at_original_position(function()
+      vim.cmd ":normal A,"
+    end)
+  end, { desc = "Insert colon (,) at end of line" })
+  insert("<C-e>,", function()
+    utils.execute_then_come_back_at_original_position(function()
+      vim.cmd ":normal A,"
+    end)
+  end, { desc = "Insert semi colon (,) at end of line" })
+
+  -- Windows
+  normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
+  normal("<leader>qw", ":q<CR>", { desc = "quit current window" })
+
+  -- Kubectl
+  normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
+  normal("<leader>kd", ":KubeDelete<CR>", { desc = "kubectl delete" })
 end
 
 
