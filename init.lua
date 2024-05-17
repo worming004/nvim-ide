@@ -1,5 +1,5 @@
 require "options"
-require "mylazy"
+require "plugin-loader"
 require("keymaps").all_buffers_setup()
 require "commands"
 require "autocommands"
