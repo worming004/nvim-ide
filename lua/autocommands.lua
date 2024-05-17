@@ -29,12 +29,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
+-- hightligh yanked text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank {}
   end,
 })
 
+-- when quitting qf, lspinfo, spectre_panel, close the window and move to the a window other than nvimtree
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "lspinfo", "spectre_panel" },
   callback = function()
