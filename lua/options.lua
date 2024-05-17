@@ -7,6 +7,7 @@ vim.opt.termguicolors = true
 vim.opt.expandtab = true
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.ruler = false
 vim.opt.scrolloff = 8
 
