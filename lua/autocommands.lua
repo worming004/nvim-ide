@@ -2,14 +2,7 @@
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   nested = true,
   callback = function()
-    local all_windows = vim.api.nvim_list_wins()
-    local non_relative_wins = {}
-    for _, v in ipairs(all_windows) do
-      if vim.api.nvim_win_get_config(v).relative == "" then
-        non_relative_wins[#non_relative_wins + 1] = v
-      end
-    end
-    if #non_relative_wins == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+    if require("utils").is_last_win_is_nvimtree() then
       vim.cmd "quit"
     end
   end,
@@ -39,5 +32,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank {}
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "qf", "lspinfo", "spectre_panel" },
+  callback = function()
+    vim.api.nvim_buf_set_option(0, 'buflisted', false)
+    vim.keymap.set('n', 'q', function()
+      vim.cmd "close"
+      local utils = require("utils")
+      if utils.is_current_win_is_nvimtree() then
+        vim.cmd "wincmd l"
+      end
+    end, { noremap = true, silent = true, buffer = 0 })
   end,
 })

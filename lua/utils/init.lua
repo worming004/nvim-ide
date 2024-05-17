@@ -61,4 +61,20 @@ M.is_null_or_empty = function(str)
   return str == nil or str == ''
 end
 
+--- Return true if current win is nvim-tree
+M.is_last_win_is_nvimtree = function()
+  local all_windows = vim.api.nvim_list_wins()
+  local non_relative_wins = {}
+  for _, v in ipairs(all_windows) do
+    if vim.api.nvim_win_get_config(v).relative == "" then
+      non_relative_wins[#non_relative_wins + 1] = v
+    end
+  end
+  return #non_relative_wins == 1 and require("nvim-tree.utils").is_nvim_tree_buf()
+end
+
+M.is_current_win_is_nvimtree = function()
+  return require("nvim-tree.utils").is_nvim_tree_buf()
+end
+
 return M
