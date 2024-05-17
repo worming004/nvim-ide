@@ -115,27 +115,22 @@ insert_default(
   { desc = "Dismiss notifications" }
 )
 
-return {
-  for_lsp = function(buffer_number)
-    local normal_default_buffer = function(sequences, command, opt_extend)
-      opt_extend = opt_extend or {}
-      local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
-      vim.api.nvim_buf_set_keymap(buffer_number, "n", sequences, command, overrided_opts)
-    end
-    normal_default_buffer("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-    normal_default_buffer("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-    normal_default_buffer("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-    normal_default_buffer("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-    normal_default_buffer("<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>")
-    normal_default_buffer("<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-    normal_default_buffer("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-    normal_default_buffer("<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
-    normal_default_buffer("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-    normal_default_buffer("<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-    normal_default_buffer("<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
-    normal_default_buffer("<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
-    normal_default_buffer("<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-    normal_default_buffer("<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-    normal_default_buffer("<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  end,
-}
+-- Move in insert mode
+insert_default("<C-h>", "<Left>", { desc = "Move cursor left" })
+insert_default("<C-j>", "<Down>", { desc = "Move cursor down" })
+insert_default("<C-k>", "<Up>", { desc = "Move cursor up" })
+insert_default("<C-l>", "<Right>", { desc = "Move cursor right" })
+
+-- Write files
+normal_default("<leader>ww", ":w<CR>", { desc = "write current buffer files" })
+normal_default("n", "<leader>wa", ":wa<CR>", { desc = "write all files" })
+
+-- Copilot
+normal_default("<leader>co", ":CopilotChatOpen<CR>", { desc = "open copilot chat" })
+normal_default("<leader>cc", ":CopilotChatClose<CR>", { desc = "close copilot chat" })
+default({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", { desc = "close copilot chat" })
+default({ "n", "v" }, "<leader>cf", ":CopilotChatFix<CR>", { desc = "fix with copilot chat" })
+default({ "n", "v" }, "<leader>co", ":CopilotChatOptimize<CR>", { desc = "optimize with copilot chat" })
+
+-- Git
+normal_default("<leader>ggl", ":!git pull<CR>", { desc = "git pull" })
