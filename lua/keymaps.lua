@@ -2,8 +2,7 @@
 local default_config = { noremap = true, silent = true }
 local utils = require "utils"
 
-
-local normal_buffer = function(sequences, command, opt_extend)
+local normal_buffer = function(buffer_number, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
   local overrided_opts = vim.tbl_deep_extend("force", default_config, opt_extend)
   vim.api.nvim_buf_set_keymap(buffer_number, "n", sequences, command, overrided_opts)
@@ -155,21 +154,21 @@ end
 
 
 local function lsp_buffer_setup(buffer_number)
-  normal_buffer("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  normal_buffer("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  normal_buffer("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  normal_buffer("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  normal_buffer("<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  normal_buffer("<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  normal_buffer("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-  normal_buffer("<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
-  normal_buffer("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-  normal_buffer("<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  normal_buffer("<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
-  normal_buffer("<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
-  normal_buffer("<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  normal_buffer("<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  normal_buffer("<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  normal_buffer(buffer_number, "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  normal_buffer(buffer_number, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  normal_buffer(buffer_number, "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  normal_buffer(buffer_number, "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+  normal_buffer(buffer_number, "<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  normal_buffer(buffer_number, "<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+  normal_buffer(buffer_number, "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
+  normal_buffer(buffer_number, "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
+  normal_buffer(buffer_number, "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+  normal_buffer(buffer_number, "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  normal_buffer(buffer_number, "<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
+  normal_buffer(buffer_number, "<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
+  normal_buffer(buffer_number, "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+  normal_buffer(buffer_number, "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+  normal_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
 
