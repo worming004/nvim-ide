@@ -179,6 +179,7 @@ local function all_buffers_setup()
 
   -- Git
   normal("<leader>ggl", ":!git pull<CR>", { desc = "git pull" })
+  normal("<leader>ggp", ":!git push<CR>", { desc = "git push" })
 
   -- Buffers
   normal("<S-l>", function()
