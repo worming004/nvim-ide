@@ -173,7 +173,7 @@ local function all_buffers_setup()
   -- Copilot
   normal("<leader>co", ":CopilotChatOpen<CR>", { desc = "open copilot chat" })
   normal("<leader>cc", ":CopilotChatClose<CR>", { desc = "close copilot chat" })
-  default({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", { desc = "close copilot chat" })
+  default({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", { desc = "explain copilot chat" })
   default({ "n", "v" }, "<leader>cf", ":CopilotChatFix<CR>", { desc = "fix with copilot chat" })
   default({ "n", "v" }, "<leader>co", ":CopilotChatOptimize<CR>", { desc = "optimize with copilot chat" })
 
