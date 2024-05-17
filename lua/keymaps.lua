@@ -92,6 +92,29 @@ normal_default("<leader>udc", function()
   d.hatch("🐈", 4, "none", s:top_right_corner_strategy())
 end, { desc = "release poop" })
 
+-- Navbuddy
+normal_default("<leader>nb", ":Navbuddy<CR>", { desc = "Open Navbuddy" })
+
+-- Aerial
+normal_default("<leader>nao", function()
+  local aerial = require("aerial")
+  aerial.open()
+  aerial.focus()
+end, { desc = "Open and focus on aerial" })
+normal_default("<leader>nat", ":AerialToggle<CR>", { desc = "Toggle Aerial" })
+
+-- Notify
+normal_default(
+  "<C-n>",
+  "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
+  { desc = "Dismiss notifications" }
+)
+insert_default(
+  "<C-n>",
+  "<cmd>lua require'notify'.dismiss { silent = true, pending = true }<cr>",
+  { desc = "Dismiss notifications" }
+)
+
 return {
   for_lsp = function(buffer_number)
     local normal_default_buffer = function(sequences, command, opt_extend)
