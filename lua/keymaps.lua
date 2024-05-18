@@ -240,7 +240,6 @@ local function all_buffers_setup()
   normal("<F3>", "<cmd>lua require'dap'.step_over()<cr>")
   normal("<F4>", "<cmd>lua require'dap'.step_out()<cr>")
 
-  normal("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
   normal("<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
   normal("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>")
   normal("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>")
