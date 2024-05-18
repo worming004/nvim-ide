@@ -1,7 +1,7 @@
 local elixir_ls_debugger = vim.fn.exepath "elixir-ls-debugger"
 
 return {
-  config = {
+  configurations = {
     {
       type = "mix_task",
       name = "phoenix server",
@@ -10,10 +10,13 @@ return {
       projectDir = "${workspaceFolder}",
       exitAfterTaskReturns = false,
       debugAutoInterpretAllModules = false,
-    }
+    },
   },
-  dap_adapter = {
-    type = "executable",
-    command = elixir_ls_debugger,
+  adapters = {
+    mix_task = {
+      type = 'executable',
+      command = elixir_ls_debugger,
+      args = {}
+    }
   }
 }

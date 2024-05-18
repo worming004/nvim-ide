@@ -60,16 +60,34 @@ return {
         dap.listeners.after.event_initialized["dapui_config"] = dapui.open
         dap.listeners.before.event_terminated["dapui_config"] = dapui.close
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
+        dap.listeners.before.event_exited.dapui_config = dapui.close
+
+
+        ---Configure daps
+        ---@param name string|string[]
+        ---@param c any
+        local function merge_into_dap(name, c)
+          if type(name) == "table" then
+            for _, single_name in ipairs(name) do
+              dap.configurations[single_name] = c.configurations
+            end
+          else
+            dap.configurations[name] = c.configurations
+          end
+          table.merge_dictionary(dap.adapters, c.adapters)
+        end
 
         local dotnet_config = require "plugins.dap.dotnet"
-        dap.configurations.cs = dotnet_config
-        dap.configurations.fsharp = dotnet_config
+        merge_into_dap({ "cs", "fsharp" }, dotnet_config)
+
         local elixir_config = require "plugins.dap.elixir_ls"
-        dap.configurations.elixir = elixir_config.config
-        dap.adapters.mix_task = elixir_config.dap_adapter
+        merge_into_dap("elixir", elixir_config)
+
         local go_config = require "plugins.dap.go"
-        dap.configurations.go = go_config.config
-        dap.adapters.go = go_config.adapter
+        merge_into_dap("go", go_config)
+
+        local lua_config = require "plugins.dap.lua"
+        merge_into_dap("lua", lua_config)
 
         dap.adapters.coreclr = {
           type = "executable",

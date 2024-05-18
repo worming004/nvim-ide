@@ -1,3 +1,5 @@
+local netcoredbg = vim.fn.exepath "netcoredbg"
+
 local function dotnet_build_project()
   local default_path = vim.fn.getcwd() .. "/"
   if vim.g["dotnet_last_proj_path"] ~= nil then
@@ -17,33 +19,30 @@ local function dotnet_build_project()
   end
 end
 local function dotnet_get_dll_path()
-  local request = function()
-    return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-  end
-
-  if vim.g["dotnet_last_dll_path"] == nil then
-    vim.g["dotnet_last_dll_path"] = request()
-  else
-    if
-        vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1
-    then
-      vim.g["dotnet_last_dll_path"] = request()
-    end
-  end
-
-  return vim.g["dotnet_last_dll_path"]
+  local f = vim.fn.input("Enter path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+  vim.notify(f)
+  return f
 end
 
 return {
-  {
-    type = "coreclr",
-    name = "launch - netcoredbg",
-    request = "launch",
-    program = function()
-      if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
-        dotnet_build_project()
-      end
-      return dotnet_get_dll_path()
-    end,
+  adapters = {
+    coreclr = {
+      type = "executable",
+      command = netcoredbg,
+      args = { '--interpreter=vscode' }
+    }
+  },
+  configurations = {
+    {
+      type = "coreclr",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+        if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+          dotnet_build_project()
+        end
+        return dotnet_get_dll_path()
+      end,
+    }
   },
 }
