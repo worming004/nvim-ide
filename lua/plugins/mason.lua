@@ -24,7 +24,7 @@ return {
       max_concurrent_installers = 4,
     })
     require("mason-lspconfig").setup {
-      ensure_installed = table.merge(require("utils").servers, require("utils").dap),
+      ensure_installed = require("utils").servers,
       automatic_installation = true,
     }
   end,
