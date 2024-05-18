@@ -1,3 +1,4 @@
+require "helpers"
 require "options"
 require "plugin-loader"
 require("keymaps").all_buffers_setup()

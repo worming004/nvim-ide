@@ -232,6 +232,31 @@ local function all_buffers_setup()
   -- Stay in indent mode
   visual("<", "<gv")
   visual(">", ">gv")
+
+  -- Dap
+  normal("<F6>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
+  normal("<F1>", "<cmd>lua require'dap'.continue()<cr>")
+  normal("<F2>", "<cmd>lua require'dap'.step_into()<cr>")
+  normal("<F3>", "<cmd>lua require'dap'.step_over()<cr>")
+  normal("<F4>", "<cmd>lua require'dap'.step_out()<cr>")
+  normal("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
+  normal("<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
+  normal("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>")
+  normal("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>")
+
+
+  -- LspSaga
+  -- normal("K", "<cmd>Lspsaga hover_doc<CR>") -- reactivate in lsp.lua it wants to remove
+  -- normal("gr", "<cmd>Lspsaga finder<CR>")
+  -- normal("gy", "<cmd>Lspsaga finder imp<CR>")
+  -- default({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
+  -- normal("gp", "<cmd>Lspsaga peek_definition<CR>")
+  -- normal("gd", "<cmd>Lspsaga goto_definition<CR>")
+  -- normal("gt", "<cmd>Lspsaga goto_type_definition<CR>")
+  -- normal("gT", "<cmd>Lspsaga peek_type_definition<CR>")
+  -- normal("<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+  -- normal("<leader>si", "<cmd>Lspsaga incoming_calls<CR>")
+  -- normal("<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 end
 
 
@@ -240,8 +265,9 @@ local function lsp_buffer_setup(buffer_number)
   normal_buffer(buffer_number, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
   normal_buffer(buffer_number, "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   normal_buffer(buffer_number, "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  normal_buffer(buffer_number, "<leader>lgr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  normal_buffer(buffer_number, "<leader>lla", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+  normal_buffer(buffer_number, "K", "<cmd> lua vim.lsp.buf.hover()<CR>")
+  normal_buffer(buffer_number, "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  normal_buffer(buffer_number, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
   normal_buffer(buffer_number, "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
   normal_buffer(buffer_number, "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
   normal_buffer(buffer_number, "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
