@@ -53,6 +53,9 @@ wk.register {
     },
     u = {
       name = "utils",
+      d = {
+        name = "duck"
+      },
       n = {
         name = "notify",
       },
