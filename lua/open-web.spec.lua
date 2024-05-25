@@ -29,4 +29,30 @@ describe("open-web", function()
     assert.is_string(result)
     assert.are_equal("https://www.github.com/worming004/nvim-ide", result)
   end)
+
+  it("https format should not be replaced", function()
+    -- arrange
+    local remote = "https://www.github.com/worming004/nvim-ide"
+    local remote_type = "github"
+
+    -- act
+    local result = module.replace_git_format_to_http(remote, remote_type)
+
+    -- assert
+    assert.is_string(result)
+    assert.are_equal("https://www.github.com/worming004/nvim-ide", result)
+  end)
+
+  it("https format but with .git end should be trimmed", function()
+    -- arrange
+    local remote = "https://www.github.com/worming004/nvim-ide.git"
+    local remote_type = "github"
+
+    -- act
+    local result = module.replace_git_format_to_http(remote, remote_type)
+
+    -- assert
+    assert.is_string(result)
+    assert.are_equal("https://www.github.com/worming004/nvim-ide", result)
+  end)
 end)

@@ -24,6 +24,15 @@ local function ends_with(str, ending)
 end
 
 
+local function trim_git(replaced_address)
+  if ends_with(replaced_address, '.git') then
+    vim.notify('trimmed')
+    return string.sub(replaced_address, 1, -5)
+  end
+  return replaced_address
+end
+
+
 -- Bootstrap all the logic in order to discover what is the url heuristicly, and then actually open in browser.
 ---@param self table this is the instance of the class
 M.open_current_buffer_on_web = function(self)
@@ -47,7 +56,7 @@ M.open_current_buffer_on_web = function(self)
   self.remote_type = type[2]
 
   self.replaced_address = self.replace_git_format_to_http(self.remote, self.remote_type)
-  self.replaced_address = self:trim_git()
+  self.replaced_address = trim_git(self.replaced_address)
   self.relative_path = gitutils:get_relative_path_from_git_root()
 
   self.url = self:set_relative_path_to_replace_address()
@@ -82,6 +91,7 @@ end
 ---@param remote_type remote_type
 ---@return string|number
 M.replace_git_format_to_http = function(remote, remote_type)
+  remote = trim_git(remote)
   if string.find(remote, 'http') then
     return remote
   end
@@ -101,14 +111,7 @@ M.replace_git_format_to_http = function(remote, remote_type)
 end
 
 -- if remote end with '.git' then remove it
-M.trim_git = function(self)
-  if ends_with(self.replaced_address, '.git') then
-    vim.notify('trimmed')
-    return string.sub(self.replaced_address, 1, -5)
-  end
-  return self.replaced_address
-end
-
+M.trim_git = trim_git
 M.set_relative_path_to_replace_address = function(self)
   if self.remote_type == "github" then
     return self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
