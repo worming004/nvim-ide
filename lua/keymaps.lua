@@ -258,6 +258,9 @@ local function all_buffers_setup()
   -- normal("<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
   -- normal("<leader>si", "<cmd>Lspsaga incoming_calls<CR>")
   -- normal("<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
+
+  -- Plenary
+  normal("<leader>tlf", ":PlenaryBustedFile %<CR>", { desc = "Run tests from current buffer" })
 end
 
 
