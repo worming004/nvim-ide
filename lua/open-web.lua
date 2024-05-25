@@ -56,9 +56,6 @@ M.replace_git_format_to_http = function(self)
   end
 end
 
-M.should_make_replacement = function(self)
-  return not string.find(self.remote, 'http')
-end
 M.set_relative_path_to_replace_address = function(self)
   if self.type == "github" then
     return self.replaced_address .. '/blob/' .. self.current_branch .. '/' .. self.relative_path
