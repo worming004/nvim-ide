@@ -30,14 +30,23 @@ M.open_current_buffer_on_web = function(self)
   self.remote = trim(vim.fn.system({ 'git', 'remote', 'get-url', 'origin' }))
   self.current_branch = gitutils:get_current_branch_name()
 
-  local type = self:detect_remote_type()
+  ---@class result
+  ---@field remote string -- initial remote address
+  ---@field current_branch string -- current branch name
+  ---@field remote_type remote_type -- enum like github, gitlab, azure
+  ---@field url string -- result, what url to open
+  ---@field replaced_address string internal field, this is a constantly updated value in order to find what is the address to return
+  ---@field relative_path string internal field, this is a constantly updated value in order to find what is the path of the file
+  local result
+
+  local type = self.detect_remote_type(self.remote)
   if type[1] ~= 0 then
     error("cannot detect remote remote_type")
   end
 
   self.remote_type = type[2]
 
-  self.replaced_address = self:replace_git_format_to_http()
+  self.replaced_address = self.replace_git_format_to_http(self.remote, self.remote_type)
   self.replaced_address = self:trim_git()
   self.relative_path = gitutils:get_relative_path_from_git_root()
 
@@ -45,37 +54,50 @@ M.open_current_buffer_on_web = function(self)
 
   self:open_url()
 end
-M.detect_remote_type = function(self)
-  if string.match(self.remote, "github") then
+
+---Detect remote type
+---@param remote string
+---@return table
+M.detect_remote_type = function(remote)
+  if string.match(remote, "github") then
     return { 0, "github" }
-  elseif string.match(self.remote, "gitlab") then
+  elseif string.match(remote, "gitlab") then
     return { 0, "gitlab" }
-  elseif string.match(self.remote, "azure") then
+  elseif string.match(remote, "azure") then
     return { 0, "azure" }
   else
-    return { 0, "unknown" }
+    return { 1, "unknown" }
   end
 end
 
-M.should_make_replacement = function(self)
-  return not string.find(self.remote, 'http')
+---detect if remote should be updated
+---@param remote any
+---@return boolean
+M.should_make_replacement = function(remote)
+  return not string.find(remote, 'http')
 end
 
-M.replace_git_format_to_http = function(self)
-  if not self:should_make_replacement() then
-    return self.remote
+---return to https format if input is in ssh format
+---@param remote string
+---@param remote_type remote_type
+---@return string|number
+M.replace_git_format_to_http = function(remote, remote_type)
+  if string.find(remote, 'http') then
+    return remote
   end
-  if not string.find(self.remote, 'git') then
-    return self.remote
+  if not string.find(remote, 'git') then
+    return remote
   end
 
-  if self.remote_type == "github" then
-    local path = string.sub(self.remote, 16, -5)
-    return 'https://github.com/' .. path
+  if remote_type == "github" then
+    local path = string.sub(remote, 16, -5)
+    return 'https://www.github.com/' .. path
   end
-  if self.remote_type == 'azure' then
+  if remote_type == 'azure' then
     vim.notify('todo manage azdo and gitlab')
+    return 2
   end
+  return 1
 end
 
 -- if remote end with '.git' then remove it
