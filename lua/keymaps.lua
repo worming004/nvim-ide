@@ -245,11 +245,12 @@ local function all_buffers_setup()
   normal("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>")
 
 
+  -- test temporarly without to ensure not needed anymore
   -- LspSaga
   -- normal("K", "<cmd>Lspsaga hover_doc<CR>") -- reactivate in lsp.lua it wants to remove
   -- normal("gr", "<cmd>Lspsaga finder<CR>")
   -- normal("gy", "<cmd>Lspsaga finder imp<CR>")
-  default({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
+  -- default({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>")
   -- normal("gp", "<cmd>Lspsaga peek_definition<CR>")
   -- normal("gd", "<cmd>Lspsaga goto_definition<CR>")
   -- normal("gt", "<cmd>Lspsaga goto_type_definition<CR>")
