@@ -48,7 +48,7 @@ M.replace_git_format_to_http = function(self)
   end
 
   if self.type == "github" then
-    local path = string.sub(self.remote, 16, -6)
+    local path = string.sub(self.remote, 16, -5)
     return 'https://github.com/' .. path
   end
   if self.type == 'azure' then
