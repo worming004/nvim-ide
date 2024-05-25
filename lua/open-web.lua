@@ -4,6 +4,10 @@ local gitutils = require('utils.git')
 local utils = require('utils')
 local trim = utils.trim_whitespace
 
+local function ends_with(str, ending)
+  return ending == "" or str:sub(- #ending) == ending
+end
+
 -- This is the main method
 M.open_current_buffer_on_web = function(self)
   self.remote = trim(vim.fn.system({ 'git', 'remote', 'get-url', 'origin' }))
@@ -17,6 +21,7 @@ M.open_current_buffer_on_web = function(self)
   self.type = type[2]
 
   self.replaced_address = self:replace_git_format_to_http()
+  self.replaced_address = self:trim_git()
   self.relative_path = gitutils:get_relative_path_from_git_root()
 
   self.url = self:set_relative_path_to_replace_address()
@@ -54,6 +59,15 @@ M.replace_git_format_to_http = function(self)
   if self.type == 'azure' then
     vim.notify('todo manage azdo and gitlab')
   end
+end
+
+-- if remote end with '.git' then remove it
+M.trim_git = function(self)
+  if ends_with(self.replaced_address, '.git') then
+    vim.notify('trimmed')
+    return string.sub(self.replaced_address, 1, -5)
+  end
+  return self.replaced_address
 end
 
 M.set_relative_path_to_replace_address = function(self)
