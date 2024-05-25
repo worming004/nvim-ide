@@ -26,7 +26,6 @@ end
 
 local function trim_git(replaced_address)
   if ends_with(replaced_address, '.git') then
-    vim.notify('trimmed')
     return string.sub(replaced_address, 1, -5)
   end
   return replaced_address
@@ -56,7 +55,7 @@ M.open_current_buffer_on_web = function(self)
   self.remote_type = type[2]
 
   self.replaced_address = self.replace_git_format_to_http(self.remote, self.remote_type)
-  self.replaced_address = trim_git(self.replaced_address)
+  -- self.replaced_address = trim_git(self.replaced_address)
   self.relative_path = gitutils:get_relative_path_from_git_root()
 
   self.url = self:set_relative_path_to_replace_address()
@@ -95,12 +94,9 @@ M.replace_git_format_to_http = function(remote, remote_type)
   if string.find(remote, 'http') then
     return remote
   end
-  if not string.find(remote, 'git') then
-    return remote
-  end
 
   if remote_type == "github" then
-    local path = string.sub(remote, 16, -5)
+    local path = string.sub(remote, 16, -1)
     return 'https://www.github.com/' .. path
   end
   if remote_type == 'azure' then
