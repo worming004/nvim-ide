@@ -92,6 +92,7 @@ local function all_buffers_setup()
   normal("<leader>oo", ":NvimTreeFocus<CR>")
 
   -- harpoon
+  local aerial = require("aerial")
   local mark = require("harpoon.mark")
   local ui = require("harpoon.ui")
 
@@ -260,7 +261,8 @@ local function all_buffers_setup()
   -- normal("<leader>so", "<cmd>Lspsaga outgoing_calls<CR>")
 
   -- Plenary
-  normal("<leader>tlf", ":PlenaryBustedFile %<CR>", { desc = "Run tests from current buffer" })
+  normal("<leader>tlf", ":PlenaryBustedFile %<CR>", { desc = "Run lua tests from current buffer" })
+  normal("<leader>tld", ":PlenaryBustedDirectory .<CR>", { desc = "Run all lua tests" })
 end
 
 
