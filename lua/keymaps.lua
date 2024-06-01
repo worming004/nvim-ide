@@ -138,9 +138,6 @@ local function all_buffers_setup()
     d.hatch("🐈", 4, "none", s:top_right_corner_strategy())
   end, { desc = "release poop" })
 
-  -- Navbuddy
-  normal("<leader>nb", ":Navbuddy<CR>", { desc = "Open Navbuddy" })
-
   -- Aerial
   normal("<leader>nao", function()
     local aerial = require("aerial")
