@@ -173,10 +173,11 @@ local function all_buffers_setup()
 
   -- Copilot
   normal("<leader>co", ":CopilotChatOpen<CR>", { desc = "open copilot chat" })
-  normal("<leader>cc", ":CopilotChatClose<CR>", { desc = "close copilot chat" })
+  default({ "n", "v" }, "<leader>cc", ":CopilotChatClose<CR>", { desc = "close copilot chat" })
+  default({ "n", "v" }, "<leader>ct", ":CopilotChatToggle<CR>", { desc = "Toggle copilot chat" })
   default({ "n", "v" }, "<leader>ce", ":CopilotChatExplain<CR>", { desc = "explain copilot chat" })
   default({ "n", "v" }, "<leader>cf", ":CopilotChatFix<CR>", { desc = "fix with copilot chat" })
-  default({ "n", "v" }, "<leader>co", ":CopilotChatOptimize<CR>", { desc = "optimize with copilot chat" })
+  default({ "n", "v" }, "<leader>cO", ":CopilotChatOptimize<CR>", { desc = "optimize with copilot chat" })
 
   -- Git
   normal("<leader>ggl", ":!git pull<CR>", { desc = "git pull" })
