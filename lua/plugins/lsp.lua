@@ -4,7 +4,6 @@ local M = {
   event = "BufReadPre",
   dependencies = {
     {
-      "SmiteshP/nvim-navbuddy",
       "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason.nvim",
@@ -35,27 +34,6 @@ local M = {
     --     { "nvim-treesitter/nvim-treesitter" },
     --   },
     -- },
-    {
-      "SmiteshP/nvim-navbuddy",
-      dependencies = {
-        "neovim/nvim-lspconfig",
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim",
-        "numToStr/Comment.nvim",
-        "nvim-telescope/telescope.nvim",
-      },
-      config = function()
-        local navbuddy = require "nvim-navbuddy"
-        navbuddy.setup {
-          window = {
-            border = "double",
-            position = "90%",
-          },
-          lsp = { auto_attach = true },
-        }
-      end,
-      cmd = "Navbuddy",
-    },
     { "folke/neodev.nvim", opts = {} },
   },
 }

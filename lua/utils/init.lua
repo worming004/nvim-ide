@@ -27,16 +27,8 @@ M.servers = {
   "zls",
 }
 
-M.dap = {
-  -- ensure it can be listed and installed
-  -- "elixir-ls",
-  -- "delve",
-  -- "netcoredbg",
-  -- "bzl",
-}
-
 M.execute_then_come_back_at_original_position = function(fn)
-  local row, column = table.unpack(vim.api.nvim_win_get_cursor(0))
+  local row, column = unpack(vim.api.nvim_win_get_cursor(0))
   fn()
   vim.api.nvim_win_set_cursor(0, { row, column })
 end
