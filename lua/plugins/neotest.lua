@@ -7,13 +7,19 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "jfpedroza/neotest-elixir",
-    "Issafalcon/neotest-dotnet"
+    "Issafalcon/neotest-dotnet",
+    "nvim-neotest/neotest-go"
   },
   config = function()
     require("neotest").setup({
       adapters = {
         require("neotest-elixir"),
-        require("neotest-dotnet")
+        require("neotest-dotnet")({
+          discovery_root = "solution"
+        }),
+        require("neotest-go")({
+          recursive_run = true
+        })
       },
     })
   end,

@@ -261,6 +261,15 @@ local function all_buffers_setup()
   -- Plenary
   normal("<leader>tlf", ":PlenaryBustedFile %<CR>", { desc = "Run lua tests from current buffer" })
   normal("<leader>tld", ":PlenaryBustedDirectory .<CR>", { desc = "Run all lua tests" })
+
+  -- Neotest
+  local runTestFromCwd = function()
+    require("neotest").run.run(vim.fn.getcwd())
+  end
+  default({ "n", "v" }, "<C-t>", runTestFromCwd, { desc = "Run all tests" })
+  normal("<leader>to", ":Neotest output-panel<CR>", { desc = "Open Neotest output panel" })
+  normal("<leader>tr", runTestFromCwd, { desc = "Run all tests" })
+  normal("<leader>ts", ":Neotest summary<CR>", { desc = "Open test summary" })
 end
 
 
