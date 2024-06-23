@@ -263,13 +263,22 @@ local function all_buffers_setup()
   normal("<leader>tld", ":PlenaryBustedDirectory .<CR>", { desc = "Run all lua tests" })
 
   -- Neotest
-  local runTestFromCwd = function()
-    require("neotest").run.run(vim.fn.getcwd())
-  end
-  default({ "n", "v" }, "<C-t>", runTestFromCwd, { desc = "Run all tests" })
-  normal("<leader>to", ":Neotest output-panel<CR>", { desc = "Open Neotest output panel" })
-  normal("<leader>tr", runTestFromCwd, { desc = "Run all tests" })
+  default({ "n", "v" }, "<C-t>", function() require("neotest").run.run(vim.fn.getcwd()) end, { desc = "Run all tests" })
+  normal("<leader>tra", function() require("neotest").run.run(vim.fn.getcwd()) end, { desc = "Run all tests" })
+  normal("<leader>trf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Run file tests" })
+  normal("<leader>trf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Run file tests" })
+  -- elixir special case
+  normal("<leader>trea", function() require("neotest").run.run("test") end, { desc = "Run all tests" })
+
+  normal("<leader>tds", function() require("neotest").run.run({ strategy = "dap" }) end, { desc = "Debug single test" })
+
   normal("<leader>ts", ":Neotest summary<CR>", { desc = "Open test summary" })
+  normal("<leader>to", ":Neotest output-panel<CR>", { desc = "Open Neotest output panel" })
+
+  normal("<leader>ntn", function() require("neotest").jump.next({ status = "failed" }) end,
+    { desc = "Go to next failling test" })
+  normal("<leader>ntp", function() require("neotest").jump.previous({ status = "failed" }) end,
+    { desc = "Go to previous failling test" })
 end
 
 
