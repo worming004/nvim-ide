@@ -9,6 +9,7 @@ return {
     "jfpedroza/neotest-elixir",
     "Issafalcon/neotest-dotnet",
     "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-jest"
   },
   config = function()
     require("neotest").setup({
@@ -20,7 +21,14 @@ return {
         }),
         require("neotest-go")({
           recursive_run = true
-        })
+        }),
+        require("neotest-jest")({
+          jestCommand = "npm test --",
+          env = { CI = true },
+          cwd = function(path)
+            return vim.fn.getcwd()
+          end,
+        }),
       },
     })
   end,
