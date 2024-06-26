@@ -14,7 +14,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   callback = function()
     if vim.g.autoformat then
       if not require("utils").check_command_exists("prettier", {}) then
-        return
+        vim.notify("Installing prettier")
+        vim.fn.system { 'npm', 'install', '-g', 'prettier' }
       end
       local buffer_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
       local buffer_content = vim.fn.join(buffer_lines, '\n')
