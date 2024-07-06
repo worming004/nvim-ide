@@ -11,7 +11,10 @@ return {
     "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-jest"
   },
-  config = function()
+  opts = function(_, opts)
+    opts.adapters = opts.adapters or {}
+  end,
+  config = function(_, opts)
     require("neotest").setup({
       adapters = {
         require("neotest-elixir"),
@@ -20,7 +23,11 @@ return {
           mix_task = { "test.interactive" }
         }),
         require("neotest-go")({
-          recursive_run = true
+          recursive_run = true,
+          experimental = {
+            test_table = true,
+          },
+          args = { "-count=1", "-timeout=60s" }
         }),
         require("neotest-jest")({
           jestCommand = "npm test --",
