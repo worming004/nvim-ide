@@ -279,6 +279,8 @@ local function all_buffers_setup()
     { desc = "Go to next failling test" })
   normal("<leader>ntp", function() require("neotest").jump.previous({ status = "failed" }) end,
     { desc = "Go to previous failling test" })
+
+  normal("<leader>-", "\"_", { desc = "do not override registry" })
 end
 
 
