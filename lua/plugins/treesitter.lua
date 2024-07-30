@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
+  build = ":TSUpdate",
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-tree/nvim-web-devicons",
@@ -75,6 +76,7 @@ return {
         "tsx",
         "typescript",
         "vim",
+        "vimdoc",
         "vhs",
         "yaml",
         "zig"
