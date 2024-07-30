@@ -21,7 +21,7 @@ return {
         },
       },
       log_level = vim.log.levels.INFO,
-      max_concurrent_installers = 4,
+      max_concurrent_installers = 6,
     })
     require("mason-lspconfig").setup {
       ensure_installed = require("utils").servers,
