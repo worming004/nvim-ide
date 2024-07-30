@@ -37,6 +37,8 @@ return {
     }
 
     require "nvim-treesitter.configs".setup {
+      auto_install = true,
+      log_level = 1,
       ensure_installed = {
         "bash",
         "bicep",
