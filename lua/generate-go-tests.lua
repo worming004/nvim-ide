@@ -6,12 +6,8 @@ end
 
 local utils = require "utils"
 
-local function ensure_go_tests_cmd_exists()
-  local exists = utils.check_command_exists("gotests", { warn = false })
-  if exists ~= 1 then
-    vim.fn.system { 'go', 'install', 'github.com/cweill/gotests/gotests@latest' }
-  end
-  return exists
+local function ensure_go_tests_is_installed()
+  utils.ensure_gotests_is_installed()
 end
 
 local function generate_test_file_name()
@@ -30,7 +26,7 @@ local function redirect_to_test_file()
 end
 
 vim.api.nvim_create_user_command("GenerateNamedGoTest", function(_)
-  ensure_go_tests_cmd_exists()
+  ensure_go_tests_is_installed()
   local filepath = vim.fn.expand "%:p"
   local current_word = vim.fn.expand "<cword>"
 
@@ -40,7 +36,7 @@ vim.api.nvim_create_user_command("GenerateNamedGoTest", function(_)
 end, opts_with_desc(opts, "Generate go test for function under cursor"))
 
 vim.api.nvim_create_user_command("GenerateFileGoTest", function(_)
-  ensure_go_tests_cmd_exists()
+  ensure_go_tests_is_installed()
   local filepath = vim.fn.expand "%:p"
 
   vim.fn.system({ 'gotests', '-w', '-all', filepath })
@@ -49,7 +45,7 @@ vim.api.nvim_create_user_command("GenerateFileGoTest", function(_)
 end, opts_with_desc(opts, "Generate go test for active buffer"))
 
 vim.api.nvim_create_user_command("GeneratePackageGoTest", function(_)
-  ensure_go_tests_cmd_exists()
+  ensure_go_tests_is_installed()
   local filepath = vim.fn.expand "%:p"
 
   vim.fn.system({ 'gotests', '-w', '-all', filepath })

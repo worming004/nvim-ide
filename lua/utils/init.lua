@@ -27,14 +27,7 @@ M.servers = {
   "zls",
 }
 
-M.execute_then_come_back_at_original_position = function(fn)
-  local row, column = unpack(vim.api.nvim_win_get_cursor(0))
-  fn()
-  vim.api.nvim_win_set_cursor(0, { row, column })
-end
-
-
-M.check_command_exists = function(command, opts)
+local function check_command_exists(command, opts)
   local options = { warn = true }
   if opts then options = vim.tbl_extend('force', options, opts) end
 
@@ -43,6 +36,28 @@ M.check_command_exists = function(command, opts)
     print('command ' .. command .. ' is not installed')
   end
   return executable == 1
+end
+
+M.execute_then_come_back_at_original_position = function(fn)
+  local row, column = unpack(vim.api.nvim_win_get_cursor(0))
+  fn()
+  vim.api.nvim_win_set_cursor(0, { row, column })
+end
+
+
+M.check_command_exists = check_command_exists
+
+local function ensure_is_installed(command, install)
+  local exists = check_command_exists(command, { warn = false })
+  if exists ~= 1 then
+    install()
+  end
+  return exists
+end
+
+M.ensure_gotests_is_installed = function()
+  ensure_is_installed("gotests",
+    function() vim.fn.system { 'go', 'install', 'github.com/cweill/gotests/gotests@latest' } end)
 end
 
 M.redirect_user_to_file = function(fileName)
