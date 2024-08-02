@@ -1,73 +1,26 @@
 local wk = require "which-key"
 
-wk.register {
-  ["<leader>"] = {
-    b = {
-      name = "buffer",
-    },
-    c = {
-      name = "copilot",
-    },
-    d = {
-      name = "dap",
-    },
-    e = {
-      name = "edit",
-    },
-    f = {
-      name = "telescope / search",
-      g = "git"
-    },
-    g = {
-      name = "git",
-      g = {
-        name = "git"
-      }
-    },
-    k = {
-      name = "kube"
-    },
-    l = {
-      name = "lsp",
-      l = {
-        name = "admin"
-      },
-      g = {
-        name = "go to"
-      }
-    },
-    n = {
-      name = "navigation",
-      h = {
-        name = "harpoon",
-      }
-    },
-    o = {
-      name = "nvim-tree",
-    },
-    q = {
-      name = "quick quit"
-    },
-    t = {
-      name = "test",
-    },
-    u = {
-      name = "utils",
-      d = {
-        name = "duck"
-      },
-      n = {
-        name = "notify",
-      },
-    },
-    v = {
-      name = "view",
-      w = {
-        name = "workspace",
-      }
-    },
-    w = {
-      name = "write"
-    }
-  },
-}
+function l(toappend)
+  return "<leader>" .. toappend
+end
+
+wk.add({
+  { l("c"),  group = "copilot" },
+  { l("d"),  group = "dap" },
+  { l("e"),  group = "edit" },
+  { l("f"),  group = "telescope / search" },
+  { l("fg"), group = "git" },
+  { l("g"),  group = "git" },
+  { l("gg"), group = "git" },
+  { l("k"),  group = "kube" },
+  { l("l"),  group = "lsp" },
+  { l("la"), group = "lifecycle" },
+  { l("n"),  group = "navigation" },
+  { l("o"),  group = "nvim-tree" },
+  { l("q"),  group = "quick quit" },
+  { l("t"),  group = "test" },
+  { l("u"),  group = "utils" },
+  { l("ud"), group = "duck?" },
+  { l("v"),  group = "view" },
+  { l("w"),  group = "write",             desc = "write helper" },
+})
