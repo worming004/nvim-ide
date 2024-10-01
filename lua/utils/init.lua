@@ -22,7 +22,7 @@ M.servers = {
   "sqlls",
   "taplo",
   "terraformls",
-  "tsserver",
+  "ts_ls",
   "yamlls",
   "zls",
 }
