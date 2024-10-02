@@ -30,6 +30,11 @@ return {
       type = "executable",
       command = netcoredbg,
       args = { '--interpreter=vscode' }
+    },
+    netcoredbg = {
+      type = "executable",
+      command = netcoredbg,
+      args = { '--interpreter=vscode' }
     }
   },
   configurations = {
