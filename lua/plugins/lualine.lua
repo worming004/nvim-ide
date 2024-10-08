@@ -17,13 +17,6 @@ return {
       always_visible = true,
     }
 
-    local diff = {
-      "diff",
-      colored = false,
-      symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-      cond = hide_in_width,
-    }
-
     local filetype = {
       "filetype",
       icons_enabled = true,
@@ -51,7 +44,7 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
         lualine_c = { "filename", diagnostics, "windows" },
-        lualine_x = { diff, spaces, "encoding", filetype },
+        lualine_x = { spaces, "encoding", filetype },
         lualine_y = { location },
         lualine_z = { "progress" },
       },
