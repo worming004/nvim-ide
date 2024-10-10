@@ -130,12 +130,6 @@ local function all_buffers_setup()
   normal("<leader>udd", function() require("duck").hatch() end, { desc = "release a duck" })
   normal("<leader>uds", function() require("duck").hatch('ඞ', 5) end, { desc = "release sus" })
   normal("<leader>udp", function() require("duck").hatch('💩', 50) end, { desc = "release poop" })
-  normal("<leader>udc", function()
-    local d = require("duck")
-    local s = require("utils.duck_strategy")
-    d.hatch("🦆", 5, "none", s:top_right_corner_strategy())
-    d.hatch("🐈", 4, "none", s:top_right_corner_strategy())
-  end, { desc = "release poop" })
 
   -- Aerial
   normal("<leader>nao", function()
