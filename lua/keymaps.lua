@@ -210,6 +210,7 @@ local function all_buffers_setup()
   -- Kubectl
   normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
   normal("<leader>kd", ":KubeDelete<CR>", { desc = "kubectl delete" })
+  normal("<leader>kt", ":KubeApplyDryRun<CR>", { desc = "kubectl apply with dry run server side" })
 
   -- Resize
   normal("<leader>rj", "<cmd>resize -20<CR>", { desc = "Big horizontal resize negative" })

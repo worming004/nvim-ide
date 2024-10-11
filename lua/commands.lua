@@ -59,6 +59,19 @@ vim.api.nvim_create_user_command("KubeApply", function(_)
   end
 end, opts_with_desc(opts, "Apply current file with kubectl apply -f (be carefull about namespace)"))
 
+vim.api.nvim_create_user_command("KubeApplyDryRun", function(_)
+  if vim.version().minor < 10 then
+    vim.notify("using compat version for neovim < 0.10.0", "warn")
+    local filepath = vim.api.nvim_buf_get_name(0)
+    local command = "!kubectl apply --dry-run=server -f " .. filepath
+    vim.cmd(command)
+  else
+    local kubefile = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+    local command = { 'kubectl', 'apply', '--dry-run=server', '-f', '-' }
+    vim.system(command, { stdin = kubefile }, default_notification_from_stdout_stderr)
+  end
+end, opts_with_desc(opts, "Apply current file with kubectl apply -f (be carefull about namespace)"))
+
 vim.api.nvim_create_user_command("KubeDelete", function(_)
   if vim.version().minor < 10 then
     vim.notify("using compat version for neovim < 0.10.0", "warn")
