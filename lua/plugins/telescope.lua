@@ -40,7 +40,8 @@ local M = {
             ["<C-o>"] = actions.delete_buffer,
             ["<C-i>"] = force_delete_buffer
           }
-        }
+        },
+        dynamic_preview_title = true
       },
       pickers = {
         keymaps = {
