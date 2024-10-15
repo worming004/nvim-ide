@@ -24,6 +24,7 @@ wk.add({
   { l("t"),  group = "test" },
   { l("u"),  group = "utils" },
   { l("ud"), group = "duck?" },
+  { l("um"), group = "markdown" },
   { l("v"),  group = "view" },
   { l("w"),  group = "write",             desc = "write helper" },
 })
