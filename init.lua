@@ -8,7 +8,6 @@ require "open-web"
 require "generate-go-tests"
 require "which-key-group"
 
-
 -- open nvimtree at startup
 local fn = vim.fn
 if fn.bufname('%') == '' then
@@ -16,3 +15,5 @@ if fn.bufname('%') == '' then
     vim.cmd ":NvimTreeFocus"
   end
 end
+
+require "dotnet-build-src"
