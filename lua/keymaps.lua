@@ -275,7 +275,9 @@ local function all_buffers_setup()
     { desc = "Go to previous failling test" })
 
   normal("<leader>-", "\"_", { desc = "do not override registry" })
-  normal("<leader>ump", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in browser" })
+  normal("<leader>umw", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in web browser" })
+
+  normal("<leader>umt", ":Markview toggle<CR>", { desc = "Toggle Markview plugin" })
 end
 
 
