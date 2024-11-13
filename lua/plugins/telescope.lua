@@ -19,8 +19,13 @@ local M = {
       "nvim-lua/plenary.nvim",
       branch = "master"
     },
-    { "xiyaowong/telescope-emoji.nvim" }
-
+    { "xiyaowong/telescope-emoji.nvim" },
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.0.0",
+    },
   },
   config = function()
     local actions = require('telescope.actions')
@@ -54,6 +59,7 @@ local M = {
     telescope.setup(opts)
     telescope.load_extension("luasnip")
     telescope.load_extension("emoji")
+    telescope.load_extension("live_grep_args")
   end,
 }
 

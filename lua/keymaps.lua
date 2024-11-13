@@ -64,7 +64,7 @@ local function all_buffers_setup()
 
   -- Telescope
   normal("<leader>ff", ":Telescope find_files<CR>")
-  normal("<leader>ft", ":Telescope live_grep<CR>")
+  normal("<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
   normal("<leader>fb", ":Telescope buffers<CR>")
   normal("<leader>fk", ":Telescope keymaps<CR>")
   normal("<leader>fr", ":Telescope registers<CR>")
