@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- add linter to file
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-  callback = function()
+  callback = function(args)
     -- try_lint without arguments runs the linters defined in `linters_by_ft`
     -- for the current filetype
     require("lint").try_lint()
