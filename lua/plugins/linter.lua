@@ -14,21 +14,21 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
-      go = { "golangcilint" },
+      -- go = { "golangcilint" },
       zsh = { "zsh" },
     }
 
-    lint.linters.golangcilint.args = {
-      'run',
-      '--out-format',
-      'json',
-      '--show-stats=false',
-      '--print-issued-lines=false',
-      -- '--print-linter-name=false',
-      '--config=~/.config/nvim/linters/golangci-lint.yml',
-      function()
-        return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
-      end
-    }
+    -- lint.linters.golangcilint.args = {
+    --   'run',
+    --   '--out-format',
+    --   'json',
+    --   '--show-stats=false',
+    --   '--print-issued-lines=false',
+    --   -- '--print-linter-name=false',
+    --   '--config=~/.config/nvim/linters/golangci-lint.yml',
+    --   function()
+    --     return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
+    --   end
+    -- }
   end,
 }
