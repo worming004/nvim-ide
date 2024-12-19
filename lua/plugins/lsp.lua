@@ -13,11 +13,12 @@ local M = {
       "Hoffs/omnisharp-extended-lsp.nvim",
       "barreiroleo/ltex_extra.nvim"
     },
-    {
-      "VidocqH/lsp-lens.nvim",
-      lazy = false,
-      opts = {}
-    },
+    -- deactivated for now, make `too many files open bug` when opening huge file. https://github.com/VidocqH/lsp-lens.nvim/issues/41
+    -- {
+    --   "VidocqH/lsp-lens.nvim",
+    --   lazy = false,
+    --   opts = {}
+    -- },
     -- test temporarly without to ensure not needed anymore
     -- {
     --   "nvimdev/lspsaga.nvim",
