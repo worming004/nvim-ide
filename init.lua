@@ -7,6 +7,7 @@ require "autocommands"
 require "open-web"
 require "generate-go-tests"
 require "which-key-group"
+require "make"
 
 -- open nvimtree at startup
 -- if NVIMTREE env variable is not set to 0
