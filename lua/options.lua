@@ -14,9 +14,12 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.iskeyword:append "-"
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.linebreak = true
+vim.opt.inccommand = "split"
+vim.opt.swapfile = false
 
 vim.g.mapleader = " "
 vim.g.autoformat = true
