@@ -20,6 +20,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.linebreak = true
 vim.opt.inccommand = "split"
 vim.opt.swapfile = false
+vim.opt.list = true
 
 vim.g.mapleader = " "
 vim.g.autoformat = true
