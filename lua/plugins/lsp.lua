@@ -13,12 +13,19 @@ local M = {
       "Hoffs/omnisharp-extended-lsp.nvim",
       "barreiroleo/ltex_extra.nvim"
     },
-    -- deactivated for now, make `too many files open bug` when opening huge file. https://github.com/VidocqH/lsp-lens.nvim/issues/41
-    -- {
-    --   "VidocqH/lsp-lens.nvim",
-    --   lazy = false,
-    --   opts = {}
-    -- },
+    {
+      "worming004/lsp-lens.nvim",
+      lazy = false,
+      opts = {
+        target_symbol_kinds = {
+          vim.lsp.protocol.SymbolKind.Function,
+          vim.lsp.protocol.SymbolKind.Method,
+          vim.lsp.protocol.SymbolKind.Interface,
+          vim.lsp.protocol.SymbolKind.Class,
+          vim.lsp.protocol.SymbolKind.Struct, -- This is what you need
+        },
+      }
+    },
     -- test temporarly without to ensure not needed anymore
     -- {
     --   "nvimdev/lspsaga.nvim",
