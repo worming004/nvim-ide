@@ -36,7 +36,8 @@ M.get_relative_path_from_git_root = function(self)
   end
 
   -- Calculate relative path
-  local relative_path = string.gsub(current_buffer_path, git_root, '')
+  -- local relative_path = string.gsub(current_buffer_path, git_root, '')
+  local relative_path = utils.remove_substring(current_buffer_path, git_root)
   relative_path = string.gsub(relative_path, '^/', '') -- remove leading '/'
   return relative_path
 end

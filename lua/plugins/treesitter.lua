@@ -42,7 +42,6 @@ return {
 
     require "nvim-treesitter.configs".setup {
       auto_install = true,
-      log_level = 1,
       ensure_installed = {
         "bash",
         "bicep",
@@ -88,11 +87,10 @@ return {
         "zig"
       },
       ignore_install = { "" }, -- List of parsers to ignore installing
-      sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
-
+      sync_install = true,     -- install languages synchronously (only applied to `ensure_installed`)
       highlight = {
-        enable = true,       -- false will disable the whole extension
-        disable = { "css" }, -- list of language that will be disabled
+        enable = true,         -- false will disable the whole extension
+        disable = { "css" },   -- list of language that will be disabled
       },
       autopairs = {
         enable = true,

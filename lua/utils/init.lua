@@ -93,4 +93,13 @@ M.is_current_win_is_nvimtree = function()
   return require("nvim-tree.utils").is_nvim_tree_buf()
 end
 
+
+M.remove_substring = function(str, substr)
+  -- Escape special characters in the substring
+  local escaped_substr = substr:gsub("([^%w])", "%%%1")
+  -- Replace all occurrences of the escaped substring with an empty string
+  return str:gsub(escaped_substr, "")
+end
+
+
 return M
