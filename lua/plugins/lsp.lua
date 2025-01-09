@@ -26,22 +26,6 @@ local M = {
         },
       }
     },
-    -- test temporarly without to ensure not needed anymore
-    -- {
-    --   "nvimdev/lspsaga.nvim",
-    --   event = "LspAttach",
-    --   config = function()
-    --     require("lspsaga").setup {
-    --       finder = {
-    --         layout = "normal"
-    --       }
-    --     }
-    --   end,
-    --   dependencies = {
-    --     { "nvim-tree/nvim-web-devicons" },
-    --     { "nvim-treesitter/nvim-treesitter" },
-    --   },
-    -- },
     { "folke/neodev.nvim", opts = {} },
   },
 }
