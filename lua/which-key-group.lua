@@ -1,6 +1,6 @@
 local wk = require "which-key"
 
-function l(toappend)
+local function l(toappend)
   return "<leader>" .. toappend
 end
 

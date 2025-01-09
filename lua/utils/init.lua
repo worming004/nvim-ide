@@ -18,6 +18,7 @@ M.servers = {
   "omnisharp",
   "powershell_es",
   "pyright",
+  "regal",
   "rust_analyzer",
   "sqlls",
   "taplo",

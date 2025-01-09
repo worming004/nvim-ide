@@ -29,7 +29,11 @@ return {
     {
       "nvim-treesitter/nvim-treesitter-context",
       event = "VeryLazy",
-    }
+    },
+    {
+      "windwp/nvim-ts-autotag",
+      opts = {},
+    },
   },
   config = function()
     require('ts_context_commentstring').setup {
