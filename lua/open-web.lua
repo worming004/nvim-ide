@@ -57,6 +57,9 @@ M.open_current_buffer_on_web = function(self)
   self.replaced_address = self.replace_git_format_to_http(self.remote, self.remote_type)
   -- self.replaced_address = trim_git(self.replaced_address)
   self.relative_path = gitutils:get_relative_path_from_git_root()
+  if not self.relative_path then
+    return
+  end
 
   self.url = self:set_relative_path_to_replace_address()
 
