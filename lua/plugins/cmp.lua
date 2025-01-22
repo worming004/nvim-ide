@@ -30,6 +30,7 @@ return {
       event = "InsertEnter",
       dependencies = {
         "worming004/friendly-snippets",
+        branch = "main"
       },
     },
     {
