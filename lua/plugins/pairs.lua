@@ -1,1 +1,1 @@
-return { 'echasnovski/mini.pairs', version = '*', event = "VeryLazy", opts = {} }
+return { 'echasnovski/mini.pairs', version = '*', event = "VeryLazy", opts = {}, enabled = false }
