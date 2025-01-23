@@ -23,7 +23,6 @@ return {
           mix_task = { "test.interactive" }
         }),
         require("neotest-go")({
-          recursive_run = true,
           experimental = {
             test_table = true,
           },
