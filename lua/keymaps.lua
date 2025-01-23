@@ -266,6 +266,8 @@ local function all_buffers_setup()
   normal("<leader>trea", function() require("neotest").run.run("test") end, { desc = "Run all tests" })
 
   normal("<leader>tds", function() require("neotest").run.run({ strategy = "dap" }) end, { desc = "Debug single test" })
+  normal("<leader>tdl", function() require("neotest").run.run_last({ strategy = "dap" }) end,
+    { desc = "Debug latest test" })
 
   normal("<leader>ts", ":Neotest summary<CR>", { desc = "Open test summary" })
   normal("<leader>to", ":Neotest output-panel<CR>", { desc = "Open Neotest output panel" })
