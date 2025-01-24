@@ -8,7 +8,18 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "jfpedroza/neotest-elixir",
     "Issafalcon/neotest-dotnet",
-    "nvim-neotest/neotest-go",
+    {
+      "fredrikaverpil/neotest-golang",
+      dependencies = { "leoluz/nvim-dap-go" },
+      opts = {
+        dap_configurations = {
+          type = "go",
+          name = "Attach remote",
+          mode = "remote",
+          request = "attach",
+        }
+      },
+    },
     "nvim-neotest/neotest-jest"
   },
   opts = function(_, opts)
@@ -22,11 +33,15 @@ return {
           discovery_root = "solution",
           mix_task = { "test.interactive" }
         }),
-        require("neotest-go")({
-          experimental = {
-            test_table = true,
-          },
-          args = { "-count=1", "-timeout=60s" }
+        require("neotest-golang")({
+          go_test_args = { "-count=1", "-timeout=60s" },
+          -- dap_mode = "manual",
+          -- dap_manual_config = {
+          --   name = "Debug go tests",
+          --   type = "go", -- Preconfigured DAP adapter name
+          --   request = "launch",
+          --   mode = "test",
+          -- },
         }),
         require("neotest-jest")({
           jestCommand = "npm test --",

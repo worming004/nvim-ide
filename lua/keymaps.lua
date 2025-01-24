@@ -265,8 +265,9 @@ local function all_buffers_setup()
   -- elixir special case
   normal("<leader>trea", function() require("neotest").run.run("test") end, { desc = "Run all tests" })
 
-  normal("<leader>tds", function() require("neotest").run.run({ strategy = "dap" }) end, { desc = "Debug single test" })
-  normal("<leader>tdl", function() require("neotest").run.run_last({ strategy = "dap" }) end,
+  normal("<leader>tds", function() require("neotest").run.run({ strategy = "dap", suite = false }) end,
+    { desc = "Debug single test" })
+  normal("<leader>tdl", function() require("neotest").run.run_last({ strategy = "dap", suite = false }) end,
     { desc = "Debug latest test" })
 
   normal("<leader>ts", ":Neotest summary<CR>", { desc = "Open test summary" })
