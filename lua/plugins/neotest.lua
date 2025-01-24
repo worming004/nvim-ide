@@ -11,14 +11,17 @@ return {
     {
       "fredrikaverpil/neotest-golang",
       dependencies = { "leoluz/nvim-dap-go" },
-      opts = {
-        dap_configurations = {
-          type = "go",
-          name = "Attach remote",
-          mode = "remote",
-          request = "attach",
-        }
-      },
+      config = function()
+        require("dap-go").setup(
+          {
+            dap_configurations = {
+              type = "go",
+              name = "Attach remote",
+              mode = "remote",
+              request = "attach",
+            },
+          })
+      end,
     },
     "nvim-neotest/neotest-jest"
   },
