@@ -35,13 +35,6 @@ return {
         }),
         require("neotest-golang")({
           go_test_args = { "-count=1", "-timeout=60s" },
-          -- dap_mode = "manual",
-          -- dap_manual_config = {
-          --   name = "Debug go tests",
-          --   type = "go", -- Preconfigured DAP adapter name
-          --   request = "launch",
-          --   mode = "test",
-          -- },
         }),
         require("neotest-jest")({
           jestCommand = "npm test --",
