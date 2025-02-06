@@ -1,8 +1,7 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "go",
   callback = function()
-    vim.bo.makeprg = "go build"
-    vim.bo.errorformat = "%f:%l:%c: %m"
+    vim.cmd(":compiler go")
   end,
 })
 
@@ -27,12 +26,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "elixir",
   callback = function()
-    vim.notify("setup make")
     vim.bo.makeprg = "mix compile"
-
     vim.opt_local.errorformat = table.concat({
       "%E%.%#%trror:%m",
-      "%Z%.%# %f:%l:%c:%.%#",
+      -- last line of multiline contains file name, row and col
+      "%Z%.%# %f:%l:%c: %m",
       -- exclude lines with ^ that is positional information
       "%C%.%#│%*[ ]^",
       -- extract error message, this is the actual faulty code
