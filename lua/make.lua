@@ -15,11 +15,12 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- If a .sln file is found, set makeprg; otherwise, show a warning
     if solution_path ~= "" then
-      vim.bo.makeprg = "dotnet build " .. solution_path
+      -- dear reader try 'dotnet build ./my.sln' and 'dotnet build ./my.sln | cat' just to laugh
+      vim.bo.makeprg = "dotnet build " .. solution_path .. " > /home/worming/output"
     else
       vim.notify("No .sln file found in the current project!", vim.log.levels.WARN)
     end
-    vim.bo.errorformat = "%f(%l\\,%c):\\ %t%*[^:]:\\ %m"
+    vim.bo.errorformat = "%f(%l\\,%c): %t%.%#: %m,%-G%.%#"
   end,
 })
 
@@ -37,6 +38,8 @@ vim.api.nvim_create_autocmd("FileType", {
       "%C%.%#│%*[ ]%m",
       -- accept any line as continuation of multiline
       "%C%.%#",
+      -- ignore everything else
+      "%-G%.%#",
     }, ",")
   end
 })
