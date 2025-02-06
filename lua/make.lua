@@ -29,6 +29,16 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.notify("setup make")
     vim.bo.makeprg = "mix compile"
-    vim.bo.errorformat = "%s %f:%l:%c: %m"
+
+    vim.opt_local.errorformat = table.concat({
+      "%E%.%#%trror:%m",
+      "%Z%.%# %f:%l:%c:%.%#",
+      -- exclude lines with ^ that is positional information
+      "%C%.%#│%*[ ]^",
+      -- extract error message, this is the actual faulty code
+      "%C%.%#│%*[ ]%m",
+      -- accept any line as continuation of multiline
+      "%C%.%#",
+    }, ",")
   end
 })
