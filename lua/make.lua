@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- Find the .sln file, starting from the current directory
     local handle = io.popen("find . -name '*.sln' | head -n 1")
-    local solution_path = handle:read("*a"):gsub("\n", "")     -- Remove trailing newline
+    local solution_path = handle:read("*a"):gsub("\n", "") -- Remove trailing newline
     handle:close()
 
     -- If a .sln file is found, set makeprg; otherwise, show a warning
@@ -22,4 +22,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
     vim.bo.errorformat = "%f(%l\\,%c):\\ %t%*[^:]:\\ %m"
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "elixir",
+  callback = function()
+    vim.notify("setup make")
+    vim.bo.makeprg = "mix compile"
+    vim.bo.errorformat = "%s %f:%l:%c: %m"
+  end
 })
