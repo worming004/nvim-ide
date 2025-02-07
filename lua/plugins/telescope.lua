@@ -30,6 +30,7 @@ local M = {
   config = function()
     local actions = require('telescope.actions')
     local opts = {
+      extensions = { live_grep_args = { auto_quoting = true } },
       defaults = {
         layout_config = {
           height = 0.90,
