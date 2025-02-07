@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
     -- If a .sln file is found, set makeprg; otherwise, show a warning
     if solution_path ~= "" then
       -- dear reader try 'dotnet build ./my.sln' and 'dotnet build ./my.sln | cat' just to laugh
-      vim.bo.makeprg = "dotnet build " .. solution_path .. " > /home/worming/output"
+      vim.bo.makeprg = "dotnet build " .. solution_path .. "  2>&1 \\| awk '/Build FAILED/ {exit} {print}'"
     else
       vim.notify("No .sln file found in the current project!", vim.log.levels.WARN)
     end
