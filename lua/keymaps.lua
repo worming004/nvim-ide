@@ -60,7 +60,8 @@ local function visual(sequences, command, opt_extend)
 end
 
 local function all_buffers_setup()
-  insert("jk", "<ESC>")
+  -- Modes
+  insert("jk", "<ESC>", { desc = "Escape in insert mode" })
 
   -- Telescope
   normal("<leader>ff", ":Telescope find_files<CR>")
@@ -79,7 +80,7 @@ local function all_buffers_setup()
   normal("<leader>fgc", ":Telescope git_commits<CR>")
   normal("<leader>fs", ":Telescope luasnip<CR>")
 
-  -- Windown navigation
+  -- Window navigation
   normal("<C-h>", "<C-w>h")
   normal("<C-j>", "<C-w>j")
   normal("<C-k>", "<C-w>k")
@@ -208,6 +209,7 @@ local function all_buffers_setup()
   -- Windows
   normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
   normal("<leader>qw", ":q<CR>", { desc = "quit current window" })
+  normal("<C-x>", ":q<CR>", { desc = "quit current window" })
 
   -- Kubectl
   normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
@@ -279,9 +281,11 @@ local function all_buffers_setup()
   normal("<leader>ntp", function() require("neotest").jump.previous({ status = "failed" }) end,
     { desc = "Go to previous failling test" })
 
+  -- Registry
   normal("<leader>-", "\"_", { desc = "do not override registry" })
-  normal("<leader>umw", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in web browser" })
 
+  -- Markdown
+  normal("<leader>umw", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in web browser" })
   normal("<leader>umt", ":Markview toggle<CR>", { desc = "Toggle Markview plugin" })
 end
 
