@@ -282,7 +282,7 @@ local function all_buffers_setup()
     { desc = "Go to previous failling test" })
 
   -- Registry
-  normal("<leader>-", "\"_", { desc = "do not override registry" })
+  normal("<leader>-", "\"_", { desc = "do not override registry", silent = false })
 
   -- Markdown
   normal("<leader>umw", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in web browser" })
