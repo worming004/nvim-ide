@@ -184,27 +184,6 @@ local function all_buffers_setup()
     vim.cmd('bprevious')
   end)
 
-  -- End of line stuffes
-  normal("<leader>e;", function()
-    utils.execute_then_come_back_at_original_position(function()
-      vim.cmd ":normal A;"
-    end)
-  end, { desc = "Insert semi colon (;) at end of line" })
-  insert("<C-e>;", function()
-    utils.execute_then_come_back_at_original_position(function()
-      vim.cmd ":normal A;"
-    end)
-  end, { desc = "Insert semi colon (;) at end of line" })
-  normal("<leader>e,", function()
-    utils.execute_then_come_back_at_original_position(function()
-      vim.cmd ":normal A,"
-    end)
-  end, { desc = "Insert colon (,) at end of line" })
-  insert("<C-e>,", function()
-    utils.execute_then_come_back_at_original_position(function()
-      vim.cmd ":normal A,"
-    end)
-  end, { desc = "Insert semi colon (,) at end of line" })
 
   -- Windows
   normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
@@ -310,8 +289,51 @@ local function lsp_buffer_setup(buffer_number)
   insert_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
+local function add_string_at_end_of_line(str)
+  return function()
+    utils.execute_then_come_back_at_original_position(function()
+      vim.cmd(":normal A" .. str)
+    end)
+  end
+end
+
+-- for golang, new variable is made with := sign
+local function replace_equal_by_colon_equal()
+  local initial_line = vim.api.nvim_get_current_line()
+  local new_line = initial_line:gsub("=", ":=", 1):gsub("::=", ":=", 1)
+  vim.api.nvim_set_current_line(new_line)
+
+  -- Move cursor to right if cursor is after the equal sign
+  if new_line ~= initial_line then
+    local cursor_col = vim.api.nvim_win_get_cursor(0)[2] + 1
+    local equal_pos = new_line:find(":=")
+
+    if cursor_col > equal_pos then
+      vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1], cursor_col + 1 })
+    end
+  end
+end
+
+local function keymap_for_go(_buffer_number)
+  vim.keymap.set("n", "<leader>=", replace_equal_by_colon_equal,
+    { desc = "Make variable assignment onto new variable (= become :=)", buffer = true })
+end
+
+local function keymap_for_csharp(_buffer_number)
+  vim.keymap.set("n", "<leader>e;", add_string_at_end_of_line(";"),
+    { desc = "Insert semi colon (;) at end of line", buffer = true })
+  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(";"),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+  vim.keymap.set("i", "<C-e>;", add_string_at_end_of_line(";"),
+    { desc = "Insert semi colon (;) at end of line", buffer = true })
+  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(";"),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+end
+
 
 return {
   all_buffers_setup = all_buffers_setup,
   lsp_buffer_setup = lsp_buffer_setup,
+  keymap_for_go = keymap_for_go,
+  keymap_for_csharp = keymap_for_csharp,
 }

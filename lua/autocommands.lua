@@ -1,3 +1,5 @@
+local keymaps = require("keymaps")
+
 -- Automatically close tab/vim when nvim-tree is the last window in the tab
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   nested = true,
@@ -59,4 +61,17 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
     -- for the current filetype
     require("lint").try_lint()
   end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "go" },
+  callback = function()
+    keymaps.keymap_for_go(0)
+  end
+})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "cs" },
+  callback = function()
+    keymaps.keymap_for_csharp(0)
+  end
 })
