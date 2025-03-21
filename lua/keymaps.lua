@@ -89,6 +89,7 @@ local function all_buffers_setup()
   -- Lsp
   normal("<leader>uf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>")
   normal("<leader>llr", "<cmd>LspRestart<cr>")
+  normal("<leader>llst", "<cmd>LspStop<cr>")
 
   -- Nvim-tree
   normal("<leader>oe", ":NvimTreeToggle<CR>")
