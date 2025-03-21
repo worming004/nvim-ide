@@ -323,18 +323,25 @@ end
 local function keymap_for_csharp(_buffer_number)
   vim.keymap.set("n", "<leader>e;", add_string_at_end_of_line(";"),
     { desc = "Insert semi colon (;) at end of line", buffer = true })
-  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(";"),
+  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(","),
     { desc = "Insert comma (,) at end of line", buffer = true })
   vim.keymap.set("i", "<C-e>;", add_string_at_end_of_line(";"),
     { desc = "Insert semi colon (;) at end of line", buffer = true })
-  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(";"),
+  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(","),
     { desc = "Insert comma (,) at end of line", buffer = true })
 end
 
+local function keymap_for_lua(_buffer_number)
+  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+end
 
 return {
   all_buffers_setup = all_buffers_setup,
   lsp_buffer_setup = lsp_buffer_setup,
   keymap_for_go = keymap_for_go,
   keymap_for_csharp = keymap_for_csharp,
+  keymap_for_lua = keymap_for_lua,
 }
