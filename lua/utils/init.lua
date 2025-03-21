@@ -21,6 +21,7 @@ M.servers = {
   "regal",
   "rust_analyzer",
   "sqlls",
+  -- "systemd-language-server", -- waiting for https://github.com/williamboman/mason-lspconfig.nvim/pull/499
   "taplo",
   "terraformls",
   "ts_ls",
