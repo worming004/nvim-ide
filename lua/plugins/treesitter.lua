@@ -2,11 +2,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile" },
   build = ":TSUpdate",
-  init = function()
-    vim.filetype.add({
-      pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-    })
-  end,
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-tree/nvim-web-devicons",
