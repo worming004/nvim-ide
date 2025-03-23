@@ -82,3 +82,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     keymaps.keymap_for_lua(0)
   end
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "python" },
+  callback = function()
+    keymaps.keymap_for_python(0)
+  end
+})
