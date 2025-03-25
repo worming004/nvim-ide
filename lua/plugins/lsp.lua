@@ -4,7 +4,7 @@ local M = {
   event = "BufReadPre",
   dependencies = {
     {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason.nvim",
         event = "BufReadPre",
@@ -32,11 +32,11 @@ local M = {
 
 
 function M.config()
-  local cmp_nvim_lsp = require "cmp_nvim_lsp"
+  -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   -- not sure what this is doing
   -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+  -- capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 
   -- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
