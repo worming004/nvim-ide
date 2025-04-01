@@ -174,8 +174,8 @@ local function all_buffers_setup()
   default({ "n", "v" }, "<leader>cO", ":CopilotChatOptimize<CR>", { desc = "optimize with copilot chat" })
 
   -- Git
-  normal("<leader>ggl", ":!git pull<CR>", { desc = "git pull" })
-  normal("<leader>ggp", ":!git push<CR>", { desc = "git push" })
+  normal("<leader>ggp", ":!git pull<CR>", { desc = "git pull" })
+  normal("<leader>ggP", ":!git push<CR>", { desc = "git push" })
 
   -- Buffers
   normal("<S-l>", function()
