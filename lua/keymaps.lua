@@ -221,6 +221,12 @@ local function all_buffers_setup()
   normal("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", { desc = "(debug) Ui toggle" })
   normal("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", { desc = "(debug) Terminate dap" })
 
+  -- Diagnostic
+  normal("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
+  normal("<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
+  normal("<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+  normal("gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
 
   -- test temporarly without to ensure not needed anymore
   -- LspSaga
@@ -274,19 +280,14 @@ local function lsp_buffer_setup(buffer_number)
   normal_buffer(buffer_number, "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   normal_buffer(buffer_number, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
   normal_buffer(buffer_number, "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  normal_buffer(buffer_number, "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
   normal_buffer(buffer_number, "K", "<cmd> lua vim.lsp.buf.hover()<CR>")
   normal_buffer(buffer_number, "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
   normal_buffer(buffer_number, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  normal_buffer(buffer_number, "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-  normal_buffer(buffer_number, "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
   normal_buffer(buffer_number, "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
   normal_buffer(buffer_number, "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   normal_buffer(buffer_number, "<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
   normal_buffer(buffer_number, "<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
-  normal_buffer(buffer_number, "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   normal_buffer(buffer_number, "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-
   insert_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
