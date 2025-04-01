@@ -319,6 +319,10 @@ end
 local function keymap_for_go(_buffer_number)
   vim.keymap.set("n", "<leader>=", replace_equal_by_colon_equal,
     { desc = "Make variable assignment onto new variable (= become :=)", buffer = true })
+  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
 end
 
 local function keymap_for_csharp(_buffer_number)
