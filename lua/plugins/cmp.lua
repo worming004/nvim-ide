@@ -81,6 +81,7 @@ return {
 
     completion = {
       menu = {
+        min_width = 100,
         draw = {
           components = {
             kind_icon = {
