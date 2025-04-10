@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  event = "InsertEnter",
   -- optional: provides snippets for the snippet source
   dependencies = {
     'worming004/friendly-snippets',
@@ -8,7 +9,6 @@ return {
       dependencies = {
         {
           "zbirenbaum/copilot.lua",
-          event = "InsertEnter",
           opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },
