@@ -20,6 +20,7 @@ return {
         },
         {
           'CopilotC-Nvim/CopilotChat.nvim',
+          event = { 'BufEnter' },
           branch = "main",
           dependencies = {
             {
