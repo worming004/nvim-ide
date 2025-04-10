@@ -273,6 +273,11 @@ local function all_buffers_setup()
   -- Markdown
   normal("<leader>umw", ":MarkdownPreview<CR>", { desc = "Toggle markdown preview in web browser" })
   normal("<leader>umt", ":Markview toggle<CR>", { desc = "Toggle Markview plugin" })
+
+  -- Blink
+  normal("<C-n>", function()
+    require("blink.cmp.completion.trigger").show()
+  end, { desc = "Trigger blink menu" })
 end
 
 
