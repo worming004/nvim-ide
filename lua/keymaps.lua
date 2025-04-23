@@ -278,6 +278,9 @@ local function all_buffers_setup()
   normal("<C-n>", function()
     require("blink.cmp.completion.trigger").show()
   end, { desc = "Trigger blink menu" })
+
+  -- Pipeline
+  normal("<leader>upt", "<cmd>Pipeline toggle<CR>", { desc = "Toggle pipeline plugin" })
 end
 
 
