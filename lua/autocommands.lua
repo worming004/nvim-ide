@@ -1,14 +1,16 @@
 local keymaps = require("keymaps")
 
--- Automatically close tab/vim when nvim-tree is the last window in the tab
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  nested = true,
-  callback = function()
-    if require("utils").is_last_win_is_nvimtree() then
-      vim.cmd "quit"
-    end
-  end,
-})
+-- Automatically close tab/vim when nvim-tree is the last window in the tab. Deactivated.
+if false then
+  vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    nested = true,
+    callback = function()
+      if require("utils").is_last_win_is_nvimtree() then
+        vim.cmd "quit"
+      end
+    end,
+  })
+end
 
 -- Run prettier on markdown
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
