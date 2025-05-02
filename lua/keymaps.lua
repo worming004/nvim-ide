@@ -275,8 +275,9 @@ local function all_buffers_setup()
   normal("<leader>umt", ":Markview toggle<CR>", { desc = "Toggle Markview plugin" })
 
   -- Blink
-  normal("<C-n>", function()
-    require("blink.cmp.completion.trigger").show()
+  insert("<C-n>", function()
+    -- require("blink.cmp.completion.trigger").show()
+    require("blink.cmp").show()
   end, { desc = "Trigger blink menu" })
 
   -- Pipeline
