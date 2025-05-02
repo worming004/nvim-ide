@@ -23,6 +23,7 @@ wk.add({
   { l("q"),  group = "quick quit" },
   { l("t"),  group = "test" },
   { l("u"),  group = "utils" },
+  { l("up"), group = "pipeline" },
   { l("ud"), group = "duck?" },
   { l("um"), group = "markdown" },
   { l("v"),  group = "view" },
