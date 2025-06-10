@@ -2,13 +2,39 @@ local M = {
   "neovim/nvim-lspconfig",
   branch = "master",
   event = "BufReadPre",
+  lazy = false,
+  version = "*",
   dependencies = {
     {
       -- "hrsh7th/cmp-nvim-lsp",
       {
         "williamboman/mason.nvim",
         event = "BufReadPre",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        build = ":MasonUpdate",
+        dependencies = {
+          {
+            "williamboman/mason-lspconfig.nvim",
+            config = { automatic_enable = false }
+          }
+        },
+        config = function()
+          require("mason").setup({
+            ui = {
+              border = "none",
+              icons = {
+                package_installed = "◍",
+                package_pending = "◍",
+                package_uninstalled = "◍",
+              },
+            },
+            log_level = vim.log.levels.INFO,
+            max_concurrent_installers = 6,
+          })
+          require("mason-lspconfig").setup {
+            ensure_installed = require("utils").servers,
+            automatic_installation = true,
+          }
+        end
       },
       "Hoffs/omnisharp-extended-lsp.nvim",
       "barreiroleo/ltex_extra.nvim"
