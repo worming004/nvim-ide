@@ -11,9 +11,11 @@ local M = {
         "williamboman/mason.nvim",
         event = "BufReadPre",
         build = ":MasonUpdate",
+        version = "*",
         dependencies = {
           {
             "williamboman/mason-lspconfig.nvim",
+            version = "*",
             config = { automatic_enable = false }
           }
         },
