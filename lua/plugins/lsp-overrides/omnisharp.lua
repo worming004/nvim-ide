@@ -1,4 +1,7 @@
 local config = {
+  cmd = {
+    vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp',
+  },
   enable_import_completion = true,
   -- enable_roslyn_analyzers = true, commented out waiting to get correct optionts configured
   enable_analyzer_support = true,
