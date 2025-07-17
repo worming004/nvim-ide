@@ -3,6 +3,7 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
+    "OXY2DEV/markview.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-tree/nvim-web-devicons",
     "nvim-treesitter/playground",
