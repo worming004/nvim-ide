@@ -129,6 +129,7 @@ local function all_buffers_setup()
   normal("<leader>nx", function() ui.nav_file(2) end, { desc = "open harpoon file 2-x" })
   normal("<leader>nc", function() ui.nav_file(3) end, { desc = "open harpoon file 3-c" })
   normal("<leader>nv", function() ui.nav_file(4) end, { desc = "open harpoon file 4-v" })
+  normal("<leader>nb", function() ui.nav_file(5) end, { desc = "open harpoon file 5-b" })
 
   -- Duck
   normal("<leader>udd", function() require("duck").hatch() end, { desc = "release a duck" })
