@@ -30,8 +30,6 @@ local M = {
           end,
         })
       end
-
-      require("keymaps").lsp_buffer_setup(buffer_number)
     end
 
     for _, server_file_name in pairs(require("utils").servers) do

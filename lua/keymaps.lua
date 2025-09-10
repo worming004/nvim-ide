@@ -283,22 +283,20 @@ local function all_buffers_setup()
 
   -- Pipeline
   normal("<leader>upt", "<cmd>Pipeline toggle<CR>", { desc = "Toggle pipeline plugin" })
-end
 
-
-local function lsp_buffer_setup(buffer_number)
-  normal_buffer(buffer_number, "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  normal_buffer(buffer_number, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  normal_buffer(buffer_number, "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  normal_buffer(buffer_number, "K", "<cmd> lua vim.lsp.buf.hover()<CR>")
-  normal_buffer(buffer_number, "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  normal_buffer(buffer_number, "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  normal_buffer(buffer_number, "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-  normal_buffer(buffer_number, "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  normal_buffer(buffer_number, "<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
-  normal_buffer(buffer_number, "<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
-  normal_buffer(buffer_number, "<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  insert_buffer(buffer_number, "<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  normal("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  normal("gd", vim.lsp.buf.definition)
+  normal("dgd", require('omnisharp_extended').lsp_definition)
+  normal("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  normal("K", "<cmd> lua vim.lsp.buf.hover()<CR>")
+  normal("<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  normal("<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+  normal("<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+  normal("<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  normal("<leader>li", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>")
+  normal("<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
+  normal("<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+  insert("<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 end
 
 local function add_string_at_end_of_line(str)
@@ -366,7 +364,6 @@ end
 
 return {
   all_buffers_setup = all_buffers_setup,
-  lsp_buffer_setup = lsp_buffer_setup,
   keymap_for_go = keymap_for_go,
   keymap_for_csharp = keymap_for_csharp,
   keymap_for_lua = keymap_for_lua,
