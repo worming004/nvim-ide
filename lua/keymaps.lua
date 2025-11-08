@@ -177,6 +177,7 @@ local function all_buffers_setup()
   -- Git
   normal("<leader>ggp", ":!git pull<CR>", { desc = "git pull" })
   normal("<leader>ggP", ":!git push<CR>", { desc = "git push" })
+  normal("<leader>ggfa", ":!git fetch --all --tags --prune --jobs=10<CR>", { desc = "git fetch all prune and tags" })
 
   -- Buffers
   normal("<S-l>", function()
