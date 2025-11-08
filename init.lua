@@ -22,3 +22,13 @@ if os.getenv("NVIMTREE") ~= "0" then
 end
 
 require "dotnet-build-src"
+
+require "lsp"
+
+-- vim.lsp.config('expert', {
+--   cmd = { 'expert' },
+--   root_markers = { 'mix.exs', '.git' },
+--   filetypes = { 'elixir', 'eelixir', 'heex' },
+-- })
+--
+-- vim.lsp.enable 'expert'
