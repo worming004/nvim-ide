@@ -3,7 +3,6 @@ require "options"
 require "plugin-loader"
 require("keymaps").all_buffers_setup()
 require "commands"
-require "autocommands"
 require "open_web"
 require "generate_go_tests"
 require "which-key-group"
@@ -24,6 +23,8 @@ end
 require "dotnet-build-src"
 
 require "lsp"
+
+require "autocommands"
 
 -- vim.lsp.config('expert', {
 --   cmd = { 'expert' },

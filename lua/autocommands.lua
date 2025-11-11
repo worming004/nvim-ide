@@ -12,15 +12,26 @@ if false then
   })
 end
 
--- Run prettier on markdown
+
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.md" },
+  pattern = { "*" },
   callback = function()
-    if vim.g.autoformat then
-      if not require("utils").check_command_exists({"prettier"}, {}) then
+    if not vim.g.autoformat then
+      vim.notify("Autoformat deactivated")
+      return
+    end
+
+    -- default auto format for lsp
+    if vim.fn.expand("%:e") ~= "md" then
+      vim.lsp.buf.format()
+    end
+
+    -- Run prettier on markdown
+    if vim.fn.expand("%:e") == "md" then
+      if not require("utils").check_command_exists("prettier", {}) then
         vim.notify("Installing prettier")
         vim.fn.system { 'npm', 'install', '-g', 'prettier' }
-        vim.fn.notify("it happens that after nodejs update through asdf, prettier require a `asdf reshim` execution")
+        vim.notify("it happens that after nodejs update through asdf, prettier require a `asdf reshim` execution")
       end
       local buffer_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
       local buffer_content = vim.fn.join(buffer_lines, '\n')
@@ -29,11 +40,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       local result = vim.fn.system(cmd)
       local splitted_result = vim.split(result, '\n')
       vim.api.nvim_buf_set_lines(0, 0, -1, false, splitted_result)
-    else
-      vim.notify("Autoformat deactivated")
     end
   end,
 })
+
 
 -- hightligh yanked text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
