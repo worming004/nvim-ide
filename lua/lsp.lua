@@ -1,39 +1,4 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- not sure what this is doing
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-
-
--- local servers = {
---   "angularls",
---   "ansiblels",
---   "bashls",
---   "bicep",
---   "clangd",
---   "cssls",
---   -- "elixirls",
---   "expert",
---   "gopls",
---   "helm_ls",
---   "html",
---   "jsonls",
---   "lua_ls",
---   "jdtls",
---   "ltex",
---   "omnisharp",
---   "powershell_es",
---   "pyright",
---   "regal",
---   "rust_analyzer",
---   "sqlls",
---   -- "systemd-language-server", -- waiting for https://github.com/williamboman/mason-lspconfig.nvim/pull/499
---   "taplo",
---   "terraformls",
---   "ts_ls",
---   "yamlls",
---   "zls",
--- }
-
 
 local manual_config_servers = {
   "ansiblels",
@@ -49,11 +14,23 @@ local manual_config_servers = {
 }
 
 local nvim_lspconfig_servers = {
+  "angularls",
+  "bashls",
+  "clangd",
+  "cssls",
+  "helm_ls",
+  "html",
   "jdtls",
   "ltex",
+  "powershell_es",
   "pyright",
+  "regal",
+  "rust_analyzer",
+  "systemd_ls",
+  "terraformls",
+  "ts_ls",
+  "zls",
 }
-
 
 for _, server_file_name in pairs(manual_config_servers) do
   local file_path = vim.fn.stdpath('config') .. "/lua/lsp/" .. server_file_name .. ".lua"
