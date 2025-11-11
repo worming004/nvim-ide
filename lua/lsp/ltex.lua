@@ -3,29 +3,6 @@
 --                    http://www.apache.org/licenses/
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ltex.lua
 
--- local lang = "fr"
--- local config = {}
--- config = {
---   cmd = { "ltex-ls" },
---   filetypes = { "markdown" },
---   flags = { debounce_text_changes = 300 },
---   settings = {
---     ltex = {
---       language = lang
---     }
---   },
---   extra_on_attach = function(client, bufnr)
---     require("ltex_extra").setup {
---       init_check = true,
---       load_langs = { lang, "en-US" },
---       path = vim.fn.expand('~') .. '/.local/share/ltex',
---     }
---   end,
--- }
--- return config
---
-
-
 local language_id_mapping = {
   bib = 'bibtex',
   plaintex = 'tex',
