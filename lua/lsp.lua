@@ -62,6 +62,7 @@ servers = {
   "jsonls",
   "lua_ls",
   "omnisharp",
+  "pyright",
   "yamlls",
 }
 
