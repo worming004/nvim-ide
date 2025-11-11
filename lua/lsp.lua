@@ -25,8 +25,47 @@ local custom_on_attach = function(client, buffer_number)
   end
 end
 
-for _, server_file_name in pairs(require("utils").servers) do
-  vim.lsp.enable(server_name)
+local servers = {
+  "angularls",
+  "ansiblels",
+  "bashls",
+  "bicep",
+  "clangd",
+  "cssls",
+  -- "elixirls",
+  "expert",
+  "gopls",
+  "helm_ls",
+  "html",
+  "jsonls",
+  "lua_ls",
+  "jdtls",
+  "ltex",
+  "omnisharp",
+  "powershell_es",
+  "pyright",
+  "regal",
+  "rust_analyzer",
+  "sqlls",
+  -- "systemd-language-server", -- waiting for https://github.com/williamboman/mason-lspconfig.nvim/pull/499
+  "taplo",
+  "terraformls",
+  "ts_ls",
+  "yamlls",
+  "zls",
+}
+
+servers = {
+  "gopls",
+  "ansiblels",
+  "yamlls",
+  "jsonls",
+}
+
+
+for _, server_file_name in pairs(servers) do
+  require("lsp." .. server_file_name)
+  vim.lsp.enable(server_file_name)
 end
 
 local signs = {

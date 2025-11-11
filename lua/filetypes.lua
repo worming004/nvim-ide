@@ -1,7 +1,8 @@
 local filetypes = {
   pattern = {
-    ['.*.razor'] = 'razor',
-    [".*/hypr/.*%.conf"] = "hyprlang"
+    ['.*%.razor'] = 'razor',
+    [".*/hypr/.*%.conf"] = "hyprlang",
+    [".*/playbooks/.*%.yml"] = "yaml.ansible"
   }
 }
 

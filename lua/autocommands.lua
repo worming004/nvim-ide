@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- add linter to file
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-  callback = function(args)
+  callback = function(_)
     -- try_lint without arguments runs the linters defined in `linters_by_ft`
     -- for the current filetype
     require("lint").try_lint()
@@ -90,4 +90,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     keymaps.keymap_for_python(0)
   end
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if client.name == "yamlls" then
+      client.server_capabilities.formattingProvider = true
+    end
+  end,
 })
