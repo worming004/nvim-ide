@@ -35,28 +35,37 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- }
 
 
--- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local servers = {
+local manual_config_servers = {
   "ansiblels",
   "bicep",
   "expert",
   "gopls",
   "jsonls",
-  "ltex",
   "lua_ls",
   "omnisharp",
-  "pyright",
   "sqlls",
   "taplo",
   "yamlls",
 }
 
+local nvim_lspconfig_servers = {
+  "jdtls",
+  "ltex",
+  "pyright",
+}
 
-for _, server_file_name in pairs(servers) do
-  require("lsp." .. server_file_name)
+
+for _, server_file_name in pairs(manual_config_servers) do
+  local file_path = vim.fn.stdpath('config') .. "/lua/lsp/" .. server_file_name .. ".lua"
+  if vim.loop.fs_stat(file_path) then
+    require("lsp." .. server_file_name)
+  end
   vim.lsp.enable(server_file_name)
+end
+
+for _, server in pairs(nvim_lspconfig_servers) do
+  require("lspconfig")[server].setup {
+  }
 end
 
 local signs = {
