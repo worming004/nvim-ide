@@ -1,9 +1,9 @@
 -- https://github.com/nvim-lua/plenary.nvim/blob/master/TESTS_README.md
-describe("open-web", function()
+describe("open_web", function()
   local module
 
   before_each(function()
-    module = require "open-web"
+    module = require "open_web"
   end)
 
   it("github repo should be detected as github", function()

@@ -60,6 +60,7 @@ servers = {
   "expert",
   "gopls",
   "jsonls",
+  "lua_ls",
   "yamlls",
 }
 
