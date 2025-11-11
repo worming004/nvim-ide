@@ -41,8 +41,7 @@ for _, server_file_name in pairs(manual_config_servers) do
 end
 
 for _, server in pairs(nvim_lspconfig_servers) do
-  require("lspconfig")[server].setup {
-  }
+  vim.lsp.enable(server)
 end
 
 local signs = {
