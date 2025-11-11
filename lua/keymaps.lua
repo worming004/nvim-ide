@@ -213,15 +213,17 @@ local function all_buffers_setup()
   visual(">", ">gv")
 
   -- Dap
-  normal("<F6>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "(debug) Toggle breakpoing" })
-  normal("<F1>", "<cmd>lua require'dap'.continue()<cr>", { desc = "(debug) Continue" })
-  normal("<F2>", "<cmd>lua require'dap'.step_into()<cr>", { desc = "(debug) step into" })
-  normal("<F3>", "<cmd>lua require'dap'.step_over()<cr>", { desc = "(debug) step over" })
-  normal("<F4>", "<cmd>lua require'dap'.step_out()<cr>", { desc = "(debug) step out" })
+  local dap = require 'dap'
+  local dapui = require 'dapui'
+  normal("<F1>", function() dap.continue() end, { desc = "(debug) Continue" })
+  normal("<F2>", function() dap.step_into() end, { desc = "(debug) step into" })
+  normal("<F3>", function() dap.step_over() end, { desc = "(debug) step over" })
+  normal("<F4>", function() dap.step_out() end, { desc = "(debug) step out" })
+  normal("<F6>", function() dap.toggle_breakpoint() end, { desc = "(debug) Toggle breakpoing" })
 
-  normal("<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", { desc = "(debug) Run last" })
-  normal("<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", { desc = "(debug) Ui toggle" })
-  normal("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", { desc = "(debug) Terminate dap" })
+  normal("<leader>dl", function() dap.run_last() end, { desc = "(debug) Run last" })
+  normal("<leader>du", function() dapui.toggle() end, { desc = "(debug) Ui toggle" })
+  normal("<leader>dt", function() dap.terminate() end, { desc = "(debug) Terminate dap" })
 
   -- Diagnostic
   normal("<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
