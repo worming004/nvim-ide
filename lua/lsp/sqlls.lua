@@ -1,4 +1,6 @@
-local config = {}
--- config.cmd =  {"/home/sclmth/.local/share/nvim/mason/bin/sql-language-server", "up", "--method", "stdio" ,"--debug"}
-
-return config
+vim.lsp.config.sqlls = {
+  cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
+  filetypes = { 'sql', 'mysql' },
+  root_markers = { '.sqllsrc.json' },
+  settings = {},
+}

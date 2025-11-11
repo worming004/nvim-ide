@@ -64,6 +64,7 @@ servers = {
   "lua_ls",
   "omnisharp",
   "pyright",
+  "sqlls",
   "yamlls",
 }
 
