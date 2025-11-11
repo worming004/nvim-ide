@@ -65,6 +65,7 @@ servers = {
   "omnisharp",
   "pyright",
   "sqlls",
+  "taplo",
   "yamlls",
 }
 
