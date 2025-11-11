@@ -1,13 +1,63 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPost", "BufNewFile" },
-  build = ":TSUpdate",
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  branch = 'main',
+  build = function()
+    vim.system({ "npm", "install", "-g", " tree-sitter-cli" }):wait()
+  end,
+  config = function()
+    require("nvim-treesitter").install({
+      "bash",
+      "bicep",
+      "c_sharp",
+      "dockerfile",
+      "elixir",
+      "erlang",
+      "go",
+      "gomod",
+      "gosum",
+      "gleam",
+      "gitignore",
+      "graphql",
+      -- waiting for https://github.com/phoenixframework/tree-sitter-heex/pull/53
+      -- "heex",
+      "html",
+      "htmldjango",
+      "http",
+      "ini",
+      "java",
+      "javascript",
+      "jq",
+      "json",
+      "lua",
+      "luap",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "query",
+      "rego",
+      "ruby",
+      "rust",
+      "scss",
+      "sql",
+      "svelte",
+      "terraform",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vimdoc",
+      "vhs",
+      "yaml",
+      "zig"
+    })
+  end,
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-tree/nvim-web-devicons",
-    "nvim-treesitter/playground",
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      branch = "main",
       init = function()
         -- PERF: no need to load the plugin, if we only need its queries for mini.ai
         local plugin = require("lazy.core.config").spec.plugins["nvim-treesitter"]
@@ -35,86 +85,4 @@ return {
       opts = {},
     },
   },
-  config = function()
-    require('ts_context_commentstring').setup {
-      enable_autocmd = false,
-    }
-
-    require "nvim-treesitter.configs".setup {
-      auto_install = true,
-      ensure_installed = {
-        "bash",
-        "bicep",
-        "c_sharp",
-        "dockerfile",
-        "elixir",
-        "erlang",
-        "go",
-        "gomod",
-        "gosum",
-        "gleam",
-        "gitignore",
-        "graphql",
-        "heex",
-        "html",
-        "htmldjango",
-        "http",
-        "ini",
-        "java",
-        "javascript",
-        "jq",
-        "json",
-        "lua",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "rego",
-        "ruby",
-        "rust",
-        "scss",
-        "sql",
-        "svelte",
-        "terraform",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "vhs",
-        "yaml",
-        "zig"
-      },
-      ignore_install = { "" }, -- List of parsers to ignore installing
-      sync_install = true,     -- install languages synchronously (only applied to `ensure_installed`)
-      highlight = {
-        enable = true,         -- false will disable the whole extension
-        disable = { "css" },   -- list of language that will be disabled
-      },
-      autopairs = {
-        enable = true,
-      },
-      indent = { enable = true, disable = { "python", "css" } },
-
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
-      },
-    }
-  end
 }
