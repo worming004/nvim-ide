@@ -4,58 +4,41 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 
+-- local servers = {
+--   "angularls",
+--   "ansiblels",
+--   "bashls",
+--   "bicep",
+--   "clangd",
+--   "cssls",
+--   -- "elixirls",
+--   "expert",
+--   "gopls",
+--   "helm_ls",
+--   "html",
+--   "jsonls",
+--   "lua_ls",
+--   "jdtls",
+--   "ltex",
+--   "omnisharp",
+--   "powershell_es",
+--   "pyright",
+--   "regal",
+--   "rust_analyzer",
+--   "sqlls",
+--   -- "systemd-language-server", -- waiting for https://github.com/williamboman/mason-lspconfig.nvim/pull/499
+--   "taplo",
+--   "terraformls",
+--   "ts_ls",
+--   "yamlls",
+--   "zls",
+-- }
+
+
 -- https://www.reddit.com/r/neovim/comments/y9qv1w/autoformatting_on_save_with_vimlspbufformat_and/
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local custom_on_attach = function(client, buffer_number)
-  -- autoformat
-  if client.supports_method "textDocument/formatting" then
-    vim.api.nvim_clear_autocmds { group = augroup, buffer = buffer_number }
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = buffer_number,
-      callback = function()
-        if vim.g.autoformat then
-          vim.lsp.buf.format()
-        else
-          vim.notify("Autoformat deactivated")
-        end
-      end,
-    })
-  end
-end
-
 local servers = {
-  "angularls",
-  "ansiblels",
-  "bashls",
-  "bicep",
-  "clangd",
-  "cssls",
-  -- "elixirls",
-  "expert",
-  "gopls",
-  "helm_ls",
-  "html",
-  "jsonls",
-  "lua_ls",
-  "jdtls",
-  "ltex",
-  "omnisharp",
-  "powershell_es",
-  "pyright",
-  "regal",
-  "rust_analyzer",
-  "sqlls",
-  -- "systemd-language-server", -- waiting for https://github.com/williamboman/mason-lspconfig.nvim/pull/499
-  "taplo",
-  "terraformls",
-  "ts_ls",
-  "yamlls",
-  "zls",
-}
-
-servers = {
   "ansiblels",
   "expert",
   "gopls",
