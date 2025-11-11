@@ -44,7 +44,14 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
         lualine_c = { "filename", diagnostics, "windows" },
-        lualine_x = { spaces, "encoding", filetype },
+        lualine_x = { function()
+          local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+          local names = {}
+          for _, client in pairs(buf_clients) do
+            table.insert(names, client.name)
+          end
+          return table.concat(names, ", ")
+        end, spaces, "encoding", filetype },
         lualine_y = { location },
         lualine_z = { "progress" },
       },
