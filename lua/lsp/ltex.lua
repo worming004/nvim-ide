@@ -1,20 +1,88 @@
-local lang = "fr"
-local config = {}
-config = {
-  cmd = { "ltex-ls" },
-  filetypes = { "markdown" },
-  flags = { debounce_text_changes = 300 },
+--                             Apache License
+--                       Version 2.0, January 2004
+--                    http://www.apache.org/licenses/
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ltex.lua
+
+-- local lang = "fr"
+-- local config = {}
+-- config = {
+--   cmd = { "ltex-ls" },
+--   filetypes = { "markdown" },
+--   flags = { debounce_text_changes = 300 },
+--   settings = {
+--     ltex = {
+--       language = lang
+--     }
+--   },
+--   extra_on_attach = function(client, bufnr)
+--     require("ltex_extra").setup {
+--       init_check = true,
+--       load_langs = { lang, "en-US" },
+--       path = vim.fn.expand('~') .. '/.local/share/ltex',
+--     }
+--   end,
+-- }
+-- return config
+--
+
+
+local language_id_mapping = {
+  bib = 'bibtex',
+  plaintex = 'tex',
+  rnoweb = 'rsweave',
+  rst = 'restructuredtext',
+  tex = 'latex',
+  pandoc = 'markdown',
+  text = 'plaintext',
+}
+
+local filetypes = {
+  'bib',
+  'gitcommit',
+  'markdown',
+  'org',
+  'plaintex',
+  'rst',
+  'rnoweb',
+  'tex',
+  'pandoc',
+  'quarto',
+  'rmd',
+  'context',
+  'html',
+  'xhtml',
+  'mail',
+  'text',
+}
+
+local function get_language_id(_, filetype)
+  local language_id = language_id_mapping[filetype]
+  if language_id then
+    return language_id
+  else
+    return filetype
+  end
+end
+local enabled_ids = {}
+do
+  local enabled_keys = {}
+  for _, ft in ipairs(filetypes) do
+    local id = get_language_id({}, ft)
+    if not enabled_keys[id] then
+      enabled_keys[id] = true
+      table.insert(enabled_ids, id)
+    end
+  end
+end
+
+vim.lsp.config.ltex = {
+  cmd = { 'ltex-ls' },
+  filetypes = filetypes,
+  root_markers = { '.git' },
+  get_language_id = get_language_id,
   settings = {
     ltex = {
-      language = lang
-    }
+      enabled = enabled_ids,
+    },
   },
-  extra_on_attach = function(client, bufnr)
-    require("ltex_extra").setup {
-      init_check = true,
-      load_langs = { lang, "en-US" },
-      path = vim.fn.expand('~') .. '/.local/share/ltex',
-    }
-  end,
 }
-return config

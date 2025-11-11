@@ -60,6 +60,7 @@ servers = {
   "expert",
   "gopls",
   "jsonls",
+  "ltex",
   "lua_ls",
   "omnisharp",
   "pyright",
