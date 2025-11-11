@@ -40,6 +40,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local servers = {
   "ansiblels",
+  "bicep",
   "expert",
   "gopls",
   "jsonls",
