@@ -5,7 +5,7 @@ local function check_command_exists(command, opts)
   local options = { warn = true }
   if opts then options = vim.tbl_extend('force', options, opts) end
 
-  local executable = vim.fn.executable(command)
+  local executable = vim.fn.system(command)
   if executable ~= 1 and options.warn then
     print('command ' .. command .. ' is not installed')
   end
