@@ -47,7 +47,6 @@ return {
     vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
   end,
   dependencies = {
-    { "nvim-neotest/nvim-nio", event = "VeryLazy" },
     {
       "mfussenegger/nvim-dap",
       event = "VeryLazy",
@@ -94,7 +93,10 @@ return {
           command = "netcoredbg",
           args = { "--interpreter=vscode" },
         }
-      end
+      end,
+      dependencies = {
+        "leoluz/nvim-dap-go"
+      }
     },
   },
 }

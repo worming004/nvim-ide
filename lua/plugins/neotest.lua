@@ -4,31 +4,25 @@ return {
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
-    "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "jfpedroza/neotest-elixir",
     "Issafalcon/neotest-dotnet",
     {
       "fredrikaverpil/neotest-golang",
-      dependencies = { "leoluz/nvim-dap-go" },
-      config = function()
-        require("dap-go").setup(
-          {
-            dap_configurations = {
-              type = "go",
-              name = "Attach remote",
-              mode = "remote",
-              request = "attach",
-            },
-          })
+      version = "*",                                                            -- Optional, but recommended; track releases
+      build = function()
+        vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
       end,
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+      }
     },
     "nvim-neotest/neotest-jest"
   },
   opts = function(_, opts)
     opts.adapters = opts.adapters or {}
   end,
-  config = function(_, opts)
+  config = function(_, _opts)
     require("neotest").setup({
       adapters = {
         require("neotest-elixir"),
@@ -37,7 +31,8 @@ return {
           mix_task = { "test.interactive" }
         }),
         require("neotest-golang")({
-          go_test_args = { "-count=1", "-timeout=60s" },
+          -- go_test_args = { "-count=1", "-timeout=60s" },
+          -- runner = "gotestsum"
         }),
         require("neotest-jest")({
           jestCommand = "npm test --",
