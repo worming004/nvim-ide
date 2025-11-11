@@ -56,10 +56,11 @@ local servers = {
 }
 
 servers = {
-  "gopls",
   "ansiblels",
-  "yamlls",
+  "expert",
+  "gopls",
   "jsonls",
+  "yamlls",
 }
 
 
