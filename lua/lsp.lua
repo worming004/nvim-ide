@@ -61,6 +61,7 @@ servers = {
   "gopls",
   "jsonls",
   "lua_ls",
+  "omnisharp",
   "yamlls",
 }
 
