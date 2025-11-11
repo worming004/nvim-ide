@@ -286,8 +286,14 @@ local function all_buffers_setup()
   normal("<leader>upt", "<cmd>Pipeline toggle<CR>", { desc = "Toggle pipeline plugin" })
 
   normal("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  normal("gd", vim.lsp.buf.definition)
-  normal("dgd", require('omnisharp_extended').lsp_definition)
+  local function go_to_definition()
+    if vim.bo.filetype == "cs" then
+      require('omnisharp_extended').lsp_definition()
+    else
+      vim.lsp.buf.definition()
+    end
+  end
+  normal("gd", go_to_definition)
   normal("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   normal("K", "<cmd> lua vim.lsp.buf.hover()<CR>")
   normal("<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
