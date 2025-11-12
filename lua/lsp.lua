@@ -14,7 +14,7 @@ local manual_config_servers = {
 }
 
 local nvim_lspconfig_servers = {
-  "angularls",
+  -- "angularls",
   "bashls",
   "clangd",
   "cssls",
