@@ -4,8 +4,6 @@ return {
   branch = 'main',
   build = function()
     vim.system({ "npm", "install", "-g", " tree-sitter-cli" }):wait()
-  end,
-  config = function()
     require("nvim-treesitter").install({
       "bash",
       "bicep",
