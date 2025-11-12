@@ -132,9 +132,14 @@ local function all_buffers_setup()
   normal("<leader>nb", function() ui.nav_file(5) end, { desc = "open harpoon file 5-b" })
 
   -- Duck
-  normal("<leader>udd", function() require("duck").hatch() end, { desc = "release a duck" })
-  normal("<leader>uds", function() require("duck").hatch('ඞ', 5) end, { desc = "release sus" })
-  normal("<leader>udp", function() require("duck").hatch('💩', 50) end, { desc = "release poop" })
+  local duck = require("duck")
+  normal("<leader>udd", function() duck.hatch() end, { desc = "release a duck" })
+  normal("<leader>uds",
+    function() duck.hatch({ character = 'ඞ', speed = 8, strategy = duck.default_strategies.favor_top_right }) end,
+    { desc = "release sus" })
+  normal("<leader>udp",
+    function() duck.hatch({ character = '💩', speed = 50, strategy = duck.default_strategies.favor_top_right }) end,
+    { desc = "release poop" })
 
   -- Aerial
   normal("<leader>nao", function()
