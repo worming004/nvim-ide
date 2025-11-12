@@ -19,8 +19,7 @@ return {
       "gleam",
       "gitignore",
       "graphql",
-      -- waiting for https://github.com/phoenixframework/tree-sitter-heex/pull/53
-      -- "heex",
+      "heex",
       "html",
       "htmldjango",
       "http",
