@@ -168,3 +168,11 @@ vim.api.nvim_create_user_command("TSInstallAll", function(_)
     "zig"
   })
 end, opts_with_desc(opts, "Install all Treesitter listed internally"))
+
+vim.api.nvim_create_user_command("DiagnosticsDisable", function(_)
+  vim.diagnostic.disable(0)
+end, opts_with_desc(opts, "Disable diagnostics for current buffer"))
+
+vim.api.nvim_create_user_command("DiagnosticsEnable", function(_)
+  vim.diagnostic.enable(0)
+end, opts_with_desc(opts, "Enable diagnostics for current buffer"))
