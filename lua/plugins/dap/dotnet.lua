@@ -18,16 +18,14 @@ local function dotnet_build_project()
   end
 end
 
-local function get_dotnet_framework(csproj_path)
-  local lines = vim.fn.readfile(csproj_path)
-  local content = table.concat(lines, "\n")
-  local target_framework = content:match("<TargetFramework>(.-)</TargetFramework>")
-  return target_framework
-end
-
-
-
 local function dotnet_get_dll_path()
+  local function get_dotnet_framework(csproj_path)
+    local lines = vim.fn.readfile(csproj_path)
+    local content = table.concat(lines, "\n")
+    local target_framework = content:match("<TargetFramework>(.-)</TargetFramework>")
+    return target_framework
+  end
+
   local request = function()
     local buf_path = vim.api.nvim_buf_get_name(0)
     local dir = vim.fn.fnamemodify(buf_path, ":h")
