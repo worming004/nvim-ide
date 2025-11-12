@@ -38,9 +38,10 @@ local function dotnet_get_dll_path()
     else
       local project_name = csproj_files[1]:match("([^/]+)%.csproj$")
       local framework = get_dotnet_framework(csproj_files[1])
-      local path = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/' .. framework .. '/' .. project_name,
+
+      local path = vim.fn.input('Path to dll: ',
+        vim.g['dotnet_last_proj_path'] .. 'bin/Debug/' .. framework .. '/' .. project_name,
         'file') .. '.dll'
-      vim.notify('Inferred dll path: ' .. path)
       return path
     end
   end
