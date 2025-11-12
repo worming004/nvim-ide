@@ -135,7 +135,15 @@ local function all_buffers_setup()
   local duck = require("duck")
   normal("<leader>udd", function() duck.hatch() end, { desc = "release a duck" })
   normal("<leader>uds",
-    function() duck.hatch({ character = 'ඞ', speed = 8, strategy = duck.default_strategies.favor_top_right }) end,
+    function()
+      duck.hatch({
+        character = 'ඞ',
+        speed = 8,
+        strategy = duck.default_strategies.favor_top_right,
+        color =
+        "cyan"
+      })
+    end,
     { desc = "release sus" })
   normal("<leader>udp",
     function() duck.hatch({ character = '💩', speed = 50, strategy = duck.default_strategies.favor_top_right }) end,
