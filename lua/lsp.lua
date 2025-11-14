@@ -44,7 +44,7 @@ for _, server in pairs(nvim_lspconfig_servers) do
   -- if lsp-overrides dir have lua file with same name, require file
   if vim.loop.fs_stat(vim.fn.stdpath('config') .. "/lua/lsp-overrides/" .. server .. ".lua") then
     local config = require("lsp-overrides." .. server)
-    vim.lsp.configure(server, config)
+    vim.lsp.config(server, config)
   end
   vim.lsp.enable(server)
 end
