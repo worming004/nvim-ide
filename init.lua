@@ -20,8 +20,16 @@ if os.getenv("NVIMTREE") ~= "0" then
   end
 end
 
-require "dotnet-build-src"
+-- require "dotnet-build-src"
 
 require "lsp"
 
 require "autocommands"
+
+local customs_dir = vim.fn.stdpath("config") .. "/lua/customs"
+for _, file in ipairs(vim.fn.readdir(customs_dir)) do
+  if file:match("%.lua$") then
+    local module = "customs." .. file:gsub("%.lua$", "")
+    pcall(require, module)
+  end
+end
