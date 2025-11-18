@@ -17,7 +17,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   callback = function()
     if not vim.g.autoformat then
-      vim.notify("Autoformat deactivated")
       return
     end
 
