@@ -11,6 +11,7 @@ local manual_config_servers = {
   "sqlls",
   "taplo",
   "yamlls",
+  "azure_pipelines_ls",
 }
 
 local nvim_lspconfig_servers = {
