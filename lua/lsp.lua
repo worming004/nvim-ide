@@ -1,7 +1,6 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local manual_config_servers = {
   "ansiblels",
+  "azure_pipelines_ls",
   "bicep",
   "expert",
   "gopls",
@@ -11,7 +10,6 @@ local manual_config_servers = {
   "sqlls",
   "taplo",
   "yamlls",
-  "azure_pipelines_ls",
 }
 
 local nvim_lspconfig_servers = {
