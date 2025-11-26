@@ -20,6 +20,7 @@ vim.opt.linebreak = true          -- Wrap long lines at a character in 'breakat'
 vim.opt.inccommand = "split"      -- Show the effects of a command incrementally in a split window
 vim.opt.swapfile = false          -- Don't use a swapfile for the buffer
 vim.opt.list = true               -- Show some invisible characters (tabs, trailing spaces)
+vim.opt.undofile = true           -- Enable persistent undo
 
 vim.g.mapleader = " "             -- Set the leader key to space
 vim.g.autoformat = true           -- Enable auto formatting
