@@ -176,3 +176,7 @@ end, opts_with_desc(opts, "Disable diagnostics for current buffer"))
 vim.api.nvim_create_user_command("DiagnosticsEnable", function(_)
   vim.diagnostic.enable(0)
 end, opts_with_desc(opts, "Enable diagnostics for current buffer"))
+
+vim.api.nvim_create_user_command("GoModInit", function(_)
+  vim.cmd "silent !go mod init $(basename $(pwd))"
+end, opts_with_desc(opts, "Initialize a new Go module in the current directory"))
