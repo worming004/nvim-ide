@@ -2,6 +2,13 @@
 local default_config = { noremap = true, silent = true }
 local utils = require "utils"
 
+local function go_to_definition()
+  if vim.bo.filetype == "cs" then
+    require('omnisharp_extended').lsp_definition()
+  else
+    vim.lsp.buf.definition()
+  end
+end
 -- Buffer helper
 local function default_buffer(buffer_number, mode, sequences, command, opt_extend)
   opt_extend = opt_extend or {}
@@ -200,6 +207,10 @@ local function all_buffers_setup()
     vim.cmd('bprevious')
   end)
 
+  normal("<C-w>gd", function()
+    vim.cmd("vsplit")
+    go_to_definition()
+  end, { desc = "open definition in window" })
 
   -- Windows
   normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
@@ -301,13 +312,6 @@ local function all_buffers_setup()
   normal("<leader>upt", "<cmd>Pipeline toggle<CR>", { desc = "Toggle pipeline plugin" })
 
   normal("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  local function go_to_definition()
-    if vim.bo.filetype == "cs" then
-      require('omnisharp_extended').lsp_definition()
-    else
-      vim.lsp.buf.definition()
-    end
-  end
   normal("gd", go_to_definition)
   normal("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   normal("K", "<cmd> lua vim.lsp.buf.hover()<CR>")
