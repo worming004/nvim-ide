@@ -37,8 +37,9 @@ return {
             { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
           },
           opts = {
-            debug = true,      -- Enable debugging
-            context = 'files', -- Default context or array of contexts to use (can be specified manually in prompt via #).
+            sticky = { '#buffer' },
+            language = 'French',
+            model = 'claude-sonnet-4.5',
             mappings = {
               reset = {
                 normal = '',
