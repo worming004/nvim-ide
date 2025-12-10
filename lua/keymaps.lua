@@ -124,7 +124,7 @@ local function all_buffers_setup()
       contents[idx] = string.format("%s: %s", idx, file)
     end
     local content = ""
-    if table.getn(contents) == 0 then
+    if #contents == 0 then
       content = "no buffer marked"
     else
       content = table.concat(contents, "\n")
