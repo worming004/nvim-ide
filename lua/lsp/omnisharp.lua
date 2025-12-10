@@ -1,7 +1,7 @@
 vim.lsp.config.omnisharp = {
   cmd = {
     vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp',
-    '-z',  -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
+    '-z', -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
     '--hostPID',
     tostring(vim.fn.getpid()),
     'DotNet:enablePackageRestore=false',
@@ -12,6 +12,11 @@ vim.lsp.config.omnisharp = {
   filetypes = { 'cs', 'vb' },
   root_dir = vim.fs.root(0, { "sln", "csproj" }) or vim.loop.cwd(),
   enable_import_completion = true,
+  capabilities = {
+    workspace = {
+      workspaceFolders = false, -- https://github.com/OmniSharp/omnisharp-roslyn/issues/909
+    },
+  },
   -- enable_roslyn_analyzers = true, commented out waiting to get correct optionts configured
   enable_analyzer_support = true,
   enable_decompilation_support = true,
