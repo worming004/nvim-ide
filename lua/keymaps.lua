@@ -278,7 +278,6 @@ local function all_buffers_setup()
   default({ "n", "v" }, "<C-t>", function() require("neotest").run.run(vim.fn.getcwd()) end, { desc = "Run all tests" })
   normal("<leader>tra", function() require("neotest").run.run(vim.fn.getcwd()) end, { desc = "Run all tests" })
   normal("<leader>trf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Run file tests" })
-  normal("<leader>trf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Run file tests" })
   -- elixir special case
   normal("<leader>trea", function() require("neotest").run.run("test") end, { desc = "Run all tests" })
 
