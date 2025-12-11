@@ -180,3 +180,9 @@ end, opts_with_desc(opts, "Enable diagnostics for current buffer"))
 vim.api.nvim_create_user_command("GoModInit", function(_)
   vim.cmd "silent !go mod init $(basename $(pwd))"
 end, opts_with_desc(opts, "Initialize a new Go module in the current directory"))
+
+vim.api.nvim_create_user_command('DotnetBuildQuickFix', function()
+  vim.opt.errorformat = '%E%f(%l,%c): error %m,%W%f(%l,%c): warning %m'
+  vim.cmd('cexpr system("dotnet build")')
+  vim.cmd('copen')
+end, {})
