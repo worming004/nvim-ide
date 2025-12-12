@@ -3,36 +3,17 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  build = "npm install -g mcp-hub@latest",
+  build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
   config = function()
     require("mcphub").setup({
-      -- Configuration du serveur MCP
-      servers = {
-        -- Exemple : serveur filesystem
-        -- filesystem = {
-        --   command = "npx",
-        --   args = { "-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory" },
-        --   env = {},
-        -- },
-      },
-
-      -- Options d'interface
-      ui = {
-        -- Position de la fenêtre : 'center', 'top', 'bottom', 'left', 'right'
-        position = "center",
-        -- Taille de la fenêtre (pourcentage ou valeur absolue)
-        size = {
-          width = 0.8,
-          height = 0.8,
-        },
-        -- Bordure de la fenêtre
-        border = "rounded", -- 'none', 'single', 'double', 'rounded', 'solid', 'shadow'
-      },
-
-      -- Options de logging
-      log = {
-        level = "info", -- 'trace', 'debug', 'info', 'warn', 'error'
-      },
+      extension = {
+        copilotchat = {
+          enabled = true,
+          convert_tools_to_functions = true,     -- Convert MCP tools to CopilotChat functions
+          convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+          add_mcp_prefix = false,
+        }
+      }
     })
-  end,
+  end
 }
