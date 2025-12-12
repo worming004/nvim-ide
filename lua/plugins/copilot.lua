@@ -3,22 +3,7 @@ return {
   lazy = true,
   dependencies = {
     {
-      "zbirenbaum/copilot.lua",
-      cmd = {
-        "Copilot"
-      },
-      lazy = true,
-      opts = {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        filetypes = {
-          markdown = true,
-          help = true,
-        },
-      },
-    },
-    {
-      'CopilotC-Nvim/CopilotChat.nvim',
+      "CopilotC-Nvim/CopilotChat.nvim",
       event = { 'BufEnter' },
       branch = "main",
       lazy = true,
