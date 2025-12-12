@@ -21,21 +21,8 @@ return {
         "CopilotChatReview",
         "CopilotChatTests",
         "CopilotChatToggle",
-      }, -- Charger uniquement sur commande
+      },                             -- Charger uniquement sur commande
       dependencies = {
-        -- try without it and remove it new feature set is ok
-        -- {
-        --   'zbirenbaum/copilot.lua',
-        --   lazy = true,
-        --   opts = {
-        --     suggestion = { enabled = false },
-        --     panel = { enabled = false },
-        --     filetypes = {
-        --       markdown = true,
-        --       yaml = true
-        --     },
-        --   }
-        -- },
         { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
       },
       opts = {
