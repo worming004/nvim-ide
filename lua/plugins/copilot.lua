@@ -22,7 +22,6 @@ return {
     { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
   },
   opts = {
-    sticky = { '#buffer' },
     language = 'French',
     model = 'claude-sonnet-4.5',
     mappings = {
