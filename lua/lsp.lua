@@ -23,7 +23,6 @@ local nvim_lspconfig_servers = {
   "just",
   "ltex",
   "powershell_es",
-  "pyright",
   "regal",
   "rust_analyzer",
   "systemd_ls",
@@ -31,6 +30,7 @@ local nvim_lspconfig_servers = {
   "templ",
   "tofu_ls",
   "ts_ls",
+  "ty",
   "zls",
 }
 
