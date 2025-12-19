@@ -194,11 +194,6 @@ local function all_buffers_setup()
     go_to_definition()
   end, { desc = "open definition in window" })
 
-  -- Windows
-  normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
-  normal("<leader>qw", ":q<CR>", { desc = "quit current window" })
-  normal("<C-x>", ":q<CR>", { desc = "quit current window" })
-
   -- Kubectl
   normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
   normal("<leader>kd", ":KubeDelete<CR>", { desc = "kubectl delete" })
