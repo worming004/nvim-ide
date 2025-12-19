@@ -94,10 +94,6 @@ vim.api.nvim_create_user_command("OpenOnAzureDevops", function(_)
   vim.fn.system(cmd)
 end, opts_with_desc(opts, "Open current file on Azure DevOps"))
 
-vim.api.nvim_create_user_command("DuckCookAll", function(_)
-  require("duck").cook_all()
-end, opts_with_desc(opts, "Cook(=kill) all ducks"))
-
 vim.api.nvim_create_user_command("LtexLangChangeLanguage", function(data)
   local language = data.fargs[1]
   local bufnr = vim.api.nvim_get_current_buf()
