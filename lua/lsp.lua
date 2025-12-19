@@ -22,7 +22,7 @@ local nvim_lspconfig_servers = {
   "jdtls",
   "just",
   "ltex",
-  "powershell_es",
+  -- "powershell_es",
   "regal",
   "rust_analyzer",
   "systemd_ls",
