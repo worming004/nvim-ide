@@ -1,5 +1,6 @@
 return {
   "ravitemer/mcphub.nvim",
+  lazy = true, -- Load this plugin with :McpHubLoad
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -15,5 +16,13 @@ return {
         }
       }
     })
+  end,
+  init = function()
+    if vim.env.ENABLE_MCPHUB == "1" or vim.env.ENABLE_MCPHUB == "true" then
+      vim.schedule(function()
+        require("lazy").load({ plugins = { "mcphub.nvim" } })
+      end)
+    end
   end
+
 }

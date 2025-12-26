@@ -244,3 +244,7 @@ vim.api.nvim_create_user_command('DebugDotnet', function()
   }
   dap.launch(dap.adapters.coreclr, dap_config)
 end, opts_with_desc(opts, "Debug a dotnet project"))
+
+vim.api.nvim_create_user_command("McpHubLoad", function()
+  require("lazy").load({ plugins = { "mcphub.nvim" } })
+end, opts_with_desc(opts, "Enable autoformat"))
