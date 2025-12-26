@@ -87,13 +87,8 @@ return {
 
         local lua_config = require "plugins.dap.lua"
         merge_into_dap("lua", lua_config)
-
-        dap.adapters.coreclr = {
-          type = "executable",
-          command = "netcoredbg",
-          args = { "--interpreter=vscode" },
-        }
       end,
+
       dependencies = {
         "leoluz/nvim-dap-go"
       }

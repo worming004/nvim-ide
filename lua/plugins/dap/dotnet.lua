@@ -1,3 +1,4 @@
+-- probably delete this file as now debugger for dotnet project is launched with :DebugDotnet command
 local netcoredbg = vim.fn.exepath "netcoredbg"
 
 local function dotnet_build_project()
@@ -37,9 +38,10 @@ local function dotnet_get_dll_path()
       local project_name = csproj_files[1]:match("([^/]+)%.csproj$")
       local framework = get_dotnet_framework(csproj_files[1])
 
-      local path = vim.fn.input('Path to dll: ',
+      local path = vim.fn.input(
+        'Path to dll: ',
         vim.g['dotnet_last_proj_path'] .. 'bin/Debug/' .. framework .. '/' .. project_name,
-        'file') .. '.dll'
+        'file')
       return path
     end
   end

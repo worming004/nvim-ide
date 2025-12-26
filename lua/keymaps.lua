@@ -138,24 +138,6 @@ local function all_buffers_setup()
   normal("<leader>nv", function() ui.nav_file(4) end, { desc = "open harpoon file 4-v" })
   normal("<leader>nb", function() ui.nav_file(5) end, { desc = "open harpoon file 5-b" })
 
-  -- Duck
-  local duck = require("duck")
-  normal("<leader>udd", function() duck.hatch() end, { desc = "release a duck" })
-  normal("<leader>uds",
-    function()
-      duck.hatch({
-        character = 'ඞ',
-        speed = 8,
-        strategy = duck.default_strategies.favor_top_right,
-        color =
-        "cyan"
-      })
-    end,
-    { desc = "release sus" })
-  normal("<leader>udp",
-    function() duck.hatch({ character = '💩', speed = 50, strategy = duck.default_strategies.favor_top_right }) end,
-    { desc = "release poop" })
-
   -- Aerial
   normal("<leader>nao", function()
     local aerial = require("aerial")
@@ -211,11 +193,6 @@ local function all_buffers_setup()
     vim.cmd("vsplit")
     go_to_definition()
   end, { desc = "open definition in window" })
-
-  -- Windows
-  normal("<leader>qa", ":qa!<CR>", { desc = "quit all windows" })
-  normal("<leader>qw", ":q<CR>", { desc = "quit current window" })
-  normal("<C-x>", ":q<CR>", { desc = "quit current window" })
 
   -- Kubectl
   normal("<leader>ka", ":KubeApply<CR>", { desc = "kubectl apply" })
