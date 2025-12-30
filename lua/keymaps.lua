@@ -364,10 +364,17 @@ local function keymap_for_python(_)
     { desc = "Insert colon (:) at end of line", buffer = true })
 end
 
+
+local function keymap_for_json(_)
+  vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
+end
+
 return {
   all_buffers_setup = all_buffers_setup,
   keymap_for_go = keymap_for_go,
   keymap_for_csharp = keymap_for_csharp,
   keymap_for_lua = keymap_for_lua,
   keymap_for_python = keymap_for_python,
+  keymap_for_json = keymap_for_json,
 }

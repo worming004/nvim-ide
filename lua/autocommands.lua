@@ -102,6 +102,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "json" },
+  callback = function()
+    keymaps.keymap_for_json(0)
+  end
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
