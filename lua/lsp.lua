@@ -25,7 +25,7 @@ local nvim_lspconfig_servers = {
   -- "powershell_es",
   "regal",
   "rust_analyzer",
-  "systemd_ls",
+  "systemd_lsp",
   -- "terraformls",
   "templ",
   "tofu_ls",
