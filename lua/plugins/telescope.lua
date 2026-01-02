@@ -26,6 +26,7 @@ local M = {
       -- For major updates, this must be adjusted manually.
       version = "^1.0.0",
     },
+    { "nvim-telescope/telescope-ui-select.nvim" },
   },
   config = function()
     local actions = require('telescope.actions')
@@ -61,6 +62,7 @@ local M = {
     telescope.load_extension("luasnip")
     telescope.load_extension("emoji")
     telescope.load_extension("live_grep_args")
+    telescope.load_extension("ui-select")
   end,
 }
 
