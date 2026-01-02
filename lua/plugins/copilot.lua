@@ -1,6 +1,5 @@
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
-  event = { 'BufEnter' },
   branch = "main",
   lazy = true,
   cmd = {
@@ -17,9 +16,17 @@ return {
     "CopilotChatReview",
     "CopilotChatTests",
     "CopilotChatToggle",
-  },                             -- Charger uniquement sur commande
+  }, -- Charger uniquement sur commande
   dependencies = {
-    { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+    {
+      {
+        "zbirenbaum/copilot.lua",
+        config = function()
+          require("copilot").setup({})
+        end,
+      }
+    },
+    { 'nvim-lua/plenary.nvim' },
   },
   opts = {
     language = 'French',
@@ -31,5 +38,4 @@ return {
       },
     },
   },
-  -- See Commands section for default commands if you want to lazy load on them
 }
