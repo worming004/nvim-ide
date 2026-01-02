@@ -34,12 +34,12 @@ local nvim_lspconfig_servers = {
   "zls",
 }
 
-for _, server_file_name in pairs(manual_config_servers) do
-  local file_path = vim.fn.stdpath('config') .. "/lua/lsp/" .. server_file_name .. ".lua"
+for _, server in pairs(manual_config_servers) do
+  local file_path = vim.fn.stdpath('config') .. "/lua/lsp/" .. server .. ".lua"
   if vim.loop.fs_stat(file_path) then
-    require("lsp." .. server_file_name)
+    require("lsp." .. server)
   end
-  vim.lsp.enable(server_file_name)
+  vim.lsp.enable(server)
 end
 
 for _, server in pairs(nvim_lspconfig_servers) do
