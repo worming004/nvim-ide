@@ -248,3 +248,35 @@ end, opts_with_desc(opts, "Debug a dotnet project"))
 vim.api.nvim_create_user_command("McpHubLoad", function()
   require("lazy").load({ plugins = { "mcphub.nvim" } })
 end, opts_with_desc(opts, "Enable autoformat"))
+
+vim.api.nvim_create_user_command("CodeCompanionToCopilot", function()
+  require("codecompanion").setup({
+    interactions = {
+      chat = {
+        adapter = "copilot",
+      },
+      inline = {
+        adapter = "copilot",
+      },
+      cmd = {
+        adapter = "copilot",
+      }
+    },
+  })
+end, opts_with_desc(opts, "UseCopilot"))
+
+vim.api.nvim_create_user_command("CodeCompanionToLmStudio", function()
+  require("codecompanion").setup({
+    interactions = {
+      chat = {
+        adapter = "lmstudio",
+      },
+      inline = {
+        adapter = "lmstudio",
+      },
+      cmd = {
+        adapter = "lmstudio",
+      }
+    },
+  })
+end, opts_with_desc(opts, "UseCopilot"))
