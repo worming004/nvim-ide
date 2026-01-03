@@ -3,8 +3,51 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    {
+      "ravitemer/mcphub.nvim",
+      lazy = true, -- Load this plugin with :McpHubLoad
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+      build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+      config = function()
+        require("mcphub").setup({
+          extension = {
+            copilotchat = {
+              enabled = true,
+              convert_tools_to_functions = true,     -- Convert MCP tools to CopilotChat functions
+              convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+              add_mcp_prefix = false,
+            }
+          }
+        })
+      end,
+      init = function()
+        if vim.env.ENABLE_MCPHUB == "1" or vim.env.ENABLE_MCPHUB == "true" then
+          vim.schedule(function()
+            require("lazy").load({ plugins = { "mcphub.nvim" } })
+          end)
+        end
+      end
+
+    }
+  },
+  lazy = true,
+  cmd = {
+    "CodeCompanion",
+    "CodeCompanionActions",
+    "CodeCompanionChat",
+    "CodeCompanionCmd",
   },
   config = function()
+    local choice
+
+    if vim.env.CODE_COMPANION_ADAPTER then
+      choice = vim.env.CODE_COMPANION_ADAPTER
+    else
+      choice = vim.fn.input('\nChoose your AI assistant (lmstudio/copilot): ', 'lmstudio')
+    end
+
     require("codecompanion").setup({
       adapters = {
         http = {
@@ -27,15 +70,25 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "lmstudio",
+          adapter = choice,
         },
         inline = {
-          adapter = "lmstudio",
+          adapter = choice,
         },
         agent = {
-          adapter = "lmstudio",
+          adapter = choice,
         },
       },
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            make_vars = true,
+            make_slash_commands = true,
+            show_result_in_chat = true
+          }
+        }
+      }
     })
   end,
 

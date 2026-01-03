@@ -5,7 +5,7 @@ local function l(toappend)
 end
 
 wk.add({
-  { l("c"),  group = "copilot" },
+  { l("c"),  group = "ai" },
   { l("d"),  group = "dap" },
   { l("e"),  group = "edit" },
   { l("f"),  group = "telescope / search" },
