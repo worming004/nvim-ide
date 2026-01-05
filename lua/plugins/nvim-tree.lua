@@ -13,6 +13,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   lazy = false,
   opts = {
+    prefer_startup_root = true,
     on_attach = on_attach,
     update_focused_file = {
       enable = true,
