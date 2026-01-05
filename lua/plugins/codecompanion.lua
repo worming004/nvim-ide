@@ -5,7 +5,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     {
       "ravitemer/mcphub.nvim",
-      lazy = true, -- Load this plugin with :McpHubLoad
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
@@ -40,13 +39,7 @@ return {
     "CodeCompanionCmd",
   },
   config = function()
-    local choice
-
-    if vim.env.CODE_COMPANION_ADAPTER then
-      choice = vim.env.CODE_COMPANION_ADAPTER
-    else
-      choice = vim.fn.input('\nChoose your AI assistant (lmstudio/copilot): ', 'lmstudio')
-    end
+    local defaultAdapter = "lmstudio"
 
     require("codecompanion").setup({
       adapters = {
@@ -70,13 +63,13 @@ return {
       },
       strategies = {
         chat = {
-          adapter = choice,
+          adapter = defaultAdapter,
         },
         inline = {
-          adapter = choice,
+          adapter = defaultAdapter,
         },
         agent = {
-          adapter = choice,
+          adapter = defaultAdapter,
         },
       },
       extensions = {
