@@ -361,6 +361,8 @@ end
 
 
 local function keymap_for_json(_)
+  vim.keymap.set("n", "<leader>e,", add_string_at_end_of_line(","),
+    { desc = "Insert comma (,) at end of line", buffer = true })
   vim.keymap.set("i", "<C-e>,", add_string_at_end_of_line(","),
     { desc = "Insert comma (,) at end of line", buffer = true })
 end
