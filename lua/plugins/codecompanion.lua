@@ -58,6 +58,20 @@ return {
               },
             })
           end,
+          remote = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              name = "lmstudio",
+              env = {
+                url = "http://192.168.129.3:1234",
+                api_key = "lmstudio",
+              },
+              schema = {
+                model = {
+                  default = "Qwen3-Coder-30B-A3B-Instruct-GGUF",
+                },
+              },
+            })
+          end,
           copilot = "copilot"
         },
       },
