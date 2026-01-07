@@ -54,6 +54,7 @@ return {
               schema = {
                 model = {
                   default = "Qwen3-Coder-30B-A3B-Instruct-GGUF",
+                  choices = { "Qwen3-Coder-30B-A3B-Instruct-GGUF", { "openai/open-oss-120b", opts = { can_reason = true } } }
                 },
               },
             })
@@ -68,6 +69,7 @@ return {
               schema = {
                 model = {
                   default = "Qwen3-Coder-30B-A3B-Instruct-GGUF",
+                  choices = { "Qwen3-Coder-30B-A3B-Instruct-GGUF", { "openai/open-oss-120b", opts = { can_reason = true } } }
                 },
               },
             })
