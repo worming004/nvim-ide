@@ -169,10 +169,10 @@ local function all_buffers_setup()
   normal("<leader>wa", ":wa<CR>", { desc = "write all files" })
 
   -- CodeCompanion
-  normal("<leader>ct", ":CodeCompanionChat Toggle<CR>", { desc = "open copilot chat" })
-  normal("<leader>caco", ":CodeCompanionChat adapter=copilot<CR>", { desc = "open copilot chat" })
-  normal("<leader>cacl", ":CodeCompanionChat adapter=lmstudio<CR>", { desc = "open lmstudio chat" })
-  normal("<leader>cacr", ":CodeCompanionChat adapter=remote<CR>", { desc = "open remote chat" })
+  default({ "n", "v" }, "<leader>ct", ":CodeCompanionChat Toggle<CR>", { desc = "open copilot chat" })
+  default({ "n", "v" }, "<leader>caco", ":CodeCompanionChat adapter=copilot<CR>", { desc = "open copilot chat" })
+  default({ "n", "v" }, "<leader>cacl", ":CodeCompanionChat adapter=lmstudio<CR>", { desc = "open lmstudio chat" })
+  default({ "n", "v" }, "<leader>cacr", ":CodeCompanionChat adapter=remote<CR>", { desc = "open remote chat" })
 
   -- Git
   normal("<leader>ggp", ":!git pull<CR>", { desc = "git pull" })
