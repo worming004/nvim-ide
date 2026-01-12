@@ -24,6 +24,7 @@ local nvim_lspconfig_servers = {
   "ltex",
   -- "powershell_es",
   "regal",
+  "ruff",
   "rust_analyzer",
   "systemd_lsp",
   -- "terraformls",
