@@ -100,11 +100,4 @@ return {
       }
     })
   end,
-
-  keys = {
-    { "<leader>a",  "",                                  desc = "AI",                      mode = { "n", "v" } },
-    { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Open CodeCompanion Chat", mode = "n" },
-    { "<leader>ai", "<cmd>CodeCompanion<cr>",            desc = "Inline CodeCompanion",    mode = "n" },
-    { "<leader>aa", "<cmd>CodeCompanionActions<cr>",     desc = "CodeCompanion Actions",   mode = "n" },
-  },
 }
