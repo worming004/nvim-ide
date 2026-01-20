@@ -183,6 +183,11 @@ vim.api.nvim_create_user_command('DotnetBuildQuickFix', function()
   vim.cmd('copen')
 end, {})
 
+vim.api.nvim_create_user_command('DotnetFormat', function()
+  vim.cmd "silent !dotnet format"
+end, {})
+
+
 vim.api.nvim_create_user_command('DebugDotnet', function()
   local function dotnet_build_project()
     local default_path = vim.fn.getcwd() .. '/'
