@@ -184,8 +184,40 @@ vim.api.nvim_create_user_command('DotnetBuildQuickFix', function()
 end, {})
 
 vim.api.nvim_create_user_command('DotnetFormat', function()
-  vim.cmd "silent !dotnet format"
-end, {})
+  local cwd = vim.loop.cwd()
+  local found_path = nil
+
+  -- Helper to recursively search for .editorconfig in child dirs
+  local function search_dir(dir)
+    local handle = vim.loop.fs_scandir(dir)
+    if not handle then
+      return
+    end
+
+    while true do
+      local name, typ = vim.loop.fs_scandir_next(handle)
+      if not name then
+        break
+      end
+
+      local full_path = dir .. "/" .. name
+      if typ == "file" and name == ".editorconfig" then
+        found_path = dir
+        return
+      elseif typ == "directory" and name ~= ".git" and name ~= "node_modules" then
+        search_dir(full_path)
+        if found_path then
+          return
+        end
+      end
+    end
+  end
+
+  search_dir(cwd)
+
+  local run_dir = found_path or cwd
+  vim.cmd("silent !cd " .. vim.fn.fnameescape(run_dir) .. " && dotnet format")
+end, opts_with_desc(opts, "Run dotnet format. Run in same dir of .editorconfig if found. If not, run in root dir"))
 
 
 vim.api.nvim_create_user_command('DebugDotnet', function()
