@@ -27,7 +27,7 @@ local nvim_lspconfig_servers = {
   "ruff",
   "rust_analyzer",
   "systemd_lsp",
-  -- "terraformls",
+  "terraformls",
   "templ",
   "tofu_ls",
   "ts_ls",
