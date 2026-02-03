@@ -297,6 +297,8 @@ local function all_buffers_setup()
   normal("<leader>lo", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>")
   normal("<leader>vws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
   insert("<C-U>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+
+  normal("<leader>utwt", ":set wrap!<CR>", { desc = "toggle word wrap" })
 end
 
 local function add_string_at_end_of_line(str)
