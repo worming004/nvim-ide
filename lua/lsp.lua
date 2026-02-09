@@ -33,6 +33,9 @@ local nvim_lspconfig_servers = {
   "ts_ls",
   "ty",
   "zls",
+  "opa",
+  "regols",
+  "regal",
 }
 
 for _, server in pairs(manual_config_servers) do
