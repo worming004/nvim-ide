@@ -4,6 +4,12 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     {
+      "zbirenbaum/copilot.lua",
+      config = function()
+        require("copilot").setup({})
+      end
+    },
+    {
       "ravitemer/mcphub.nvim",
       dependencies = {
         "nvim-lua/plenary.nvim",
