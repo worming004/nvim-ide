@@ -9,33 +9,6 @@ return {
         require("copilot").setup({})
       end
     },
-    {
-      "ravitemer/mcphub.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
-      build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
-      config = function()
-        require("mcphub").setup({
-          extension = {
-            copilotchat = {
-              enabled = true,
-              convert_tools_to_functions = true,     -- Convert MCP tools to CopilotChat functions
-              convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
-              add_mcp_prefix = false,
-            }
-          }
-        })
-      end,
-      init = function()
-        if vim.env.ENABLE_MCPHUB == "1" or vim.env.ENABLE_MCPHUB == "true" then
-          vim.schedule(function()
-            require("lazy").load({ plugins = { "mcphub.nvim" } })
-          end)
-        end
-      end
-
-    }
   },
   lazy = true,
   cmd = {
@@ -94,16 +67,6 @@ return {
           adapter = defaultAdapter,
         },
       },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true
-          }
-        }
-      }
     })
   end,
 }
