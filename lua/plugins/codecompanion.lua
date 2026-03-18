@@ -21,6 +21,16 @@ return {
     local defaultAdapter = "lmstudio"
 
     require("codecompanion").setup({
+      mcp = {
+        servers = {
+          ["sequential-thinking"] = {
+            cmd = { "npx", "-y", "@modelcontextprotocol/server-sequential-thinking" },
+          },
+          ["tavily-mcp"] = {
+            cmd = { "npx", "-y", "tavily-mcp@latest" },
+          },
+        }
+      },
       adapters = {
         http = {
           lmstudio = function()
@@ -59,6 +69,11 @@ return {
       strategies = {
         chat = {
           adapter = defaultAdapter,
+          tools = {
+            "agent",
+            "files",
+            "web_search"
+          }
         },
         inline = {
           adapter = defaultAdapter,
