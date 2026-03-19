@@ -66,14 +66,9 @@ return {
           copilot = "copilot"
         },
       },
-      strategies = {
+      interactions = {
         chat = {
           adapter = defaultAdapter,
-          tools = {
-            "agent",
-            "files",
-            "web_search"
-          }
         },
         inline = {
           adapter = defaultAdapter,
