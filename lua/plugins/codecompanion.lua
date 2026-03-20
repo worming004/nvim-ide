@@ -42,8 +42,12 @@ return {
               },
               schema = {
                 model = {
-                  default = "Qwen3-Coder-30B-A3B-Instruct-GGUF",
-                  choices = { "Qwen3-Coder-30B-A3B-Instruct-GGUF", { "openai/open-oss-120b", opts = { can_reason = true } } }
+                  default = "qwen/qwen3-coder-next",
+                  choices = {
+                    { "qwen/qwen3-coder-next",             opts = { can_reason = true } },
+                    { "Qwen3-Coder-30B-A3B-Instruct-GGUF", opts = { can_reason = true } },
+                    { "openai/open-oss-120b",              opts = { can_reason = true } },
+                  }
                 },
               },
             })
