@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- hightligh yanked text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
-    vim.highlight.on_yank {}
+    vim.hl.on_yank {}
   end,
 })
 
