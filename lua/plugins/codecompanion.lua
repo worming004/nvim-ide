@@ -29,41 +29,18 @@ return {
           ["tavily-mcp"] = {
             cmd = { "npx", "-y", "tavily-mcp@latest" },
           },
-        }
+        },
+        -- opts = {
+        --   default_servers = { "sequential-thinking", "tavily-mcp" },
+        -- },
       },
       adapters = {
         http = {
-          lmstudio = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              name = "lmstudio",
-              env = {
-                url = "http://localhost:1234",
-                api_key = "lmstudio",
-              },
-              schema = {
-                model = {
-                  default = "qwen/qwen3-coder-next",
-                  choices = {
-                    { "qwen/qwen3-coder-next",             opts = { can_reason = true } },
-                    { "Qwen3-Coder-30B-A3B-Instruct-GGUF", opts = { can_reason = true } },
-                    { "openai/open-oss-120b",              opts = { can_reason = true } },
-                  }
-                },
-              },
-            })
-          end,
           remote = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
-              name = "lmstudio",
+              name = "remote",
               env = {
                 url = "http://192.168.129.3:1234",
-                api_key = "lmstudio",
-              },
-              schema = {
-                model = {
-                  default = "Qwen3-Coder-30B-A3B-Instruct-GGUF",
-                  choices = { "Qwen3-Coder-30B-A3B-Instruct-GGUF", { "openai/open-oss-120b", opts = { can_reason = true } } }
-                },
               },
             })
           end,
