@@ -220,34 +220,34 @@ vim.api.nvim_create_user_command('DotnetFormat', function()
 end, opts_with_desc(opts, "Run dotnet format. Run in same dir of .editorconfig if found. If not, run in root dir"))
 
 
-vim.api.nvim_create_user_command('DebugDotnet', function()
-  local function dotnet_build_project()
-    local default_path = vim.fn.getcwd() .. '/'
-    if vim.g['dotnet_last_proj_path'] ~= nil then
-      default_path = vim.g['dotnet_last_proj_path']
-    end
-    local path = vim.fn.input('Path to your *proj file', default_path, 'file')
-    vim.g['dotnet_last_proj_path'] = path
-    local cmd = 'dotnet build -c Debug ' .. path .. ' > /dev/null'
-    print('')
-    print('Cmd to execute: ' .. cmd)
-    local f = os.execute(cmd)
-    if f == 0 then
-      print('\nBuild: ✔️ ')
-    else
-      print('\nBuild: ❌ (code: ' .. f .. ')')
-    end
-  end
-
-  if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
-    dotnet_build_project()
-  end
-
-  local dap = require('dap')
-  local dap_config = {
-    type = 'executable',
-    command = 'netcoredbg',
-    args = { '--interpreter=vscode' }
-  }
-  dap.launch(dap.adapters.coreclr, dap_config)
-end, opts_with_desc(opts, "Debug a dotnet project"))
+-- vim.api.nvim_create_user_command('DebugDotnet', function()
+--   local function dotnet_build_project()
+--     local default_path = vim.fn.getcwd() .. '/'
+--     if vim.g['dotnet_last_proj_path'] ~= nil then
+--       default_path = vim.g['dotnet_last_proj_path']
+--     end
+--     local path = vim.fn.input('Path to your *proj file', default_path, 'file')
+--     vim.g['dotnet_last_proj_path'] = path
+--     local cmd = 'dotnet build -c Debug ' .. path .. ' > /dev/null'
+--     print('')
+--     print('Cmd to execute: ' .. cmd)
+--     local f = os.execute(cmd)
+--     if f == 0 then
+--       print('\nBuild: ✔️ ')
+--     else
+--       print('\nBuild: ❌ (code: ' .. f .. ')')
+--     end
+--   end
+--
+--   if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+--     dotnet_build_project()
+--   end
+--
+--   local dap = require('dap')
+--   local dap_config = {
+--     type = 'executable',
+--     command = 'netcoredbg',
+--     args = { '--interpreter=vscode' }
+--   }
+--   dap.launch(dap.adapters.coreclr, dap_config)
+-- end, opts_with_desc(opts, "Debug a dotnet project"))

@@ -1,4 +1,24 @@
 return {
+  -- "NicholasMata/nvim-dap-cs",
+  -- dir = "/home/sclmth/git/neovim/nvim-dap-cs/",
+  -- config = function()
+  --   require('dap-cs').setup(
+  --   -- {
+  --   -- dap_configurations = {
+  --   --   {
+  --   --     type = "coreclr",
+  --   --     name = "Attach remote",
+  --   --     mode = "remote",
+  --   --     request = "attach",
+  --   --   },
+  --   -- },
+  --   -- netcoredbg = {
+  --   --   path = "netcoredbg"
+  --   -- }
+  --   -- }
+  --   )
+  -- end,
+  -- dependencies = {
   "rcarriga/nvim-dap-ui",
   event = "VeryLazy",
   config = function()
@@ -36,8 +56,8 @@ return {
       },
       floating = {
         max_height = 0.9,
-        max_width = 0.5,             -- Floats will be treated as percentage of your screen.
-        border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+        max_width = 0.5,               -- Floats will be treated as percentage of your screen.
+        border = vim.g.border_chars,   -- Border style. Can be 'single', 'double' or 'rounded'
         mappings = {
           close = { "q", "<Esc>" },
         },
@@ -73,8 +93,8 @@ return {
           table.merge_dictionary(dap.adapters, c.adapters)
         end
 
-        local dotnet_config = require "plugins.dap.dotnet"
-        merge_into_dap({ "cs", "fsharp" }, dotnet_config)
+        -- local dotnet_config = require "plugins.dap.dotnet"
+        -- merge_into_dap({ "cs", "fsharp" }, dotnet_config)
 
         local elixir_config = require "plugins.dap.elixir_ls"
         merge_into_dap("elixir", elixir_config)
@@ -91,4 +111,5 @@ return {
       }
     },
   },
+  -- }
 }
