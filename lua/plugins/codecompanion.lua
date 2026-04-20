@@ -18,7 +18,7 @@ return {
     "CodeCompanionCmd",
   },
   config = function()
-    local defaultAdapter = "lmstudio"
+    local defaultAdapter = "http"
 
     require("codecompanion").setup({
       mcp = {
