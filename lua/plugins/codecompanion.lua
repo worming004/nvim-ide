@@ -18,7 +18,7 @@ return {
     "CodeCompanionCmd",
   },
   config = function()
-    local defaultAdapter = "http"
+    local defaultAdapter = "remote"
 
     require("codecompanion").setup({
       mcp = {

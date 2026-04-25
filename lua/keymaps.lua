@@ -171,8 +171,7 @@ local function all_buffers_setup()
   -- CodeCompanion
   default({ "n", "v" }, "<leader>ct", ":CodeCompanionChat Toggle<CR>", { desc = "open copilot chat" })
   default({ "n", "v" }, "<leader>caco", ":CodeCompanionChat adapter=copilot<CR>", { desc = "open copilot chat" })
-  default({ "n", "v" }, "<leader>cacl", ":CodeCompanionChat adapter=lmstudio<CR>", { desc = "open lmstudio chat" })
-  default({ "n", "v" }, "<leader>cacr", ":CodeCompanionChat adapter=remote<CR>", { desc = "open remote chat" })
+  default({ "n", "v" }, "<leader>cacr", ":CodeCompanionChat adapter=remote<CR>", { desc = "open http chat" })
 
   -- Git
   normal("<leader>ggp", ":!git pull<CR>", { desc = "git pull" })
