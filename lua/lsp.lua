@@ -17,6 +17,7 @@ local nvim_lspconfig_servers = {
   "bashls",
   "clangd",
   "cssls",
+  "elmls",
   "helm_ls",
   "html",
   "jdtls",
