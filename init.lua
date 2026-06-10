@@ -9,25 +9,6 @@ require "which-key-group"
 require "make"
 require "filetypes"
 
-if vim.fn.bufname("%") == "" and vim.fn.empty(vim.fn.getline(1, "$")) == 1 then
-  local readmes = vim.fn.globpath(vim.fn.getcwd(), "[Rr][Ee][Aa][Dd][Mm][Ee]*", false, true)
-
-  if #readmes > 0 then
-    vim.cmd.edit(vim.fn.fnameescape(readmes[1]))
-  else
-    -- open nvimtree at startup
-    -- if NVIMTREE env variable is not set to 0
-    if os.getenv("NVIMTREE") ~= "0" then
-      local fn = vim.fn
-      if fn.bufname('%') == '' then
-        if fn.empty(fn.getline(1, '$')) then
-          vim.cmd ":NvimTreeFocus"
-        end
-      end
-    end
-  end
-end
-
 -- require "dotnet-build-src"
 
 require "lsp"
