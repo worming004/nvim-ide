@@ -1,6 +1,10 @@
+vim.filetype.add({
+  extends = { azurepipelines = 'azure-pipelines' }
+})
+
 vim.lsp.config.azure_pipelines_ls = {
   cmd = { 'azure-pipelines-language-server', '--stdio' },
-  filetypes = { 'azure-pipelines.yaml' },
+  filetypes = { 'azure-pipelines' },
   root_markers = { ".git", vim.uv.cwd() },
   settings = {
     yaml = {
@@ -19,13 +23,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   callback = function()
     local full_path = vim.fn.expand("%:p")
     if full_path:find("azure%-pipelines%.yml") or full_path:find("azure%-pipelines%.yaml") then
-      vim.bo.filetype = "azure-pipelines.yaml"
+      vim.bo.filetype = "azure-pipelines"
     end
   end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "azure-pipelines.yaml" },
+  pattern = { "azure-pipelines" },
   callback = function(data)
     local clients = vim.lsp.get_active_clients({ bufnr = data.buf })
     for _, client in pairs(clients) do

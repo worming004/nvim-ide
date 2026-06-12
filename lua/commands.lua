@@ -251,3 +251,8 @@ end, opts_with_desc(opts, "Run dotnet format. Run in same dir of .editorconfig i
 --   }
 --   dap.launch(dap.adapters.coreclr, dap_config)
 -- end, opts_with_desc(opts, "Debug a dotnet project"))
+--
+
+vim.api.nvim_create_user_command("SetAzureDevopsFileType", function(_)
+  vim.bo.filetype = "azure-pipelines"
+end, opts_with_desc(opts, "Enable autoformat"))
