@@ -169,9 +169,7 @@ local function all_buffers_setup()
   normal("<leader>wa", ":wa<CR>", { desc = "write all files" })
 
   -- CodeCompanion
-  default({ "n", "v" }, "<leader>ct", ":CodeCompanionChat Toggle<CR>", { desc = "open copilot chat" })
-  default({ "n", "v" }, "<leader>caco", ":CodeCompanionChat adapter=copilot<CR>", { desc = "open copilot chat" })
-  default({ "n", "v" }, "<leader>cacr", ":CodeCompanionChat adapter=remote<CR>", { desc = "open http chat" })
+  default({ "n", "v" }, "<leader>ct", ":CodeCompanionChat Toggle<CR>", { desc = "open CodeCompanion chat" })
 
   -- Git
   normal("<leader>ggp", ":!git pull<CR>", { desc = "git pull" })
