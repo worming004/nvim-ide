@@ -24,6 +24,7 @@ local nvim_lspconfig_servers = {
   "just",
   "ltex",
   "powershell_es",
+  "pyright",
   "regal",
   "ruff",
   "rust_analyzer",
