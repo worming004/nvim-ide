@@ -22,7 +22,7 @@ end, opts_with_desc(opts, "Toggle autoformat"))
 -- Visual toggles
 vim.api.nvim_create_user_command("RelativeLineToggle", function(_)
   vim.cmd "set relativenumber!"
-end, opts_with_desc(opts, "Toggle relativenumber"))
+end, opts_with_desc(opts, "Toggle relative line number"))
 
 -- Windowsh crlf conversion
 vim.api.nvim_create_user_command("RemoveWindowCr", function(_)
