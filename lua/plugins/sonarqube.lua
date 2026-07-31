@@ -21,6 +21,7 @@ return {
           extension_path .. "/analyzers/sonarpython.jar",
           extension_path .. "/analyzers/sonartext.jar",
           extension_path .. "/analyzers/sonarxml.jar",
+          extension_path .. "/analyzers/sonarcsharp.jar",
         },
       },
       csharp = {
@@ -31,5 +32,5 @@ return {
       },
     })
   end,
-  commit = "306a05526ada86a7b30af95c5cc81ffba93fef97"
+  commit = "811bf8f46e0aa5ed9c9b5783aaf6f87640df553a"
 }
